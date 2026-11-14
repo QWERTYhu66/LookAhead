@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/* Design tokens (apple-design): system font, type whose tracking tightens as it grows,
+   translucent chrome, and colours that mean something. Spacing in rem so it scales with text size. */
+:root {
+  --background: #f5f5f7;
+  --surface: #ffffff;
+  --surface-translucent: rgba(255, 255, 255, 0.72);
+  --foreground: #1d1d1f;
+  --muted: #6e6e73;
+  --hairline: rgba(0, 0, 0, 0.08);
+  --accent: #0a84ff;
+  --spent: #1d1d1f;
+  --forecast: #a1a1a6;
+  --range: rgba(10, 132, 255, 0.18);
+  --ghost: #8e8e93;
+  --warn: #ff9f0a;
+  --danger: #ff453a;
+  --good: #30d158;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --surface: #1c1c1e;
+    --surface-translucent: rgba(28, 28, 30, 0.72);
+    --foreground: #f5f5f7;
+    --muted: #98989d;
+    --hairline: rgba(255, 255, 255, 0.1);
+    --spent: #f5f5f7;
+    --forecast: #636366;
+    --range: rgba(10, 132, 255, 0.28);
+    --ghost: #8e8e93;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-hairline: var(--hairline);
+  --color-accent: var(--accent);
+  --color-spent: var(--spent);
+  --color-forecast: var(--forecast);
+  --color-range: var(--range);
+  --color-ghost: var(--ghost);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-good: var(--good);
+  --font-sans: system-ui, -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
+}
+
+html {
+  font: 100%/1.5 var(--font-sans);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Type scale: size, leading and tracking move together. */
+.text-display { font-size: clamp(2.25rem, 6vw, 3rem); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
+.text-title   { font-size: 1.375rem; line-height: 1.15; letter-spacing: -0.01em; font-weight: 600; }
+.text-body    { font-size: 1rem; line-height: 1.5; }
+.text-caption { font-size: 0.8125rem; line-height: 1.4; letter-spacing: 0.01em; font-weight: 500; color: var(--muted); }
+.tabular      { font-variant-numeric: tabular-nums; }
+
+/* Translucent chrome; frostier when the user prefers less transparency. */
+.material {
+  background: var(--surface-translucent);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--hairline);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .material { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  .card { border: 1px solid var(--foreground); }
+}
+
+/* Plain inputs that match the cards. */
+.field {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 0.5rem 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+.field:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

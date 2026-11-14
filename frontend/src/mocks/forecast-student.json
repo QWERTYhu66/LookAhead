@@ -1,0 +1,21 @@
+{
+  "as_of": "2015-11-20",
+  "days_left": 10,
+  "categories": [
+    { "category": "groceries", "spent_so_far": 18400, "predicted": 27900, "low": 24000, "high": 33500, "last_month": 25100,
+      "note": "Spent 18,400 by day 20; by day 20 last month you were at 16,700. You're shopping a little more often." },
+    { "category": "eating_out", "spent_so_far": 6200, "predicted": 8900, "low": 7100, "high": 11800, "last_month": 5400,
+      "note": "11 meals out so far vs 8 in all of last month. This is the category running hottest." },
+    { "category": "shopping", "spent_so_far": 9800, "predicted": 12400, "low": 9800, "high": 19000, "last_month": 15600,
+      "note": "Last month had a one-off purchase; this month is tracking closer to your usual 11,000." },
+    { "category": "transport", "spent_so_far": 3100, "predicted": 4600, "low": 3900, "high": 5600, "last_month": 4800,
+      "note": "Same pace as last month." },
+    { "category": "bills_services", "spent_so_far": 2500, "predicted": 3000, "low": 2500, "high": 3600, "last_month": 3000,
+      "note": "Phone top-up already paid; little left to come." },
+    { "category": "entertainment", "spent_so_far": 1400, "predicted": 2300, "low": 1400, "high": 3900, "last_month": 2600,
+      "note": "Quiet so far; the range is wide because this category is irregular for you." }
+  ],
+  "total": { "spent_so_far": 41400, "predicted": 59100, "low": 48700, "high": 77400, "last_month": 56500 },
+  "alerts": [],
+  "disclaimer": "This project is a prototype and is not financial advice."
+}
