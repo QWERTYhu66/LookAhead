@@ -1,0 +1,24 @@
+# Claude Code setup and planning notes stay local
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+
+# data (download steps in backend/data/README.md)
+backend/data/raw/
+backend/data/processed/
+
+# python
+.venv/
+__pycache__/
+.pytest_cache/
+
+# node / next
+node_modules/
+.next/
+out/
+
+# secrets and OS files
+.env
+.env.local
+.env*.local
+.DS_Store
