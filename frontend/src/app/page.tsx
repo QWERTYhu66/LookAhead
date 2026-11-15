@@ -1,8 +1,9 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { DISCLAIMER } from "@/lib/types";
+import { useScrollAnimations } from "@/lib/useScrollAnimations";
 
 const BLS_MONTHLY_AVERAGE = 6545;
 const BLS_YEAR = "2024";
@@ -27,10 +28,12 @@ const money = (value: number) =>
   new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(Math.max(0, value));
 
 export default function Home() {
+  const rootRef = useRef<HTMLDivElement>(null);
   const [salary, setSalary] = useState("5000");
   const [frequency, setFrequency] = useState<"monthly" | "yearly">("monthly");
   const [spending, setSpending] = useState("3500");
   const [result, setResult] = useState<Result | null>(null);
+  useScrollAnimations(rootRef, { refreshKey: result ? 1 : 0 });
 
   const formattedIncome = useMemo(() => {
     const value = Number(salary) || 0;
@@ -58,7 +61,8 @@ export default function Home() {
   }
 
   return (
-    <div className="calculator-page">
+    <div ref={rootRef} className="calculator-page">
+      <div className="scroll-progress" data-scroll-progress aria-hidden="true" />
       <header className="site-header">
         <Link className="brand" href="/" aria-label="LookAhead home"><span className="brand-mark">LA</span><span>LookAhead</span></Link>
         <span className="header-note">A calmer way to plan a month</span>
@@ -66,13 +70,14 @@ export default function Home() {
 
       <main className="calculator-main">
         <section className="intro">
-          <p className="eyebrow">Monthly spending calculator</p>
-          <h1>How much can you spend and still feel okay?</h1>
-          <p className="intro-copy">Put in your take-home income and the amount you&apos;re thinking of spending. We&apos;ll show a practical target, what you&apos;d have left, and how it compares with current U.S. spending patterns.</p>
+          <span className="hero-ornament" aria-hidden="true" />
+          <p className="eyebrow reveal">Monthly spending calculator</p>
+          <h1 className="reveal">How much can you spend and still feel okay?</h1>
+          <p className="intro-copy reveal">Put in your take-home income and the amount you&apos;re thinking of spending. We&apos;ll show a practical target, what you&apos;d have left, and how it compares with current U.S. spending patterns.</p>
         </section>
 
-        <div className="calculator-grid">
-          <form className="input-card" onSubmit={calculate}>
+        <div className="calculator-grid reveal-group">
+          <form className="input-card reveal" onSubmit={calculate}>
             <div className="card-heading"><span className="step">1</span><div><h2>Your income</h2><p>Use take-home pay, after taxes.</p></div></div>
             <div className="frequency-toggle" role="group" aria-label="Salary frequency">
               {(["monthly", "yearly"] as const).map((option) => <button key={option} type="button" className={frequency === option ? "selected" : ""} onClick={() => setFrequency(option)}>{option}</button>)}
@@ -86,7 +91,7 @@ export default function Home() {
             <p className="privacy-note">No account. No email. Nothing is saved.</p>
           </form>
 
-          <section className="result-column" aria-live="polite">
+          <section className="result-column reveal-group" aria-live="polite">
             {!result ? <div className="empty-result"><span className="empty-arrow">↘</span><h2>Start with two numbers.</h2><p>Your result will land here, with a simple explanation instead of a mysterious score.</p></div> : (
               <>
                 <div className={`result-card ${result.status}`}>
@@ -96,7 +101,7 @@ export default function Home() {
                   <div className="result-stats"><div><span>You entered</span><strong>{money(result.desired)}</strong></div><div><span>Left after spending</span><strong>{money(result.savings)}</strong></div><div><span>Room to target</span><strong>{result.gap >= 0 ? money(result.gap) : `−${money(-result.gap)}`}</strong></div></div>
                 </div>
 
-                <div className="forecast-card">
+                <div className="forecast-card" data-forecast-pin>
                   <div className="section-title"><div><p className="eyebrow">Month-end forecast</p><h2>Where this plan could land</h2></div><span className="source-tag">Planning range</span></div>
                   <div className="forecast-number">{money(result.desired)}</div>
                   <p className="small-copy forecast-copy">If your month follows the plan you entered, your likely landing zone is roughly <strong>{money(result.desired * 0.9)}–{money(result.desired * 1.1)}</strong>. This is a transparent planning range—not an ML prediction yet.</p>
@@ -119,7 +124,7 @@ export default function Home() {
           </section>
         </div>
 
-        <section className="how-it-works"><div><p className="eyebrow">How we got here</p><h2>Plain math, current sources.</h2></div><p>We use the CFPB&apos;s educational 50/30/20 framework as a starting point: 50% for needs, 30% for wants, and 20% for savings goals. We also show BLS consumer spending from 2024 and Census income data from 2025 so you can see the context behind the numbers.</p><div className="source-links"><a href="https://www.bls.gov/opub/reports/consumer-expenditures/2024/home.htm">BLS consumer spending ↗</a><a href="https://www.consumerfinance.gov/consumer-tools/educator-tools/youth-financial-education/teach/activities/analyzing-budgets/">CFPB budgeting framework ↗</a><a href="https://www.census.gov/library/publications/2026/demo/p60-289.html">Census income report ↗</a></div></section>
+        <section className="how-it-works reveal"><div><p className="eyebrow">How we got here</p><h2>Plain math, current sources.</h2></div><p>We use the CFPB&apos;s educational 50/30/20 framework as a starting point: 50% for needs, 30% for wants, and 20% for savings goals. We also show BLS consumer spending from 2024 and Census income data from 2025 so you can see the context behind the numbers.</p><div className="source-links"><a href="https://www.bls.gov/opub/reports/consumer-expenditures/2024/home.htm">BLS consumer spending ↗</a><a href="https://www.consumerfinance.gov/consumer-tools/educator-tools/youth-financial-education/teach/activities/analyzing-budgets/">CFPB budgeting framework ↗</a><a href="https://www.census.gov/library/publications/2026/demo/p60-289.html">Census income report ↗</a></div></section>
       </main>
       <footer className="calculator-footer"><span>{DISCLAIMER}</span><span>Benchmarks checked November 2026</span></footer>
     </div>
