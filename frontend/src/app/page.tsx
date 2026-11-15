@@ -34,7 +34,7 @@ export default function Home() {
   const [selectedDate, setSelectedDate] = useState("");
   const [ticker, setTicker] = useState<(typeof MARKETS)[number]["ticker"]>("S&P 500");
   const [horizon, setHorizon] = useState<"same_day" | "next_day">("next_day");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const selectedDay = demo?.days.find((day) => day.date === selectedDate) ?? demo?.days[0] ?? null;
   const selectedMarket = MARKETS.find((item) => item.ticker === ticker) ?? MARKETS[0];
