@@ -1,5 +1,6 @@
-// Talks to the backend. If it's down (or not built yet), uses the saved results in src/mocks and says "cached".
-
+// Talks to the backend. If it's down (or not built yet), uses the saved results
+// in src/mocks and says "cached". All requests forward the session token.
+import { authHeaders } from "@/lib/auth";
 import evaluationMock from "@/mocks/evaluation.json";
 import businessMock from "@/mocks/forecast-business.json";
 import familyMock from "@/mocks/forecast-family.json";
@@ -16,9 +17,21 @@ const MOCK_FORECAST: Record<Persona, ForecastResponse> = {
 };
 
 async function get<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(path, { ...init, signal: AbortSignal.timeout(6000), cache: "no-store" });
+  const res = await fetch(path, {
+    ...init,
+    headers: { ...init?.headers, ...authHeaders() },
+    signal: AbortSignal.timeout(6000),
+    cache: "no-store",
+  });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
   return res.json() as Promise<T>;
+}
+
+export async function login(): Promise<{ ok: boolean; token?: string; user?: { id: string; name: string } }> {
+  // Demo auth: accepts any email/password, issues a local session token.
+  // Leon's backend can swap this for real verification later.
+  const token = `demo_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+  return { ok: true, token, user: { id: "user_1", name: "Demo User" } };
 }
 
 export async function getProfiles(): Promise<Result<DemoProfile[]>> {

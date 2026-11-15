@@ -4,9 +4,11 @@
 
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { CachedTag } from "@/components/CachedTag";
 import { CategoryGlyph } from "@/components/Glyph";
 import { getEvaluation } from "@/lib/api";
+import { getSession } from "@/lib/auth";
 import { fmt } from "@/lib/format";
 import { useMotionSafe } from "@/lib/motion";
 import { label, type Evaluation } from "@/lib/types";
@@ -31,6 +33,12 @@ function Tile({ title, value, sub }: { title: string; value: string; sub?: strin
 }
 
 export default function EvaluationPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!getSession()) router.replace("/login");
+  }, [router]);
+
   const [ev, setEv] = useState<Evaluation | null>(null);
   const [cached, setCached] = useState(false);
   const { spring, enter, shown } = useMotionSafe();
@@ -68,7 +76,7 @@ export default function EvaluationPage() {
           <p className="text-eyebrow">Tested on {ev.dataset.test_period}, months the model never saw</p>
           {cached && <CachedTag />}
         </div>
-        <h1 className="text-display">
+        <h1 className="text-display text-gold font-black">
           {better >= 0 ? `${better.toFixed(0)}% less error` : `${Math.abs(better).toFixed(0)}% more error`} than the best simple rule.
         </h1>
         <p className="text-body text-muted max-w-prose">
