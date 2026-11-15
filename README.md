@@ -1,33 +1,44 @@
 # LookAhead
 
-**A market-news research brief for safer, more informed decisions.** LookAhead combines recent headlines, public market data, and a machine-learning signal to estimate a selected ticker's next move. It shows the prediction range, confidence, evidence, and a simple baseline beside the model so users can judge the result instead of treating it as certainty.
+**A market-news research brief for safer, more informed decisions.** LookAhead is based on challenge 4.2.4, “News headlines and the stock market.” The active ML work lives in `stocknews/`; the frontend lives in `frontend/`.
 
 > This project is a prototype and is not financial advice.
 
 ## What it does
 
-The root frontend route accepts a ticker such as `SPY`, `AAPL`, or `TSLA` and a short forecast horizon. It calls `POST /api/market/predict` and renders the backend's model output, predicted range, recent headlines, source links, held-out evaluation metrics, and baseline comparison. There is no email, name, account, or bank-login flow.
+The active experiment uses the public StockNews dataset to test whether daily news headlines predict the Dow Jones direction. Ethan’s `stocknews/baseline.py` cleans the 25 daily headline columns, creates sentiment and TF-IDF features, trains logistic-regression models, compares them with simple always-up and previous-day baselines, and writes the measured results to `stocknews/results.json`.
 
-The frontend does not fabricate market predictions, live headlines, Reddit content, or evaluation metrics. Until the backend returns a response, the page presents a neutral input state. Ethan's backend owns source collection, crawler compliance, feature engineering, model training, and prediction generation.
+The frontend is now connected to a small local adapter at `/api/stocknews`, which reads the measured `stocknews/results.json` file. It displays the historical model score, baseline comparison, metrics, feature explanation, and limitations. If Ethan has not run the experiment yet, the UI clearly says that results are unavailable rather than fabricating them. There is no email, name, account, or bank-login flow.
 
-## Data direction
+## Current ML pipeline
 
-The backend is expected to use the supplied StockNews dataset, yfinance market data, FRED macroeconomic data, permitted news sources, and permitted Reddit API data. Training must use chronological splits and avoid look-ahead bias. Results should be compared with a simple baseline using the same held-out period.
+Run the historical experiment from the ML directory:
 
-Supplied references:
+```bash
+cd stocknews
+python baseline.py
+```
+
+The script expects the public dataset at `stocknews/data/Combined_News_DJIA.csv` and uses chronological evaluation: earlier dates are used for training/validation and later dates are held out for testing. It writes the actual measured metrics to `stocknews/results.json`.
+
+The current script is a historical Dow-direction experiment, not a live ticker crawler. Any live news, Reddit, yfinance, or FRED integration must be implemented and credited separately before the project claims to use it.
+
+## Sources
 
 - [StockNews dataset](https://www.kaggle.com/datasets/aaron7sun/stocknews)
-- [yfinance](https://pypi.org/project/yfinance/)
-- [FRED](https://fred.stlouisfed.org/)
+- [yfinance](https://pypi.org/project/yfinance/) — planned/optional market-data source; not currently used by `stocknews/baseline.py`
+- [FRED](https://fred.stlouisfed.org/) — planned/optional macroeconomic source; not currently used by `stocknews/baseline.py`
 
 ## Structure
 
 ```text
-frontend/   Next.js market-news prediction UI
-backend/    Ethan's crawler, ML service, and /api/market/predict endpoint
+frontend/   Next.js market-news presentation UI and /api/stocknews adapter
+stocknews/  Ethan’s historical StockNews ML experiment and measured results
 ```
 
-## Run locally
+There is no active `backend/` application contract in the current project.
+
+## Run the frontend locally
 
 ```bash
 cd frontend
@@ -37,5 +48,3 @@ npm run typecheck
 npm run lint
 npm run build -- --webpack
 ```
-
-The frontend expects a response from `POST /api/market/predict` with the contract documented in the backend handoff prompt and typed locally in `src/app/page.tsx`.

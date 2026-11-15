@@ -10,21 +10,18 @@ npm run lint
 npm run build -- --webpack
 ```
 
-The interface accepts a ticker and forecast horizon, then calls:
+The root page provides the presentation surface for the `stocknews/` ML results. It loads `GET /api/stocknews`, a local route that reads `../stocknews/results.json`, and displays the historical Dow-direction score, simple baselines, held-out metrics, feature explanation, and limitations. The current experiment is not a live crawler or ticker-specific predictor; the UI says results are unavailable until `stocknews/baseline.py` has generated the file.
 
-```text
-POST /api/market/predict
-```
-
-The response is expected to include a predicted direction, low/typical/high return range, confidence, model name/version, data timestamp, recent headlines, a simple baseline, held-out evaluation metadata, and source links. The page intentionally does not create fake predictions or fake live data when the endpoint is unavailable.
+The page intentionally does not create fake predictions or fake live data when model output is unavailable.
 
 Important files:
 
 ```text
-src/app/page.tsx             market inputs, prediction result, evidence, baseline comparison
-src/app/globals.css          warm paper-and-ink market brief visual system
+src/app/page.tsx                market inputs, prediction result, evidence, baseline comparison
+src/app/api/stocknews/route.ts  reads the committed/local stocknews results artifact
+src/app/globals.css             warm paper-and-ink market brief visual system
 src/lib/useScrollAnimations.ts  Lenis, GSAP reveals, range scrubbing, and interactions
-src/lib/types.ts             shared types and exact disclaimer
+src/lib/types.ts                shared types and exact disclaimer
 ```
 
 The required disclaimer remains: “This project is a prototype and is not financial advice.”
