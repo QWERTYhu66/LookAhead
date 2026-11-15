@@ -27,13 +27,6 @@ async function get<T>(path: string, init?: RequestInit): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-export async function login(): Promise<{ ok: boolean; token?: string; user?: { id: string; name: string } }> {
-  // Demo auth: accepts any email/password, issues a local session token.
-  // Leon's backend can swap this for real verification later.
-  const token = `demo_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-  return { ok: true, token, user: { id: "user_1", name: "Demo User" } };
-}
-
 export async function getProfiles(): Promise<Result<DemoProfile[]>> {
   try {
     const data = await get<DemoProfile[]>("/api/demo-profiles");

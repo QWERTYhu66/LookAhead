@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 import { AlertList } from "@/components/AlertList";
@@ -13,7 +14,7 @@ import { Summary } from "@/components/Summary";
 import { Glyph } from "@/components/Glyph";
 import { computeAlerts, type Budget } from "@/lib/alerts";
 import { getForecast, getProfiles, personaOf } from "@/lib/api";
-import { clearSession, getSession } from "@/lib/auth";
+import { clearSession, getSession, type SessionUser } from "@/lib/auth";
 import type { DemoProfile, ForecastResponse, Persona } from "@/lib/types";
 
 const PERSONA_CHOICES: { id: Persona; title: string }[] = [
@@ -24,17 +25,32 @@ const PERSONA_CHOICES: { id: Persona; title: string }[] = [
 
 export default function Home() {
   const router = useRouter();
+  const [sessionUser] = useState<SessionUser | null>(() => getSession()?.user ?? null);
 
   useEffect(() => {
-    if (!getSession()) router.replace("/login");
-  }, [router]);
+    if (!sessionUser) router.replace("/login");
+  }, [router, sessionUser]);
 
   const [persona, setPersona] = useState<Persona | null>(null);
   const [profiles, setProfiles] = useState<DemoProfile[]>([]);
   const [loaded, setLoaded] = useState<{ persona: Persona; data: ForecastResponse; cached: boolean } | null>(null);
-  const [budget, setBudget] = useState<Budget>({ by_category: {} });
+  const [budget, setBudget] = useState<Budget>(() => {
+    const user = getSession()?.user;
+    if (!user) return { by_category: {} };
+    try {
+      const saved = window.localStorage.getItem(`lookahead.budget.${user.id}`);
+      return saved ? (JSON.parse(saved) as Budget) : { by_category: {} };
+    } catch {
+      return { by_category: {} };
+    }
+  });
   const [openCategory, setOpenCategory] = useState<string | null>(null);
   const [logoutOpen, setLogoutOpen] = useState(false);
+
+  useEffect(() => {
+    if (!sessionUser) return;
+    window.localStorage.setItem(`lookahead.budget.${sessionUser.id}`, JSON.stringify(budget));
+  }, [budget, sessionUser]);
 
   useEffect(() => {
     getProfiles().then(({ data }) => setProfiles(data));
@@ -68,7 +84,7 @@ export default function Home() {
   const openC = forecast?.categories.find((c) => c.category === openCatName) ?? null;
 
   const moneyLeft = forecast
-    ? Math.max(0, (budget.total ?? forecast.total.predicted) - forecast.total.spent_so_far) - forecast.total.predicted
+    ? (budget.total ?? forecast.total.predicted) - forecast.total.predicted
     : 0;
 
   const setCategoryBudget = (category: string, v: number | undefined) => {
@@ -116,6 +132,10 @@ export default function Home() {
             })}
           </div>
           <div className="flex items-center gap-3">
+            <Link href="/evaluation" className="hidden rounded-full border border-hairline px-3 py-1.5 text-caption font-bold text-muted transition-colors hover:border-accent hover:text-accent sm:inline-flex">
+              How good is it?
+            </Link>
+            <span className="hidden text-caption text-muted md:inline">{sessionUser?.name}</span>
             <motion.button
               type="button"
               onClick={() => setLogoutOpen(true)}
@@ -131,7 +151,7 @@ export default function Home() {
       <main className="mx-auto w-full max-w-[1040px] flex-1 px-4 pb-16 pt-8 sm:px-6 sm:pt-10">
         <div className="flex flex-wrap items-center gap-3 mb-2">
           {cached && <CachedTag />}
-          <span className="text-eyebrow">Month-end forecast · {forecast?.as_of ?? "2015-11-20"}</span>
+          <span className="text-eyebrow">{sessionUser ? `${sessionUser.name}'s workspace` : "Your workspace"} · month-end forecast · {forecast?.as_of ?? "2015-11-20"}</span>
         </div>
 
         {!forecast ? (

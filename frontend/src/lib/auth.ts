@@ -1,33 +1,37 @@
-/** Demo session stored in the browser. Aaron's pages import this; the file was missing from the merge. */
+"use client";
 
-const KEY = "lookahead_session";
+export type SessionUser = { id: string; name: string; email: string };
+export type Session = { token: string; user: SessionUser };
 
-export type Session = {
-  token: string;
-  user?: { id: string; name: string };
-};
+const SESSION_KEY = "lookahead.session";
 
 export function getSession(): Session | null {
   if (typeof window === "undefined") return null;
-  const raw = localStorage.getItem(KEY);
-  if (!raw) return null;
   try {
-    return JSON.parse(raw) as Session;
+    const raw = window.localStorage.getItem(SESSION_KEY);
+    return raw ? (JSON.parse(raw) as Session) : null;
   } catch {
     return null;
   }
 }
 
-export function setSession(session: Session): void {
-  localStorage.setItem(KEY, JSON.stringify(session));
+export function createSession(email: string, name?: string): Session {
+  const normalized = email.trim().toLowerCase();
+  const user: SessionUser = {
+    id: `user_${btoa(normalized).replace(/[^a-z0-9]/gi, "").slice(0, 18)}`,
+    name: name?.trim() || normalized.split("@")[0] || "LookAhead user",
+    email: normalized,
+  };
+  const session = { token: `local_${crypto.randomUUID()}`, user };
+  window.localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+  return session;
 }
 
-export function clearSession(): void {
-  localStorage.removeItem(KEY);
+export function clearSession() {
+  if (typeof window !== "undefined") window.localStorage.removeItem(SESSION_KEY);
 }
 
-export function authHeaders(): Record<string, string> {
-  const token = getSession()?.token;
-  if (!token) return {};
-  return { Authorization: `Bearer ${token}` };
+export function authHeaders(): HeadersInit {
+  const session = getSession();
+  return session ? { Authorization: `Bearer ${session.token}` } : {};
 }
