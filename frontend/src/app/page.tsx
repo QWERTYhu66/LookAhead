@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
@@ -74,10 +74,11 @@ function normalizeCategory(raw: string): string {
 export default function Home() {
   const router = useRouter();
   const [sessionUser] = useState<SessionUser | null>(() => getSession()?.user ?? null);
+  const hydrated = useSyncExternalStore(() => () => {}, () => true, () => false);
 
   useEffect(() => {
-    if (!sessionUser) router.replace("/login");
-  }, [router, sessionUser]);
+    if (hydrated && !sessionUser) router.replace("/login");
+  }, [hydrated, router, sessionUser]);
 
   const [persona, setPersona] = useState<Persona | null>(() => {
     const user = getSession()?.user;
@@ -187,6 +188,7 @@ export default function Home() {
     router.refresh();
   };
 
+  if (!hydrated) return <ForecastSkeleton />;
   if (!persona) return <PersonaCards onPick={choosePersona} onImport={handleImport} />;
 
   return (
