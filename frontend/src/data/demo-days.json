@@ -1,0 +1,319 @@
+{
+  "note": "Real days from the 2015-Jul 2016 test period (never used for training). Prototype, not financial advice.",
+  "model": "VADER sentiment features + logistic regression",
+  "p_up_min": 0.415,
+  "p_up_max": 0.641,
+  "share_days_predicted_up": 0.897,
+  "down_days_caught": "17 of 186",
+  "days": [
+    {
+      "kind": "wrong",
+      "date": "2016-06-09",
+      "model_p_up": 0.641,
+      "model_call": "up",
+      "actual": "down",
+      "top_headlines": [
+        {
+          "text": "Erdogan's rage brings death threats to German MPs: German MPs of Turkish origin faced death threats from people loyal to Turkish President Erdogan at the weeken",
+          "vader": -0.931
+        },
+        {
+          "text": "Threaten one MP and you're attacking the whole parliament, Lammert tells Turkey. Germany's speaker of parliament has sharply criticized Turkish President Recep ",
+          "vader": -0.888
+        },
+        {
+          "text": "India truly aligned with America now, Indian Prime Minister Modi hints in his address to US Congress; common ojectives and collaborations being securing world p",
+          "vader": 0.844
+        }
+      ]
+    },
+    {
+      "kind": "wrong",
+      "date": "2015-06-15",
+      "model_p_up": 0.636,
+      "model_call": "up",
+      "actual": "down",
+      "top_headlines": [
+        {
+          "text": "Israeli govt approves force feeding bill, says prisoner hunger strike is a \"suicide terrorist attack\" against Israel",
+          "vader": -0.949
+        },
+        {
+          "text": "Asylum seekers face increasing violence in Germany - - Anti-immigrant sentiment is growing in Germany, where refugee housing is burned &amp; asylum seekers are ",
+          "vader": -0.751
+        },
+        {
+          "text": "Chinas Stock Market Value Tops $10 Trillion for First Time",
+          "vader": 0.691
+        }
+      ]
+    },
+    {
+      "kind": "wrong",
+      "date": "2016-02-23",
+      "model_p_up": 0.634,
+      "model_call": "up",
+      "actual": "down",
+      "top_headlines": [
+        {
+          "text": "Tunisian museum security guards failed to search two heavily armed gunmen before they shot dead 22 people including a British woman in a terrorist attack, an in",
+          "vader": -0.932
+        },
+        {
+          "text": "Hungary will call referendum on EU's refugee quotas. Prime minister says planned quotas are an abuse of power and that Brussels has no right to redraw Europes c",
+          "vader": -0.751
+        },
+        {
+          "text": "Kurds rescue Swedish teen from ISIS-held territory in northern Iraq",
+          "vader": 0.511
+        }
+      ]
+    },
+    {
+      "kind": "right",
+      "date": "2016-06-28",
+      "model_p_up": 0.629,
+      "model_call": "up",
+      "actual": "up",
+      "top_headlines": [
+        {
+          "text": "Mexico's security forces routinely use 'sexual torture' against women: Rights group Amnesty International has compiled testimonies of sexual violence used as to",
+          "vader": -0.882
+        },
+        {
+          "text": "People, ever more greedy and stupid, destroy the world - Stephen Hawking to Larry King",
+          "vader": -0.868
+        },
+        {
+          "text": "2,500 Scientists To Australia: If You Want To Save The Great Barrier Reef, Stop Supporting Coal",
+          "vader": 0.832
+        }
+      ]
+    },
+    {
+      "kind": "right",
+      "date": "2015-04-06",
+      "model_p_up": 0.628,
+      "model_call": "up",
+      "actual": "up",
+      "top_headlines": [
+        {
+          "text": "British law changed so nuclear waste dumps can be forced on local communities - Legislation rushed through in the final hours of parliament allows local plannin",
+          "vader": -0.882
+        },
+        {
+          "text": "Protesters march in Rio after police kill boy, 10, amid clashes with gangs :Police shot Eduardo Ferreira last week, apparently thinking he had a gun.",
+          "vader": -0.84
+        },
+        {
+          "text": "Islamist militants hit Egypt's two largest cities on Sunday with a bombing in Cairo and an attack on a church in Alexandria, leaving one policeman dead and seve",
+          "vader": -0.813
+        }
+      ]
+    },
+    {
+      "kind": "right",
+      "date": "2016-01-06",
+      "model_p_up": 0.461,
+      "model_call": "down",
+      "actual": "down",
+      "top_headlines": [
+        {
+          "text": "Israel busts Hamas terror cell planning abduction and murder",
+          "vader": -0.917
+        },
+        {
+          "text": "German public broadcaster ZDF has apologised for delays in reporting on a wave of sexual assaults blamed on men of Arab appearance amid accusations Wednesday of",
+          "vader": -0.818
+        },
+        {
+          "text": "Germans outraged by mayors advice for women after raft of harassment",
+          "vader": -0.791
+        }
+      ]
+    },
+    {
+      "kind": "right",
+      "date": "2015-06-19",
+      "model_p_up": 0.469,
+      "model_call": "down",
+      "actual": "down",
+      "top_headlines": [
+        {
+          "text": "Three wounded in terrorist shooting attack north of Jerusalem.",
+          "vader": -0.832
+        },
+        {
+          "text": "300 arrested in global wildlife raids - Seizures include: Over 12 tons elephant ivory from Thailand, DRC, Kenya, Singapore, Mozambique &amp; Uganda; 126 rhino h",
+          "vader": -0.813
+        },
+        {
+          "text": "Pakistan suspends death penalty during Ramadan - BBC News",
+          "vader": -0.784
+        }
+      ]
+    }
+  ],
+  "other_markets_20_tests": [
+    {
+      "market": "S&P 500",
+      "target": "same_day",
+      "features": "vader_sentiment",
+      "always_up": 0.4947,
+      "model": 0.4947,
+      "p_value": 0.5204
+    },
+    {
+      "market": "S&P 500",
+      "target": "same_day",
+      "features": "headline_categories",
+      "always_up": 0.4947,
+      "model": 0.5053,
+      "p_value": 0.3594
+    },
+    {
+      "market": "S&P 500",
+      "target": "next_day",
+      "features": "vader_sentiment",
+      "always_up": 0.496,
+      "model": 0.496,
+      "p_value": 0.5205
+    },
+    {
+      "market": "S&P 500",
+      "target": "next_day",
+      "features": "headline_categories",
+      "always_up": 0.496,
+      "model": 0.4907,
+      "p_value": 0.6015
+    },
+    {
+      "market": "Nasdaq",
+      "target": "same_day",
+      "features": "vader_sentiment",
+      "always_up": 0.5159,
+      "model": 0.5159,
+      "p_value": 0.5207
+    },
+    {
+      "market": "Nasdaq",
+      "target": "same_day",
+      "features": "headline_categories",
+      "always_up": 0.5159,
+      "model": 0.5238,
+      "p_value": 0.3987
+    },
+    {
+      "market": "Nasdaq",
+      "target": "next_day",
+      "features": "vader_sentiment",
+      "always_up": 0.5172,
+      "model": 0.5146,
+      "p_value": 0.5616
+    },
+    {
+      "market": "Nasdaq",
+      "target": "next_day",
+      "features": "headline_categories",
+      "always_up": 0.5172,
+      "model": 0.504,
+      "p_value": 0.7147
+    },
+    {
+      "market": "Apple",
+      "target": "same_day",
+      "features": "vader_sentiment",
+      "always_up": 0.4947,
+      "model": 0.4788,
+      "p_value": 0.7481
+    },
+    {
+      "market": "Apple",
+      "target": "same_day",
+      "features": "headline_categories",
+      "always_up": 0.4947,
+      "model": 0.5,
+      "p_value": 0.4386
+    },
+    {
+      "market": "Apple",
+      "target": "next_day",
+      "features": "vader_sentiment",
+      "always_up": 0.496,
+      "model": 0.504,
+      "p_value": 0.3984
+    },
+    {
+      "market": "Apple",
+      "target": "next_day",
+      "features": "headline_categories",
+      "always_up": 0.496,
+      "model": 0.5279,
+      "p_value": 0.1181
+    },
+    {
+      "market": "JPMorgan",
+      "target": "same_day",
+      "features": "vader_sentiment",
+      "always_up": 0.5026,
+      "model": 0.5079,
+      "p_value": 0.4387
+    },
+    {
+      "market": "JPMorgan",
+      "target": "same_day",
+      "features": "headline_categories",
+      "always_up": 0.5026,
+      "model": 0.5106,
+      "p_value": 0.3986
+    },
+    {
+      "market": "JPMorgan",
+      "target": "next_day",
+      "features": "vader_sentiment",
+      "always_up": 0.5013,
+      "model": 0.4695,
+      "p_value": 0.9011
+    },
+    {
+      "market": "JPMorgan",
+      "target": "next_day",
+      "features": "headline_categories",
+      "always_up": 0.5013,
+      "model": 0.4721,
+      "p_value": 0.8819
+    },
+    {
+      "market": "ExxonMobil",
+      "target": "same_day",
+      "features": "vader_sentiment",
+      "always_up": 0.4947,
+      "model": 0.4603,
+      "p_value": 0.9176
+    },
+    {
+      "market": "ExxonMobil",
+      "target": "same_day",
+      "features": "headline_categories",
+      "always_up": 0.4947,
+      "model": 0.5238,
+      "p_value": 0.14
+    },
+    {
+      "market": "ExxonMobil",
+      "target": "next_day",
+      "features": "vader_sentiment",
+      "always_up": 0.4934,
+      "model": 0.4748,
+      "p_value": 0.7801
+    },
+    {
+      "market": "ExxonMobil",
+      "target": "next_day",
+      "features": "headline_categories",
+      "always_up": 0.4934,
+      "model": 0.5225,
+      "p_value": 0.1397
+    }
+  ]
+}
