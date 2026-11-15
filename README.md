@@ -8,7 +8,7 @@
 
 The active experiment uses the public StockNews dataset to test whether daily news headlines predict the Dow Jones direction. Ethan’s `stocknews/baseline.py` cleans the 25 daily headline columns, creates sentiment and TF-IDF features, trains logistic-regression models, compares them with simple always-up and previous-day baselines, and writes the measured results to `stocknews/results.json`.
 
-The frontend is now connected to a small local adapter at `/api/stocknews`. It reads `stocknews/results.json` if one exists; otherwise it uses a typed snapshot of the results already reported in `stocknews/README.md`. It displays the historical model score, baseline comparison, category test, feature explanation, and limitations. There is no email, name, account, or bank-login flow.
+The frontend is now connected to a local runner at `/api/stocknews/run`. Pressing **Run ML test** executes `stocknews/baseline.py` and `stocknews/category_test.py`, then reads their fresh result artifacts and displays the historical model score, baseline comparison, category test, feature explanation, and limitations. There is no email, name, account, or bank-login flow.
 
 ## Current ML pipeline
 
@@ -32,7 +32,7 @@ The current script is a historical Dow-direction experiment, not a live ticker c
 ## Structure
 
 ```text
-frontend/   Next.js market-news presentation UI and /api/stocknews adapter
+frontend/   Next.js market-news presentation UI and StockNews ML runner route
 stocknews/  Ethan’s historical StockNews ML experiment and measured results
 ```
 
