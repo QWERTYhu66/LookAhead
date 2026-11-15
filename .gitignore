@@ -3,9 +3,11 @@
 CLAUDE.md
 CLAUDE.local.md
 
-# data (download steps in backend/data/README.md)
+# downloaded data
 backend/data/raw/
 backend/data/processed/
+stocknews/data/
+stocknews/.venv/
 
 # python
 .venv/

@@ -1,0 +1,48 @@
+{
+  "always_up_accuracy": 0.5079,
+  "n_test_days": 378,
+  "bonferroni_threshold": 0.0071,
+  "by_category": {
+    "economy_business": {
+      "accuracy": 0.5079,
+      "p_value_vs_always_up": 0.5206,
+      "share_predicted_up": 1.0,
+      "days_with_category_headline": 0.963
+    },
+    "politics": {
+      "accuracy": 0.5159,
+      "p_value_vs_always_up": 0.3986,
+      "share_predicted_up": 0.987,
+      "days_with_category_headline": 1.0
+    },
+    "war_conflict": {
+      "accuracy": 0.4974,
+      "p_value_vs_always_up": 0.6784,
+      "share_predicted_up": 0.974,
+      "days_with_category_headline": 0.998
+    },
+    "crime_justice": {
+      "accuracy": 0.5079,
+      "p_value_vs_always_up": 0.5206,
+      "share_predicted_up": 1.0,
+      "days_with_category_headline": 0.955
+    },
+    "science_tech_health": {
+      "accuracy": 0.5079,
+      "p_value_vs_always_up": 0.5206,
+      "share_predicted_up": 0.989,
+      "days_with_category_headline": 0.898
+    },
+    "disaster_accident": {
+      "accuracy": 0.4974,
+      "p_value_vs_always_up": 0.6784,
+      "share_predicted_up": 0.979,
+      "days_with_category_headline": 0.865
+    }
+  },
+  "all_categories_combined": {
+    "accuracy": 0.5344,
+    "p_value_vs_always_up": 0.1642,
+    "share_predicted_up": 0.751
+  }
+}

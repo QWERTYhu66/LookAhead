@@ -1,0 +1,30 @@
+{
+  "baseline_always_up": {
+    "accuracy": 0.5079,
+    "balanced_accuracy": 0.5,
+    "down_precision": 0.0,
+    "down_recall": 0.0
+  },
+  "baseline_same_as_yesterday": {
+    "accuracy": 0.4577,
+    "balanced_accuracy": 0.4576,
+    "down_precision": 0.4492,
+    "down_recall": 0.4516
+  },
+  "model_vader_logreg": {
+    "accuracy": 0.4947,
+    "balanced_accuracy": 0.4884,
+    "down_precision": 0.4359,
+    "down_recall": 0.0914,
+    "C": 1
+  },
+  "model_tfidf_logreg": {
+    "accuracy": 0.4894,
+    "balanced_accuracy": 0.484,
+    "down_precision": 0.4407,
+    "down_recall": 0.1398,
+    "C": 1
+  },
+  "test_share_up": 0.5079,
+  "n_test_days": 378
+}
