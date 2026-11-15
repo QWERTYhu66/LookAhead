@@ -8,7 +8,7 @@
 
 LookAhead opens directly to a calculator. There is no email, name, account, bank login, or CSV requirement. Choose monthly or yearly take-home pay, enter a monthly savings goal, and get a result based on a transparent 20% savings starting point from the CFPB's educational 50/30/20 framework. The page also shows emergency-fund context from the Federal Reserve and concrete one-month and three-month cushion milestones.
 
-The primary recommendation is intentionally explainable arithmetic. Leon will add the 2026 consumer-data backend layer later; until then, the UI does not fabricate a request from demo data or present the old historical model as current data.
+The primary recommendation is intentionally explainable arithmetic. The frontend does not fabricate current consumer data or present the old historical model as current data.
 
 ## Current sources
 
@@ -32,4 +32,4 @@ npm run lint
 npm run build -- --webpack
 ```
 
-The frontend can work without the backend; the calculator result remains available and the backend card explains that the 2026 data layer is not connected yet.
+The calculator result is fully usable on its own and keeps its assumptions visible in the interface.

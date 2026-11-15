@@ -98,9 +98,9 @@ export default function Home() {
                 <div className="forecast-card" data-forecast-pin>
                   <div className="section-title"><div><p className="eyebrow">Savings forecast</p><h2>Where your cushion could land</h2></div><span className="source-tag">Planning range</span></div>
                   <div className="forecast-number">{money(result.desiredSavings * 12)} <span className="forecast-period">a year</span></div>
-                  <p className="small-copy forecast-copy">If you keep this goal for 12 months, you could build roughly <strong>{money(result.desiredSavings * 12 * 0.9)}–{money(result.desiredSavings * 12 * 1.1)}</strong>. This is a transparent planning range—not an ML prediction yet.</p>
+                  <p className="small-copy forecast-copy">If you keep this goal for 12 months, you could build roughly <strong>{money(result.desiredSavings * 12 * 0.9)}–{money(result.desiredSavings * 12 * 1.1)}</strong>. This range is based on your goal and is meant to make progress easy to picture.</p>
                   <div className="forecast-scale"><span>{money(result.desiredSavings * 12 * 0.9)}</span><div className="forecast-track"><span className="forecast-range" /><span className="forecast-marker" /></div><span>{money(result.desiredSavings * 12 * 1.1)}</span></div>
-                  <div className="forecast-note"><span className="connection-dot" aria-hidden="true" /><span>When Leon&apos;s 2026 dataset is connected, this panel can switch to a learned low / typical / high savings forecast and show its evaluation against this planning baseline.</span></div>
+                  <div className="forecast-note"><span className="connection-dot" aria-hidden="true" /><span>Keep this number visible as a simple benchmark for your own progress.</span></div>
                 </div>
 
                 <div className="comparison-card">
@@ -112,7 +112,6 @@ export default function Home() {
 
                 <div className="breakdown-card"><div className="section-title"><div><p className="eyebrow">Your next milestones</p><h2>Make the cushion feel concrete</h2></div></div><div className="breakdown-list"><div className="breakdown-row"><div><span>One month of living costs</span><strong>{money(result.spendable)}</strong></div><div className="bar-track"><span className="bar category-bar" style={{ width: "33%" }} /></div><em>{money(result.desiredSavings > 0 ? result.spendable / result.desiredSavings : 0)} months</em></div><div className="breakdown-row"><div><span>Three-month cushion</span><strong>{money(result.spendable * 3)}</strong></div><div className="bar-track"><span className="bar category-bar" style={{ width: "66%" }} /></div><em>{money(result.desiredSavings > 0 ? result.spendable * 3 / result.desiredSavings : 0)} months</em></div><div className="breakdown-row"><div><span>One year of your goal</span><strong>{money(result.desiredSavings * 12)}</strong></div><div className="bar-track"><span className="bar category-bar" style={{ width: "100%" }} /></div><em>12 months</em></div></div><p className="small-copy">These milestones use your numbers. They are a way to make progress visible, not a prescription for how much cash you must keep.</p></div>
 
-                <div className="backend-card"><div><p className="eyebrow">Backend ready</p><h2>Waiting for the 2026 data layer.</h2><p>The calculator is intentionally using the CFPB and Federal Reserve benchmarks for now. Leon can plug his 2026 consumer dataset into this section later without changing the simple inputs or the math you see above.</p></div><span className="connection-dot" aria-label="waiting for 2026 data" /></div>
               </>
             )}
           </section>
