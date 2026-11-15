@@ -1,6 +1,18 @@
 # Do news headlines predict the Dow? (Veritas AI Hackathon 2026, AI + Finance)
 
+**Track:** Finance (brief 4.2.4 plus our own additions)
+**Team:** Aaron Hsueh, Leon Pai, Ethan Huang
+
 This project is a prototype and is not financial advice.
+
+## The problem
+Someone who is new to investing (for example a student opening a first brokerage account) sees a scary or exciting headline and wonders whether it should change what they do with their money. News feels like it should move markets, but does it? We test this with a real public dataset and report the answer honestly, so a person can decide how much weight a headline deserves.
+
+## What we built
+- **In:** one day's top 25 news headlines (text).
+- **What the model does:** scores the headlines with VADER sentiment (or word counts), then a logistic regression turns that into a probability that the Dow went up that day.
+- **Out:** P(up) and an up/down call. Its probability only ranges from about 0.42 to 0.64, so it is close to a coin flip, and we say so.
+- **How someone would use it:** the website shows our measured results and real test days (right and wrong) so a person can see how little headlines predict. `predict.py` runs the same model on any list of headlines.
 
 ## What this tests
 Brief 4.2.4: does each day's top news headlines tell us anything about whether the Dow Jones went up or down that day?
@@ -59,12 +71,23 @@ The model's probability of "up" only ranges from 0.42 to 0.64, so it calls "up" 
 ## Limits
 Keyword categories are crude and some words are ambiguous. One market, one 18-month test window, Reddit headlines only. Not tested yet: newer years (2017+), other news sources.
 
+## What we'd do next
+- Test newer years (2017 onward) and other news sources, for example the New York Times archive.
+- Replace the keyword categories with a proper pretrained text classifier.
+- Test whether headlines help a model that already knows yesterday's price moves.
+
+## How to run
+1. Download `Combined_News_DJIA.csv` from Kaggle into `stocknews/data/`.
+2. `pip install pandas scikit-learn vaderSentiment yfinance scipy`
+3. From `stocknews/`, run in order: `python baseline.py`, `python category_test.py`, `python market_test.py`, `python export_demo.py`. (`export_params.py` writes `model_params.json`; `python predict.py "headline 1" "headline 2"` runs the model.)
+
 ## Files
-- `baseline.py`: baselines + VADER/TF-IDF models
-- `category_test.py`: per-category test
+- `baseline.py`: baselines + VADER/TF-IDF models (writes `results.json`)
+- `category_test.py`: per-category test (writes `category_results.json`)
 - `market_test.py`: same test on other markets and single stocks (yfinance)
 - `export_demo.py`: writes `demo_days.json` (real right/wrong test days for the website)
 - `demo_days.json`: data for the website demo
+- `export_params.py` / `model_params.json` / `predict.py`: the model as plain numbers, runnable with only vaderSentiment
 
 ## Credits
-Kaggle dataset "Daily News for Stock Market Prediction" (Aaron7sun); VADER sentiment (vaderSentiment); scikit-learn, pandas, numpy, SciPy; yfinance / Yahoo Finance price data; Claude (Anthropic) used as a coding assistant. A teammate or the team should add anything else used.
+Kaggle dataset "Daily News for Stock Market Prediction" (Aaron7sun); VADER sentiment (vaderSentiment); scikit-learn, pandas, numpy, SciPy; yfinance / Yahoo Finance price data; AI tools used: Claude (Anthropic) as a coding assistant, Manus (AI agent that co-authored parts of the website), and GitHub Copilot (suggested some commit messages). We understand and can explain every part of the project.
