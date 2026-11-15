@@ -16,3 +16,12 @@ export function monthEnd(asOf: string): string {
   const d = new Date(asOf + "T00:00:00");
   return new Date(d.getFullYear(), d.getMonth() + 1, 0).toLocaleDateString("en", { month: "short", day: "numeric" });
 }
+
+export function dayOf(asOf: string): number {
+  return Number(asOf.slice(8, 10));
+}
+
+export function daysInMonth(asOf: string): number {
+  const d = new Date(asOf + "T00:00:00");
+  return new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+}
