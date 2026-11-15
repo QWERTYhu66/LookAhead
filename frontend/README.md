@@ -1,6 +1,6 @@
 # LookAhead frontend
 
-Next.js + TypeScript + Tailwind. The root route is a no-login salary-and-spending calculator.
+Next.js + TypeScript + Tailwind. The root route is a no-login salary-and-savings calculator.
 
 ```bash
 npm install
@@ -10,7 +10,7 @@ npm run lint
 npm run build -- --webpack
 ```
 
-The calculator uses current public benchmarks for its primary recommendation. Leon's 2026 consumer-data backend layer is intentionally not simulated with the old demo profiles; the UI has a clear placeholder for that future connection.
+The calculator uses the CFPB 20% savings framework for its primary recommendation and projects annual savings plus one-month and three-month cushion milestones. Leon's 2026 consumer-data backend layer is intentionally not simulated with the old demo profiles; the UI has a clear placeholder for that future connection.
 
 Important files:
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, type RefObject } from "react";
+import { useLayoutEffect, useRef, type RefObject } from "react";
 
 type AnimationOptions = {
   enabled?: boolean;
@@ -10,6 +10,7 @@ type AnimationOptions = {
 export function useScrollAnimations(rootRef: RefObject<HTMLDivElement | null>, options: AnimationOptions = {}) {
   const enabled = options.enabled ?? true;
   const refreshKey = options.refreshKey ?? 0;
+  const baseAnimationsInitialized = useRef(false);
 
   useLayoutEffect(() => {
     const root = rootRef.current;
@@ -52,49 +53,53 @@ export function useScrollAnimations(rootRef: RefObject<HTMLDivElement | null>, o
         gsap.ticker.add(onTick);
         gsap.ticker.lagSmoothing(0);
 
-        if (progress) {
-          gsap.to(progress, {
-            scaleX: 1,
-            ease: "none",
-            scrollTrigger: { trigger: document.documentElement, start: "top top", end: "max", scrub: true },
-          });
-        }
+        if (!baseAnimationsInitialized.current) {
+          if (progress) {
+            gsap.to(progress, {
+              scaleX: 1,
+              ease: "none",
+              scrollTrigger: { trigger: document.documentElement, start: "top top", end: "max", scrub: true },
+            });
+          }
 
-        if (intro) {
-          gsap.to(intro.querySelector(".hero-ornament"), {
-            yPercent: 18,
-            rotation: 8,
-            ease: "none",
-            scrollTrigger: { trigger: intro, start: "top top", end: "bottom top", scrub: true },
-          });
-          gsap.to(intro.querySelector("h1"), {
-            yPercent: -5,
-            ease: "none",
-            scrollTrigger: { trigger: intro, start: "top top", end: "bottom top", scrub: true },
-          });
-        }
+          if (intro) {
+            gsap.to(intro.querySelector(".hero-ornament"), {
+              yPercent: 18,
+              rotation: 8,
+              ease: "none",
+              scrollTrigger: { trigger: intro, start: "top top", end: "bottom top", scrub: true },
+            });
+            gsap.to(intro.querySelector("h1"), {
+              yPercent: -5,
+              ease: "none",
+              scrollTrigger: { trigger: intro, start: "top top", end: "bottom top", scrub: true },
+            });
+          }
 
-        gsap.from(container.querySelectorAll(".reveal"), {
-          y: 28,
-          autoAlpha: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          stagger: 0.07,
-          clearProps: "transform,opacity,visibility",
-          scrollTrigger: { trigger: container.querySelector(".calculator-main") ?? undefined, start: "top 78%", once: true },
-        });
-
-        container.querySelectorAll<HTMLElement>(".reveal-group").forEach((group) => {
-          gsap.from(group.children, {
-            y: 26,
+          gsap.from(container.querySelectorAll(".reveal"), {
+            y: 28,
             autoAlpha: 0,
-            duration: 0.7,
+            duration: 0.8,
             ease: "power2.out",
-            stagger: 0.08,
+            stagger: 0.07,
             clearProps: "transform,opacity,visibility",
-            scrollTrigger: { trigger: group, start: "top 82%", once: true },
+            scrollTrigger: { trigger: container.querySelector(".calculator-main") ?? undefined, start: "top 78%", once: true },
           });
-        });
+
+          container.querySelectorAll<HTMLElement>(".reveal-group").forEach((group) => {
+            gsap.from(group.children, {
+              y: 26,
+              autoAlpha: 0,
+              duration: 0.7,
+              ease: "power2.out",
+              stagger: 0.08,
+              clearProps: "transform,opacity,visibility",
+              scrollTrigger: { trigger: group, start: "top 82%", once: true },
+            });
+          });
+
+          baseAnimationsInitialized.current = true;
+        }
 
         if (forecast && window.matchMedia("(min-width: 801px)").matches) {
           const marker = forecast.querySelector<HTMLElement>(".forecast-marker");

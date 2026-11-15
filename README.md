@@ -1,12 +1,12 @@
 # LookAhead
 
-**A plain-language monthly spending calculator.** Enter take-home income and the amount you are thinking of spending. LookAhead gives you a practical spending target, shows what would be left, and compares your plan with current U.S. consumer-spending benchmarks.
+**A plain-language monthly savings calculator.** Enter take-home income and the amount you want to save. LookAhead gives you a practical savings target, shows what would be left to live on, and forecasts how your cushion could grow.
 
 > This project is a prototype and is not financial advice.
 
 ## What it does
 
-LookAhead opens directly to a calculator. There is no email, name, account, bank login, or CSV requirement. Choose monthly or yearly take-home pay, enter planned monthly spending, and get a result based on a transparent 80% spending starting point from the CFPB's educational 50/30/20 framework. The page also shows BLS consumer-unit spending as context, not as a personal target.
+LookAhead opens directly to a calculator. There is no email, name, account, bank login, or CSV requirement. Choose monthly or yearly take-home pay, enter a monthly savings goal, and get a result based on a transparent 20% savings starting point from the CFPB's educational 50/30/20 framework. The page also shows emergency-fund context from the Federal Reserve and concrete one-month and three-month cushion milestones.
 
 The primary recommendation is intentionally explainable arithmetic. Leon will add the 2026 consumer-data backend layer later; until then, the UI does not fabricate a request from demo data or present the old historical model as current data.
 
