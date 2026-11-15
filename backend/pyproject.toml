@@ -1,0 +1,21 @@
+[project]
+name = "lookahead-backend"
+version = "0.1.0"
+description = "LookAhead spending-forecast API"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "pandas",
+  "scikit-learn",
+  "pydantic",
+  "pyarrow",
+  "joblib",
+]
+
+[dependency-groups]
+dev = ["pytest", "httpx"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

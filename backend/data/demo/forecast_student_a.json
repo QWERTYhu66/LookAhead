@@ -1,0 +1,69 @@
+{
+  "as_of": "2015-11-20",
+  "days_left": 10,
+  "categories": [
+    {
+      "category": "bills_services",
+      "spent_so_far": 42021.11,
+      "predicted": 63835.26,
+      "low": 42021.11,
+      "high": 114240.02,
+      "last_month": 100280.26,
+      "note": "Spent 42,021 by day 20; by day 20 last month you were at 82,111."
+    },
+    {
+      "category": "groceries",
+      "spent_so_far": 57169.79,
+      "predicted": 57169.79,
+      "low": 57169.79,
+      "high": 128327.38,
+      "last_month": 36170.48,
+      "note": "Spent 57,170 by day 20; by day 20 last month you were at 27,389."
+    },
+    {
+      "category": "transport",
+      "spent_so_far": 11226.66,
+      "predicted": 11226.66,
+      "low": 11226.66,
+      "high": 89934.72,
+      "last_month": 89824.96,
+      "note": "Spent 11,227 by day 20; by day 20 last month you were at 56,136."
+    },
+    {
+      "category": "eating_out",
+      "spent_so_far": 0.0,
+      "predicted": 0.0,
+      "low": 0.0,
+      "high": 28626.18,
+      "last_month": 30993.64,
+      "note": "Spent 0 by day 20; by day 20 last month you were at 30,994."
+    },
+    {
+      "category": "health",
+      "spent_so_far": 0.0,
+      "predicted": 0.0,
+      "low": 0.0,
+      "high": 6701.62,
+      "last_month": 6975.81,
+      "note": "Spent 0 by day 20; by day 20 last month you were at 6,976."
+    },
+    {
+      "category": "shopping",
+      "spent_so_far": 0.0,
+      "predicted": 0.0,
+      "low": 0.0,
+      "high": 30830.13,
+      "last_month": 16260.43,
+      "note": "Spent 0 by day 20; by day 20 last month you were at 16,260."
+    }
+  ],
+  "total": {
+    "spent_so_far": 110417.56,
+    "predicted": 132231.71,
+    "low": 110417.56,
+    "high": 398660.05,
+    "last_month": 280505.58
+  },
+  "alerts": [],
+  "disclaimer": "This project is a prototype and is not financial advice."
+}
