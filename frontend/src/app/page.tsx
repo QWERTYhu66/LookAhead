@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { DISCLAIMER } from "@/lib/types";
 import { useScrollAnimations } from "@/lib/useScrollAnimations";
-import { reportedStockNewsResults, type ReportedStockNewsResults } from "@/data/stocknews-results";
+import type { ReportedStockNewsResults } from "@/data/stocknews-results";
 import { reportedDemoDays, type DemoDay, type DemoDays, type OtherMarketTest } from "@/data/demo-days";
 
 type StockNewsResults = ReportedStockNewsResults;
@@ -29,7 +29,7 @@ async function fetchJson<T>(url: string, init?: RequestInit) {
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement>(null);
-  const [results, setResults] = useState<StockNewsResults | null>(reportedStockNewsResults);
+  const [results, setResults] = useState<StockNewsResults | null>(null);
   const [demo, setDemo] = useState<DemoDays | null>(reportedDemoDays);
   const [selectedDate, setSelectedDate] = useState(reportedDemoDays.days[0]?.date ?? "");
   const [ticker, setTicker] = useState<(typeof MARKETS)[number]["ticker"]>("S&P 500");
@@ -115,11 +115,17 @@ export default function Home() {
           </section>
 
           <section className="result-column" aria-live="polite">
-            {!selectedDay ? (
+            {!results ? (
               <div className="empty-result">
                 <span className="empty-arrow">↘</span>
-                <h2>{loading ? "Loading the measured study…" : "The demo days have not loaded yet."}</h2>
-                <p>{error || "The page reads stocknews/demo_days.json, including right and wrong test days."}</p>
+                <h2>{loading ? "Running the measured study…" : "Ready to run the measured study."}</h2>
+                <p>{error || "Choose a market and held-out test day, then click Run ML test to show the measured result."}</p>
+              </div>
+            ) : !selectedDay ? (
+              <div className="empty-result">
+                <span className="empty-arrow">↘</span>
+                <h2>The selected test day is unavailable.</h2>
+                <p>Choose another held-out test day and run the study again.</p>
               </div>
             ) : (
               <>
