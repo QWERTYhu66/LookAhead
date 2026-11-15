@@ -1,24 +1,30 @@
 # LookAhead
 
-**A plain-language monthly savings calculator.** Enter take-home income and the amount you want to save. LookAhead gives you a practical savings target, shows what would be left to live on, and forecasts how your cushion could grow.
+**A market-news research brief for safer, more informed decisions.** LookAhead combines recent headlines, public market data, and a machine-learning signal to estimate a selected ticker's next move. It shows the prediction range, confidence, evidence, and a simple baseline beside the model so users can judge the result instead of treating it as certainty.
 
 > This project is a prototype and is not financial advice.
 
 ## What it does
 
-LookAhead opens directly to a calculator. There is no email, name, account, bank login, or CSV requirement. Choose monthly or yearly take-home pay, enter a monthly savings goal, and get a result based on a transparent 20% savings starting point from the CFPB's educational 50/30/20 framework. The page also shows emergency-fund context from the Federal Reserve and concrete one-month and three-month cushion milestones.
+The root frontend route accepts a ticker such as `SPY`, `AAPL`, or `TSLA` and a short forecast horizon. It calls `POST /api/market/predict` and renders the backend's model output, predicted range, recent headlines, source links, held-out evaluation metrics, and baseline comparison. There is no email, name, account, or bank-login flow.
 
-The primary recommendation is intentionally explainable arithmetic. The frontend does not fabricate current consumer data or present the old historical model as current data.
+The frontend does not fabricate market predictions, live headlines, Reddit content, or evaluation metrics. Until the backend returns a response, the page presents a neutral input state. Ethan's backend owns source collection, crawler compliance, feature engineering, model training, and prediction generation.
 
-## Current sources
+## Data direction
 
-The calculator uses the latest official releases available at build time: BLS Consumer Expenditure Survey 2024 (average consumer-unit spending of $78,535/year, or about $6,545/month), Census Income in the United States: 2025, CFPB's 50/30/20 educational framework, and the Federal Reserve's 2025 household savings report. Source links and assumptions are recorded in `.work/consumer-benchmarks-2026.md` and `.claude/docs/CREDITS.md`.
+The backend is expected to use the supplied StockNews dataset, yfinance market data, FRED macroeconomic data, permitted news sources, and permitted Reddit API data. Training must use chronological splits and avoid look-ahead bias. Results should be compared with a simple baseline using the same held-out period.
+
+Supplied references:
+
+- [StockNews dataset](https://www.kaggle.com/datasets/aaron7sun/stocknews)
+- [yfinance](https://pypi.org/project/yfinance/)
+- [FRED](https://fred.stlouisfed.org/)
 
 ## Structure
 
 ```text
-frontend/   Next.js calculator UI
-backend/    FastAPI historical forecast engine
+frontend/   Next.js market-news prediction UI
+backend/    Ethan's crawler, ML service, and /api/market/predict endpoint
 ```
 
 ## Run locally
@@ -32,4 +38,4 @@ npm run lint
 npm run build -- --webpack
 ```
 
-The calculator result is fully usable on its own and keeps its assumptions visible in the interface.
+The frontend expects a response from `POST /api/market/predict` with the contract documented in the backend handoff prompt and typed locally in `src/app/page.tsx`.
