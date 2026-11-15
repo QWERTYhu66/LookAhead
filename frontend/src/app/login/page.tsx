@@ -1,0 +1,58 @@
+"use client";
+
+import { FormEvent, useEffect, useState } from "react";
+import { motion } from "motion/react";
+import { useRouter } from "next/navigation";
+import { createSession, getSession } from "@/lib/auth";
+import { PRESS, useMotionSafe } from "@/lib/motion";
+
+export default function LoginPage() {
+  const router = useRouter();
+  const { spring, enter, shown } = useMotionSafe();
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (getSession()) router.replace("/");
+  }, [router]);
+
+  function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const value = email.trim();
+    if (!value || !value.includes("@")) {
+      setError("Enter a real email so your workspace has a stable identity.");
+      return;
+    }
+    createSession(value, name);
+    router.replace("/");
+  }
+
+  return (
+    <main className="login-shell">
+      <motion.section initial={enter} animate={shown} transition={spring} className="login-card">
+        <div className="login-mark" aria-hidden>LA</div>
+        <p className="text-eyebrow">Private money workspace</p>
+        <h1 className="text-display text-gold">Make the month make sense.</h1>
+        <p className="text-body text-muted">
+          Save your budgets and return to the same clear read on your spending. No bank connection is required for this prototype.
+        </p>
+        <form onSubmit={submit} className="login-form">
+          <label className="form-label">Your name <span>optional</span>
+            <input className="field" value={name} onChange={(e) => setName(e.target.value)} placeholder="Karo" autoComplete="name" />
+          </label>
+          <label className="form-label">Email address
+            <input className="field" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" type="email" autoComplete="email" required />
+          </label>
+          {error && <p className="text-caption text-danger" role="alert">{error}</p>}
+          <motion.button type="submit" whileTap={PRESS} transition={spring} className="login-button">
+            Open my workspace <span aria-hidden>↗</span>
+          </motion.button>
+        </form>
+        <p className="text-caption">Your demo workspace stays on this device. Forecasts are powered by Leon&apos;s backend when it is online.</p>
+      </motion.section>
+      <div className="login-orbit orbit-one" aria-hidden />
+      <div className="login-orbit orbit-two" aria-hidden />
+    </main>
+  );
+}

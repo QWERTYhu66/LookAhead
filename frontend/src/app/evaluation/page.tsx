@@ -4,6 +4,7 @@
 
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { CachedTag } from "@/components/CachedTag";
 import { CategoryGlyph } from "@/components/Glyph";
@@ -71,6 +72,10 @@ export default function EvaluationPage() {
 
   return (
     <motion.div initial={enter} animate={shown} transition={spring} className="flex flex-col gap-10">
+      <nav className="flex items-center justify-between border-b border-hairline pb-4" aria-label="Workspace navigation">
+        <Link href="/" className="text-headline text-gold">LookAhead</Link>
+        <Link href="/" className="text-caption underline-offset-4 hover:underline">Back to workspace ↗</Link>
+      </nav>
       <section className="flex flex-col gap-3">
         <div className="flex items-center gap-3">
           <p className="text-eyebrow">Tested on {ev.dataset.test_period}, months the model never saw</p>
