@@ -4,8 +4,8 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { DISCLAIMER } from "@/lib/types";
 import { useScrollAnimations } from "@/lib/useScrollAnimations";
-import type { ReportedStockNewsResults } from "@/data/stocknews-results";
-import type { DemoDay, DemoDays, OtherMarketTest } from "@/data/demo-days";
+import { reportedStockNewsResults, type ReportedStockNewsResults } from "@/data/stocknews-results";
+import { reportedDemoDays, type DemoDay, type DemoDays, type OtherMarketTest } from "@/data/demo-days";
 
 type StockNewsResults = ReportedStockNewsResults;
 
@@ -29,9 +29,9 @@ async function fetchJson<T>(url: string, init?: RequestInit) {
 
 export default function Home() {
   const rootRef = useRef<HTMLDivElement>(null);
-  const [results, setResults] = useState<StockNewsResults | null>(null);
-  const [demo, setDemo] = useState<DemoDays | null>(null);
-  const [selectedDate, setSelectedDate] = useState("");
+  const [results, setResults] = useState<StockNewsResults | null>(reportedStockNewsResults);
+  const [demo, setDemo] = useState<DemoDays | null>(reportedDemoDays);
+  const [selectedDate, setSelectedDate] = useState(reportedDemoDays.days[0]?.date ?? "");
   const [ticker, setTicker] = useState<(typeof MARKETS)[number]["ticker"]>("S&P 500");
   const [horizon, setHorizon] = useState<"same_day" | "next_day">("next_day");
   const [loading, setLoading] = useState(false);
