@@ -53,7 +53,7 @@ export function DetailSheet({ c, asOf, budget, onBudget, onClose }: Props) {
   const perDay = c ? Math.max(0, safeToSpend / daysRemaining) : 0;
 
   const cutToBudget = c && budget !== undefined && budget > 0 && remaining > 0
-    ? Math.max(0, 1 - budget / remaining)
+    ? Math.min(1, Math.max(0, 1 - Math.max(0, budget - c.spent_so_far) / remaining))
     : 0;
 
   const presetAmount =
@@ -138,8 +138,8 @@ export function DetailSheet({ c, asOf, budget, onBudget, onClose }: Props) {
                   <p className="text-caption">
                     {budget !== undefined && budget > 0
                       ? safeToSpend <= 0
-                        ? "You&rsquo;re already at your budget — any more puts you over."
-                        : `That&rsquo;s about ${fmt(perDay)} per day for the rest of the month.`
+                        ? "You're already at your budget — any more puts you over."
+                        : `That's about ${fmt(perDay)} per day for the rest of the month.`
                       : "Set a budget below to see your safe-to-spend limit."}
                   </p>
                 </div>
@@ -222,7 +222,7 @@ export function DetailSheet({ c, asOf, budget, onBudget, onClose }: Props) {
                     <span className={`text-caption font-bold ${over ? "text-danger" : "text-good"}`}>
                       {over
                         ? `Cut the rest of the month by ${Math.round(cutToBudget * 100)}% to hit your budget`
-                        : `You&rsquo;re within budget — no cut needed`}
+                        : `You're within budget — no cut needed`}
                     </span>
                   </div>
                 )}
@@ -238,7 +238,7 @@ export function DetailSheet({ c, asOf, budget, onBudget, onClose }: Props) {
 function Stat({ title, value, sub, tone }: { title: string; value: string; sub?: string; tone?: "muted" | "accent" | "ghost" }) {
   const toneClass = tone === "accent" ? "text-gold font-black" : tone === "ghost" ? "text-muted" : "text-muted";
   return (
-    <div className="rounded-2xl bg-surface-2 p-3 border border-hairline">
+    <div className="flex flex-col gap-0.5 rounded-2xl bg-surface-2 p-3 border border-hairline">
       <span className="text-caption font-bold">{title}</span>
       <span className={`tabular text-body ${toneClass}`}>{value}</span>
       {sub && <span className="text-caption tabular">{sub}</span>}

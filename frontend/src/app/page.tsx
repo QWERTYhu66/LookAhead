@@ -60,7 +60,7 @@ function parseTransactionsCsv(text: string): ForecastRequest {
 
 function normalizeCategory(raw: string): string {
   const value = raw.toLowerCase();
-  if (/grocery|supermarket|market/.test(value)) return "groceries";
+  if (/grocer|supermarket|market/.test(value)) return "groceries";
   if (/restaurant|dining|coffee|food|eat/.test(value)) return "eating_out";
   if (/transport|transit|uber|lyft|gas|fuel|parking/.test(value)) return "transport";
   if (/travel|hotel|airline|flight/.test(value)) return "travel";
@@ -79,10 +79,23 @@ export default function Home() {
     if (!sessionUser) router.replace("/login");
   }, [router, sessionUser]);
 
-  const [persona, setPersona] = useState<Persona | null>(null);
+  const [persona, setPersona] = useState<Persona | null>(() => {
+    const user = getSession()?.user;
+    if (!user) return null;
+    return window.localStorage.getItem(`lookahead.imported.${user.id}`) ? "student" : null;
+  });
   const [profiles, setProfiles] = useState<DemoProfile[]>([]);
   const [loaded, setLoaded] = useState<{ persona: Persona; data: ForecastResponse; cached: boolean } | null>(null);
-  const [imported, setImported] = useState<{ data: ForecastResponse; label: string } | null>(null);
+  const [imported, setImported] = useState<{ data: ForecastResponse; label: string } | null>(() => {
+    const user = getSession()?.user;
+    if (!user) return null;
+    try {
+      const saved = window.localStorage.getItem(`lookahead.imported.${user.id}`);
+      return saved ? (JSON.parse(saved) as { data: ForecastResponse; label: string }) : null;
+    } catch {
+      return null;
+    }
+  });
   const [importError, setImportError] = useState<string | null>(null);
   const [importing, setImporting] = useState(false);
   const [budget, setBudget] = useState<Budget>(() => {
@@ -124,7 +137,9 @@ export default function Home() {
     setImportError(null);
     try {
       const result = await getForecastForTransactions(parseTransactionsCsv(await file.text()));
-      setImported({ data: result.data, label: file.name });
+      const next = { data: result.data, label: file.name };
+      setImported(next);
+      if (sessionUser) window.localStorage.setItem(`lookahead.imported.${sessionUser.id}`, JSON.stringify(next));
       setPersona("student");
     } catch (error) {
       setImportError(error instanceof Error ? error.message : "We could not read that CSV.");
@@ -135,6 +150,7 @@ export default function Home() {
 
   const choosePersona = (next: Persona) => {
     setImported(null);
+    if (sessionUser) window.localStorage.removeItem(`lookahead.imported.${sessionUser.id}`);
     setImportError(null);
     setPersona(next);
   };
@@ -177,12 +193,12 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background">
       <header className="material sticky top-0 z-30 border-b border-hairline">
         <nav className="mx-auto flex max-w-[1040px] items-center justify-between px-4 py-3 sm:px-6">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => setPersona("student")}>
+          <button type="button" aria-label="Back to student workspace" className="flex items-center gap-2 cursor-pointer" onClick={() => choosePersona("student")}>
             <span className="tint flex h-9 w-9 items-center justify-center rounded-lg" style={{ ["--tint" as string]: "var(--accent)" }}>
               <Glyph name="arrow" size={16} />
             </span>
             <span className="text-title font-black tracking-tighter text-gold">LookAhead</span>
-          </div>
+          </button>
           <div role="radiogroup" aria-label="Who are you" className="inline-flex rounded-full bg-surface-2 p-1 border border-hairline">
             {PERSONA_CHOICES.map((p) => {
               const active = persona === p.id;
@@ -192,7 +208,7 @@ export default function Home() {
                   type="button"
                   role="radio"
                   aria-checked={active}
-                  onClick={() => setPersona(p.id)}
+                  onClick={() => choosePersona(p.id)}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", bounce: 0, duration: 0.2 }}
                   className={`relative rounded-full px-3 py-1.5 text-caption font-bold transition-colors ${active ? "text-black bg-accent" : "text-muted"}`}

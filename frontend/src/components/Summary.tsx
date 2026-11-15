@@ -75,7 +75,7 @@ export function Summary({ f, budget, onBudget, moneyLeft }: Props) {
               ? overBudget
                 ? `Predicted ${fmt(t.predicted)} — ${fmt(t.predicted - totalBudget)} over your ${fmt(totalBudget)} budget`
                 : `${Math.round((budgetRatio ?? 0) * 100)}% of your ${fmt(totalBudget)} budget used by month-end`
-              : "Set a monthly budget to see how you&rsquo;re pacing."}
+              : "Set a monthly budget to see how you're pacing."}
           </p>
         </div>
 
@@ -98,7 +98,7 @@ export function Summary({ f, budget, onBudget, moneyLeft }: Props) {
         {totalBudget !== null && totalBudget !== undefined && (
           <div className="flex items-baseline gap-1.5 text-caption">
             <span className="text-muted">Money left if the forecast holds:</span>
-            <AnimatedNumber value={Math.max(0, totalBudget - t.predicted)} className={`text-body tabular font-bold ${moneyLeft < 0 ? "text-danger" : "text-good"}`} />
+            <AnimatedNumber value={totalBudget - t.predicted} className={`text-body tabular font-bold ${moneyLeft < 0 ? "text-danger" : "text-good"}`} />
           </div>
         )}
       </div>
@@ -110,13 +110,13 @@ export function Summary({ f, budget, onBudget, moneyLeft }: Props) {
           <span className="text-caption tabular">day {day} of {dim}</span>
         </div>
         <PaceRow label="Month gone" value={monthProgress} tone="bg-ghost" />
-        <PaceRow label="Vs last month&rsquo;s total" value={t.last_month > 0 ? t.spent_so_far / t.last_month : 0} tone={t.spent_so_far / Math.max(t.last_month, 1) > monthProgress + 0.05 ? "bg-warn" : "bg-accent"} />
+            <PaceRow label="Vs last month's total" value={t.last_month > 0 ? t.spent_so_far / t.last_month : 0} tone={t.spent_so_far / Math.max(t.last_month, 1) > monthProgress + 0.05 ? "bg-warn" : "bg-accent"} />
         <p className="text-caption">
           {t.spent_so_far / Math.max(t.last_month, 1) > monthProgress + 0.05
             ? "Spending faster than last month — tighten up."
             : t.spent_so_far / Math.max(t.last_month, 1) < monthProgress - 0.05
-              ? "Spending slower than last month — you&rsquo;re ahead."
-              : "Right on last month&rsquo;s pace."}
+              ? "Spending slower than last month — you're ahead."
+              : "Right on last month's pace."}
         </p>
       </div>
     </section>
