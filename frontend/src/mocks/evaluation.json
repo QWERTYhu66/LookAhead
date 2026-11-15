@@ -1,39 +1,95 @@
 {
   "dataset": {
-    "name": "SAVED PLACEHOLDER — replaced by the backend's real evaluation.json",
-    "users": 13537,
-    "train_period": "2014-12 → 2015-08",
-    "test_period": "2015-09 → 2015-11",
+    "name": "dllllb/transactions-gender (Hugging Face; anonymized bank card transactions)",
+    "users": 13332,
+    "train_period": "2014-12 \u2192 2015-08",
+    "test_period": "2015-09 \u2192 2015-11",
     "source_url": "https://huggingface.co/datasets/dllllb/transactions-gender"
   },
-  "mae": { "model": 25576, "last_month": 74894, "same_pace": 29843 },
-  "median_error": { "model": 1200, "last_month": 16244, "same_pace": 5151 },
-  "range_coverage": 0.9,
+  "mae": {
+    "model": 25037.59,
+    "last_month": 74893.6,
+    "same_pace": 29843.29
+  },
+  "median_error": {
+    "model": 466.61,
+    "last_month": 16244.24,
+    "same_pace": 5151.01
+  },
+  "range_coverage": 0.9043,
   "by_group": [
     {
       "group_name": "gender label (dataset code 0/1, meaning undocumented)",
       "groups": [
-        { "label": "group 0", "n_users": 4173, "model": 20951, "last_month": 62798 },
-        { "label": "group 1", "n_users": 3205, "model": 32805, "last_month": 92532 },
-        { "label": "unlabelled", "n_users": 5739, "model": 24606, "last_month": 73096 }
+        {
+          "label": "group 0",
+          "n_users": 4236,
+          "model": 20452.48,
+          "last_month": 62797.51
+        },
+        {
+          "label": "group 1",
+          "n_users": 3266,
+          "model": 32260.1,
+          "last_month": 92532.49
+        },
+        {
+          "label": "unlabelled",
+          "n_users": 5830,
+          "model": 24044.72,
+          "last_month": 73095.8
+        }
       ]
     },
     {
       "group_name": "spend level (student-like, family-like, business-like)",
       "groups": [
-        { "label": "low spenders", "n_users": 4108, "model": 7030, "last_month": 24605 },
-        { "label": "mid", "n_users": 4501, "model": 13522, "last_month": 42392 },
-        { "label": "high spenders", "n_users": 4508, "model": 42258, "last_month": 119989 }
+        {
+          "label": "low spenders",
+          "n_users": 4444,
+          "model": 5131.45,
+          "last_month": 19702.24
+        },
+        {
+          "label": "mid",
+          "n_users": 4444,
+          "model": 12723.54,
+          "last_month": 39277.37
+        },
+        {
+          "label": "high spenders",
+          "n_users": 4444,
+          "model": 42798.97,
+          "last_month": 125277.91
+        }
       ]
     }
   ],
   "failures": [
-    { "user_id": "69065209", "category": "groceries", "month": "2015-09", "predicted": 502846, "actual": 45739304,
-      "why": "Placeholder example: a one-off purchase 75× the usual month, almost all of it after day 20. No history could predict it." },
-    { "user_id": "66877270", "category": "bills_services", "month": "2015-09", "predicted": 23338, "actual": 32185588,
-      "why": "Placeholder example: a huge late payment, 141× last month." },
-    { "user_id": "66647597", "category": "shopping", "month": "2015-11", "predicted": 3945760, "actual": 20028783,
-      "why": "Placeholder example: a business-sized stock purchase in the last ten days." }
+    {
+      "user_id": "69065209",
+      "category": "groceries",
+      "month": "2015-09",
+      "predicted": 502845.5,
+      "actual": 45739303.47,
+      "why": "A one-off groceries spend (75\u00d7 last month), almost all of it after day 20. A model that only sees the first 20 days could not have seen it coming."
+    },
+    {
+      "user_id": "66877270",
+      "category": "bills_services",
+      "month": "2015-09",
+      "predicted": 28304.87,
+      "actual": 32185588.27,
+      "why": "A one-off bills_services spend (141\u00d7 last month), almost all of it after day 20. A model that only sees the first 20 days could not have seen it coming."
+    },
+    {
+      "user_id": "66647597",
+      "category": "shopping",
+      "month": "2015-11",
+      "predicted": 3945759.59,
+      "actual": 20028782.64,
+      "why": "A one-off shopping spend (110\u00d7 last month), almost all of it after day 20. A model that only sees the first 20 days could not have seen it coming."
+    }
   ],
   "disclaimer": "This project is a prototype and is not financial advice."
 }

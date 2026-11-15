@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "sync-mocks": "cp ../backend/data/demo/forecast_student_a.json src/mocks/forecast-student.json && cp ../backend/data/demo/forecast_family_b.json src/mocks/forecast-family.json && cp ../backend/data/demo/forecast_business_c.json src/mocks/forecast-business.json && cp ../backend/data/demo/profiles.json src/mocks/profiles.json && cp ../backend/reports/evaluation.json src/mocks/evaluation.json"
   },
   "dependencies": {
     "motion": "^14.14.0",
