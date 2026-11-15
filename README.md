@@ -3,6 +3,7 @@
 **A personalized month-end spending forecast with budget alerts — for a student with their first debit card, a family, or a small business.**
 
 Veritas AI International High School Hackathon 2026 · AI + Finance track
+
 **Team "Claude's Plan":** Aaron Hsueh (frontend) · Leon Pai (backend) · Ethan Huang (deploy, write-up, video)
 
 > This project is a prototype and is not financial advice.
