@@ -96,6 +96,14 @@ export default function Home() {
                   <div className="result-stats"><div><span>You entered</span><strong>{money(result.desired)}</strong></div><div><span>Left after spending</span><strong>{money(result.savings)}</strong></div><div><span>Room to target</span><strong>{result.gap >= 0 ? money(result.gap) : `−${money(-result.gap)}`}</strong></div></div>
                 </div>
 
+                <div className="forecast-card">
+                  <div className="section-title"><div><p className="eyebrow">Month-end forecast</p><h2>Where this plan could land</h2></div><span className="source-tag">Planning range</span></div>
+                  <div className="forecast-number">{money(result.desired)}</div>
+                  <p className="small-copy forecast-copy">If your month follows the plan you entered, your likely landing zone is roughly <strong>{money(result.desired * 0.9)}–{money(result.desired * 1.1)}</strong>. This is a transparent planning range—not an ML prediction yet.</p>
+                  <div className="forecast-scale"><span>{money(result.desired * 0.9)}</span><div className="forecast-track"><span className="forecast-range" /><span className="forecast-marker" /></div><span>{money(result.desired * 1.1)}</span></div>
+                  <div className="forecast-note"><span className="connection-dot" aria-hidden="true" /><span>When Leon’s 2026 dataset is connected, this panel can switch to a learned low / typical / high forecast and show its evaluation against this planning baseline.</span></div>
+                </div>
+
                 <div className="comparison-card">
                   <div className="section-title"><div><p className="eyebrow">A useful comparison</p><h2>How does that stack up?</h2></div><span className="source-tag">BLS {BLS_YEAR}</span></div>
                   <div className="comparison-line"><div><span>Your plan</span><strong>{money(result.desired)} / month</strong></div><div className="bar-track"><span className="bar user-bar" style={{ width: `${Math.min(100, result.desired / Math.max(BLS_MONTHLY_AVERAGE, result.desired) * 100)}%` }} /></div></div>
