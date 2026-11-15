@@ -30,7 +30,7 @@ export function useScrollAnimations(rootRef: RefObject<HTMLDivElement | null>, o
       gsap.registerPlugin(ScrollTrigger);
 
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const context = gsap.context(() => {
+      const context = gsap.context((self) => {
         const progress = container.querySelector<HTMLElement>("[data-scroll-progress]");
         const intro = container.querySelector<HTMLElement>(".intro");
         const forecast = container.querySelector<HTMLElement>("[data-forecast-pin]");
@@ -123,7 +123,7 @@ export function useScrollAnimations(rootRef: RefObject<HTMLDivElement | null>, o
           const reset = () => gsap.to(button, { x: 0, y: 0, duration: 0.35, ease: "elastic.out(1, 0.5)", overwrite: true });
           button.addEventListener("pointermove", move);
           button.addEventListener("pointerleave", reset);
-          context.add(() => {
+          self.add(() => {
             button.removeEventListener("pointermove", move);
             button.removeEventListener("pointerleave", reset);
           });
@@ -134,13 +134,13 @@ export function useScrollAnimations(rootRef: RefObject<HTMLDivElement | null>, o
           const leave = () => gsap.to(card, { y: 0, scale: 1, duration: 0.35, ease: "power2.out", overwrite: true });
           card.addEventListener("pointerenter", enter);
           card.addEventListener("pointerleave", leave);
-          context.add(() => {
+          self.add(() => {
             card.removeEventListener("pointerenter", enter);
             card.removeEventListener("pointerleave", leave);
           });
         });
 
-        context.add(() => {
+        self.add(() => {
           lenis.off("scroll", onLenisScroll);
           gsap.ticker.remove(onTick);
           lenis.destroy();
