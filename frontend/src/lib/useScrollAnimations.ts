@@ -110,8 +110,6 @@ export function useScrollAnimations(rootRef: RefObject<HTMLDivElement | null>, o
               start: "top 22%",
               end: "+=420",
               scrub: 0.8,
-              pin: true,
-              anticipatePin: 1,
             },
           });
           if (marker) forecastTimeline.to(marker, { left: "72%", ease: "none" }, 0);
