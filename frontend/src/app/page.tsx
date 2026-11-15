@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { DISCLAIMER } from "@/lib/types";
 import { useScrollAnimations } from "@/lib/useScrollAnimations";
@@ -10,8 +10,8 @@ import type { DemoDay, DemoDays, OtherMarketTest } from "@/data/demo-days";
 type StockNewsResults = ReportedStockNewsResults;
 
 const MARKETS = [
-  { ticker: "SPY", market: "S&P 500", label: "SPY · S&P 500" },
-  { ticker: "QQQ", market: "Nasdaq", label: "QQQ · Nasdaq" },
+  { ticker: "S&P 500", market: "S&P 500", label: "S&P 500" },
+  { ticker: "Nasdaq Composite", market: "Nasdaq", label: "Nasdaq Composite" },
   { ticker: "AAPL", market: "Apple", label: "AAPL · Apple" },
   { ticker: "JPM", market: "JPMorgan", label: "JPM · JPMorgan" },
   { ticker: "XOM", market: "ExxonMobil", label: "XOM · ExxonMobil" },
@@ -32,7 +32,7 @@ export default function Home() {
   const [results, setResults] = useState<StockNewsResults | null>(null);
   const [demo, setDemo] = useState<DemoDays | null>(null);
   const [selectedDate, setSelectedDate] = useState("");
-  const [ticker, setTicker] = useState<(typeof MARKETS)[number]["ticker"]>("SPY");
+  const [ticker, setTicker] = useState<(typeof MARKETS)[number]["ticker"]>("S&P 500");
   const [horizon, setHorizon] = useState<"same_day" | "next_day">("next_day");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -63,10 +63,6 @@ export default function Home() {
     }
   }
 
-  useEffect(() => {
-    void loadStudy(false);
-  }, []);
-
   const model = results?.model_tfidf_logreg ?? results?.model_vader_logreg;
   const modelName = results?.model_tfidf_logreg ? "TF-IDF logistic regression" : "VADER logistic regression";
   const modelAccuracy = model?.accuracy ?? 0;
@@ -86,13 +82,13 @@ export default function Home() {
         <section className="intro">
           <span className="hero-ornament" aria-hidden="true" />
           <p className="eyebrow reveal">News + market direction</p>
-          <h1 className="reveal">What is the news saying about the next move?</h1>
-          <p className="intro-copy reveal">Choose a market Ethan actually tested. The scores are held-out 2015–2016 accuracy against always-up — not a live ticker forecast.</p>
+          <h1 className="reveal">News vs. market direction</h1>
+          <p className="intro-copy reveal">Choose a market we tested and run the held-out study. The scores are 2015–2016 accuracy against always-up — not a live trading signal.</p>
         </section>
 
         <div className="market-grid">
           <section className="input-card">
-            <div className="card-heading"><span className="step">1</span><div><h2>Choose a market</h2><p>These are the tickers in <code>market_test.py</code>: SPY, Nasdaq, AAPL, JPM, XOM.</p></div></div>
+            <div className="card-heading"><span className="step">1</span><div><h2>Choose a market</h2><p>These are the markets in <code>market_test.py</code>: S&amp;P 500, Nasdaq Composite, Apple, JPMorgan, ExxonMobil.</p></div></div>
             <label className="input-label" htmlFor="ticker">Ticker
               <select id="ticker" className="field" value={ticker} onChange={(event) => setTicker(event.target.value as (typeof MARKETS)[number]["ticker"])}>
                 {MARKETS.map((item) => <option key={item.ticker} value={item.ticker}>{item.label}</option>)}
@@ -113,8 +109,8 @@ export default function Home() {
                 ))}
               </select>
             </label>
-            <button className="calculate-button" type="button" onClick={() => void loadStudy(true)} disabled={loading}>{loading ? "Loading study…" : "Refresh study results"}<span aria-hidden>→</span></button>
-            <p className="privacy-note">Source: Ethan’s StockNews + yfinance tests. Research only, not financial advice.</p>
+            <button className="calculate-button" type="button" onClick={() => void loadStudy(true)} disabled={loading}>{loading ? "Running ML test…" : "Run ML test"}<span aria-hidden>→</span></button>
+            <p className="privacy-note">Source: our StockNews + yfinance tests. Research only, not financial advice.</p>
             {error && <p className="market-error" role="alert">{error}</p>}
           </section>
 
@@ -175,7 +171,7 @@ export default function Home() {
                     <div className="comparison-card">
                       <div className="section-title"><div><p className="eyebrow">Make-it-your-own test</p><h2>Do headline categories matter?</h2></div><span className="source-tag">Keyword study</span></div>
                       <div className="category-grid">{Object.entries(results.category_results ?? {}).map(([category, score]) => <div className="category-result" key={category}><span>{category.replaceAll("_", " ")}</span><strong>{scorePercent(score.accuracy)}</strong></div>)}<div className="category-result combined"><span>All categories combined</span><strong>{scorePercent(results.all_categories_combined?.accuracy)}</strong></div></div>
-                      <p className="small-copy">The combined result is reported as p = {results.all_categories_combined?.p_value_vs_always_up ?? "—"}; Ethan’s README says it is not distinguishable from luck.</p>
+                      <p className="small-copy">The combined result is reported as p = {results.all_categories_combined?.p_value_vs_always_up ?? "—"}; our README says it is not distinguishable from luck.</p>
                     </div>
                   </>
                 )}
@@ -202,7 +198,7 @@ export default function Home() {
 
                 <div className="investor-callout reveal"><div><p className="eyebrow">Investor takeaway</p><h2>What this does — and does not — justify</h2></div><div className="investor-columns"><div><strong>It does not justify</strong><p>Trading on headline sentiment, headline categories, or this model’s direction. Neither headline model beat the always-up baseline, and the best category and yfinance results were within ordinary noise.</p></div><div><strong>It does justify</strong><p>Saying that these simple methods found no usable signal in this index, these single stocks, and this test window. It does not prove that news never matters, or that a different dataset or method could not work.</p></div></div><div className="leakage-check"><span className="connection-dot connected" aria-hidden="true" /><span><strong>Leakage check:</strong> dates were split chronologically; 2015–2016 test days were not used to fit the models, and settings were selected on 2014 only.</span></div></div>
 
-                <div className="how-it-works reveal"><div><p className="eyebrow">Data and limits</p><h2>Honest scope beats a flashy claim.</h2></div><p>The page reads Ethan’s measured artifacts: <code>results.json</code>, <code>category_results.json</code>, and <code>demo_days.json</code>. <code>market_test.py</code> used yfinance prices for S&amp;P 500, Nasdaq, Apple, JPMorgan, and ExxonMobil on the same date split. Same-day labels are not a next-day trade. Live news, Reddit, and FRED are not inputs.</p><div className="source-links"><a href="https://www.kaggle.com/datasets/aaron7sun/stocknews" target="_blank" rel="noreferrer">StockNews dataset ↗</a><a href="https://finance.yahoo.com/" target="_blank" rel="noreferrer">yfinance / Yahoo Finance ↗</a><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" target="_blank" rel="noreferrer">LogisticRegression ↗</a></div></div>
+                <div className="how-it-works reveal"><div><p className="eyebrow">Data and limits</p><h2>Honest scope beats a flashy claim.</h2></div><p>The page reads our measured artifacts: <code>results.json</code>, <code>category_results.json</code>, and <code>demo_days.json</code>. <code>market_test.py</code> used yfinance prices for S&amp;P 500, Nasdaq Composite, Apple, JPMorgan, and ExxonMobil on the same date split. Same-day labels are not a next-day trade. Live news, Reddit, and FRED are not inputs.</p><div className="source-links"><a href="https://www.kaggle.com/datasets/aaron7sun/stocknews" target="_blank" rel="noreferrer">StockNews dataset ↗</a><a href="https://finance.yahoo.com/" target="_blank" rel="noreferrer">yfinance / Yahoo Finance ↗</a><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" target="_blank" rel="noreferrer">LogisticRegression ↗</a></div></div>
               </>
             )}
           </section>
@@ -244,7 +240,7 @@ function DayCard({ day }: { day: DemoDay }) {
         <span className="status-pill">{matched ? "Model matched the Dow" : "Model missed the Dow"}</span>
       </div>
       <div className="big-number">{day.model_call}</div>
-      <p className="result-explanation">The Dow model called <strong>{day.model_call}</strong> with P(up) = <strong>{scorePercent(day.model_p_up)}</strong>. The Dow actually went <strong>{day.actual}</strong>. These headlines were the same WorldNews input used for SPY, Nasdaq, AAPL, JPM, and XOM.</p>
+      <p className="result-explanation">The Dow model called <strong>{day.model_call}</strong> with P(up) = <strong>{scorePercent(day.model_p_up)}</strong>. The Dow actually went <strong>{day.actual}</strong>. These headlines were the same WorldNews input used for the S&amp;P 500, Nasdaq Composite, Apple, JPMorgan, and ExxonMobil tests.</p>
       <div className="result-stats">
         <div><span>Model call</span><strong>{day.model_call}</strong></div>
         <div><span>Actual Dow</span><strong>{day.actual}</strong></div>
