@@ -69,7 +69,7 @@ export default function Home() {
     <div ref={rootRef} className="calculator-page market-page">
       <div className="scroll-progress" data-scroll-progress aria-hidden="true" />
       <header className="site-header">
-        <Link className="brand" href="/" aria-label="LookAhead home"><span className="brand-mark">LA</span><span>LookAhead</span></Link>
+        <Link className="brand" href="/" aria-label="LookAhead Market Pulse home"><span className="brand-mark">LA</span><span>LookAhead Market Pulse</span></Link>
         <span className="header-note">News, context, and a modelled market signal</span>
       </header>
 

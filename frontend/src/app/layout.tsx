@@ -3,8 +3,8 @@ import "./globals.css";
 import { Disclaimer } from "@/components/Disclaimer";
 
 export const metadata: Metadata = {
-  title: "LookAhead — spending calculator",
-  description: "A plain-language spending calculator using current public consumer benchmarks.",
+  title: "LookAhead Market Pulse — News + Market Forecast",
+  description: "A transparent market-news brief combining public headlines, market context, and a modelled forecast.",
   icons: { icon: "/icon.svg" },
 };
 
