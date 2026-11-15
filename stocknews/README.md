@@ -42,6 +42,14 @@ Neither model beats "always up". Both rarely predict a down day (recall 9-14%).
 
 With 378 test days, differences of about 5 points are normal noise. Running 7 tests means a real signal would need p below about 0.007. None came close.
 
+## Other markets (yfinance): does the finding hold elsewhere?
+`market_test.py` repeats the test for the S&P 500, Nasdaq, Apple, JPMorgan and ExxonMobil (prices from yfinance), predicting both the same-day move and the next-day move (the one a trader could actually use), with sentiment features and with headline categories. That is 20 tests on the same 2015-Jul 2016 window.
+
+No result was meaningfully better than "always up". The best was Apple next-day with headline categories at 52.8% vs 49.6% (p = 0.12). After correcting for 20 tests, a real signal would need p below about 0.0025. Full table: `demo_days.json` (key `other_markets_20_tests`).
+
+## Where the model fails (real test days)
+The model's probability of "up" only ranges from 0.42 to 0.64, so it calls "up" on 90% of days and catches only 17 of the 186 down days. Three confident misses (all days the Dow fell while the model said about 64% up): 2016-06-09 (death threats against German MPs), 2015-06-15 (Israeli force-feeding bill; asylum seeker violence in Germany), 2016-02-23 (Tunisian museum attack; Hungary EU referendum). Very negative headline sentiment did not track what moved the market. Examples with headlines are in `demo_days.json`.
+
 ## What these results would and wouldn't justify an investor doing
 - They would **not** justify trading on headline sentiment or headline categories. No model beat simply guessing "up", and the best result is within noise.
 - They do not show that news never matters. They show that these simple methods, on this one index and period (2015-2016), found no usable signal.
@@ -49,11 +57,14 @@ With 378 test days, differences of about 5 points are normal noise. Running 7 te
 - Leakage check: results are near chance, not suspiciously good. We split by date, tuned only on 2014, and fit scalers and word lists on training data only.
 
 ## Limits
-Keyword categories are crude and some words are ambiguous. One market, one 18-month test window, Reddit headlines only. Not tested yet: other markets (e.g. individual stocks via yfinance), newer years, other news sources.
+Keyword categories are crude and some words are ambiguous. One market, one 18-month test window, Reddit headlines only. Not tested yet: newer years (2017+), other news sources.
 
 ## Files
 - `baseline.py`: baselines + VADER/TF-IDF models
 - `category_test.py`: per-category test
+- `market_test.py`: same test on other markets and single stocks (yfinance)
+- `export_demo.py`: writes `demo_days.json` (real right/wrong test days for the website)
+- `demo_days.json`: data for the website demo
 
 ## Credits
-Kaggle dataset "Daily News for Stock Market Prediction" (Aaron7sun); VADER sentiment (vaderSentiment); scikit-learn, pandas, numpy, SciPy; Claude (Anthropic) used as a coding assistant. A teammate or the team should add anything else used.
+Kaggle dataset "Daily News for Stock Market Prediction" (Aaron7sun); VADER sentiment (vaderSentiment); scikit-learn, pandas, numpy, SciPy; yfinance / Yahoo Finance price data; Claude (Anthropic) used as a coding assistant. A teammate or the team should add anything else used.
