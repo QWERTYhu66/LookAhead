@@ -8,7 +8,7 @@ import { PRESS_SOFT, useMotionSafe } from "@/lib/motion";
 
 const TABS = [
   { href: "/", label: "Forecast" },
-  { href: "/evaluation", label: "How good is it?" },
+  { href: "/evaluation", label: "Forecast quality" },
 ];
 
 /** Floating translucent header with segmented tabs. The pill springs between tabs; a soft fade marks the scroll edge. */

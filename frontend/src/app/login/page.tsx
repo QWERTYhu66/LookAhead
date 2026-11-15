@@ -32,24 +32,24 @@ export default function LoginPage() {
     <main className="login-shell">
       <motion.section initial={enter} animate={shown} transition={spring} className="login-card">
         <div className="login-mark" aria-hidden>LA</div>
-        <p className="text-eyebrow">Private money workspace</p>
-        <h1 className="text-display text-gold">Make the month make sense.</h1>
+        <p className="text-eyebrow">Your private money workspace</p>
+        <h1 className="text-display text-gold">See what the month is becoming.</h1>
         <p className="text-body text-muted">
-          Save your budgets and return to the same clear read on your spending. Import a CSV from your bank to forecast the rest of the month.
+          Set a plan, understand your pace, and see a clear range for where your spending is headed. Bring in a CSV from your bank when you&apos;re ready.
         </p>
         <form onSubmit={submit} className="login-form">
           <label className="form-label">Your name <span>optional</span>
-            <input className="field" value={name} onChange={(e) => setName(e.target.value)} placeholder="Karo" autoComplete="name" />
+            <input className="field" value={name} onChange={(e) => setName(e.target.value)} placeholder="Example" autoComplete="name" />
           </label>
           <label className="form-label">Email address
             <input className="field" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" type="email" autoComplete="email" required />
           </label>
           {error && <p className="text-caption text-danger" role="alert">{error}</p>}
           <motion.button type="submit" whileTap={PRESS} transition={spring} className="login-button">
-            Open my workspace <span aria-hidden>↗</span>
+            Continue to workspace <span aria-hidden>↗</span>
           </motion.button>
         </form>
-        <p className="text-caption">Your workspace is saved on this device. Forecasts are powered by Leon&apos;s forecasting service.</p>
+        <p className="text-caption">Your workspace is saved on this device. You can update your plan or replace your imported history any time.</p>
       </motion.section>
       <div className="login-orbit orbit-one" aria-hidden />
       <div className="login-orbit orbit-two" aria-hidden />

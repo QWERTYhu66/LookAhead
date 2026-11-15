@@ -5,19 +5,22 @@ import { Glyph } from "@/components/Glyph";
 import { PRESS, PRESS_SOFT, useMotionSafe } from "@/lib/motion";
 import { PERSONAS, type Persona } from "@/lib/types";
 
-/** First screen: who are you? Three cards, each one answer away from a forecast. */
+/** First screen: start a workspace with a planning lens or your own history. */
 export function PersonaCards({ onPick, onImport }: { onPick: (p: Persona) => void; onImport: (file: File) => void }) {
   const { spring, enter, shown } = useMotionSafe();
   return (
     <section className="mx-auto flex max-w-xl flex-col gap-8 pt-6 sm:pt-12">
       <motion.div initial={enter} animate={shown} transition={spring} className="flex flex-col gap-3">
-        <p className="text-eyebrow">LookAhead</p>
-        <h1 className="text-hero">What will this month cost you?</h1>
+        <p className="text-eyebrow">LookAhead workspace</p>
+        <h1 className="text-hero">Start with a clearer month.</h1>
         <p className="text-body text-muted max-w-prose">
-          A forecast of where your spending lands by month-end, per category, from your own history. Pick who you are to see it on a
-          matching profile.
+          Build a monthly plan around the way you spend. Choose a starting lens below, or bring your own transaction history for a forecast that follows your habits.
         </p>
       </motion.div>
+      <div className="flex flex-col gap-1">
+        <p className="text-eyebrow">Choose a starting lens</p>
+        <p className="text-caption">You can change this later. It only shapes the first view of your workspace.</p>
+      </div>
       <ul className="flex flex-col gap-3">
         {PERSONAS.map((p, i) => (
           <motion.li key={p.id} initial={enter} animate={shown} transition={{ ...spring, delay: 0.06 + i * 0.05 }}>
@@ -43,11 +46,11 @@ export function PersonaCards({ onPick, onImport }: { onPick: (p: Persona) => voi
       </ul>
       <div className="glass flex flex-col gap-3 p-5">
         <div>
-          <p className="text-headline">Use your own spending</p>
-          <p className="text-caption mt-1">Upload a CSV with <strong>date</strong>, <strong>amount</strong>, and <strong>category</strong> columns. We&apos;ll forecast the rest of this month from your history.</p>
+          <p className="text-headline">Bring your own spending</p>
+          <p className="text-caption mt-1">Upload a CSV with <strong>date</strong>, <strong>amount</strong>, and <strong>category</strong> columns. Your forecast will be based on the history you provide.</p>
         </div>
         <label className="login-button cursor-pointer">
-          Import transactions <span aria-hidden>↗</span>
+          Import transaction history <span aria-hidden>↗</span>
           <input className="sr-only" type="file" accept=".csv,text/csv" onChange={(event) => { const file = event.target.files?.[0]; if (file) onImport(file); event.currentTarget.value = ""; }} />
         </label>
       </div>

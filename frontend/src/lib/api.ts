@@ -1,5 +1,5 @@
-// Talks to the backend. If it's down (or not built yet), uses the saved results
-// in src/mocks and says "cached". All requests forward the session token.
+// Talks to the backend. If it is unavailable, uses saved forecast results
+// in src/mocks so the workspace never becomes a blank screen.
 import { authHeaders } from "@/lib/auth";
 import evaluationMock from "@/mocks/evaluation.json";
 import businessMock from "@/mocks/forecast-business.json";
@@ -35,7 +35,7 @@ export async function getProfiles(): Promise<Result<DemoProfile[]>> {
   return { data: profilesMock as DemoProfile[], cached: true };
 }
 
-/** Which persona a demo profile belongs to: its own field, else the start of its id ("student_a" → student). */
+/** Which planning lens a workspace profile belongs to: its own field, else the start of its id ("student_a" → student). */
 export function personaOf(p: DemoProfile): Persona {
   if (p.persona) return p.persona;
   const head = p.id.split("_")[0];

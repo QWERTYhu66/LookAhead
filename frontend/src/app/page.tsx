@@ -193,13 +193,13 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background">
       <header className="material sticky top-0 z-30 border-b border-hairline">
         <nav className="mx-auto flex max-w-[1040px] items-center justify-between px-4 py-3 sm:px-6">
-          <button type="button" aria-label="Back to student workspace" className="flex items-center gap-2 cursor-pointer" onClick={() => choosePersona("student")}>
+          <button type="button" aria-label="Back to your workspace" className="flex items-center gap-2 cursor-pointer" onClick={() => choosePersona("student")}>
             <span className="tint flex h-9 w-9 items-center justify-center rounded-lg" style={{ ["--tint" as string]: "var(--accent)" }}>
               <Glyph name="arrow" size={16} />
             </span>
             <span className="text-title font-black tracking-tighter text-gold">LookAhead</span>
           </button>
-          <div role="radiogroup" aria-label="Who are you" className="inline-flex rounded-full bg-surface-2 p-1 border border-hairline">
+          <div role="radiogroup" aria-label="Planning lens" className="inline-flex rounded-full bg-surface-2 p-1 border border-hairline">
             {PERSONA_CHOICES.map((p) => {
               const active = persona === p.id;
               return (
@@ -224,7 +224,7 @@ export default function Home() {
               <input className="sr-only" type="file" accept=".csv,text/csv" disabled={importing} onChange={(event) => { const file = event.target.files?.[0]; if (file) void handleImport(file); event.currentTarget.value = ""; }} />
             </label>
             <Link href="/evaluation" className="hidden rounded-full border border-hairline px-3 py-1.5 text-caption font-bold text-muted transition-colors hover:border-accent hover:text-accent sm:inline-flex">
-              How good is it?
+              Forecast quality
             </Link>
             <span className="hidden text-caption text-muted md:inline">{sessionUser?.name}</span>
             <motion.button
@@ -242,7 +242,7 @@ export default function Home() {
       <main className="mx-auto w-full max-w-[1040px] flex-1 px-4 pb-16 pt-8 sm:px-6 sm:pt-10">
         <div className="flex flex-wrap items-center gap-3 mb-2">
           {cached && <CachedTag />}
-          <span className="text-eyebrow">{imported ? `${imported.label} · your forecast` : `${sessionUser ? `${sessionUser.name}'s workspace` : "Your workspace"} · month-end forecast`} · {forecast?.as_of ?? "2015-11-20"}</span>
+          <span className="text-eyebrow">{imported ? `${imported.label} · imported history` : `${sessionUser ? `${sessionUser.name}'s workspace` : "Your workspace"} · monthly outlook`} · {forecast?.as_of ?? "2015-11-20"}</span>
         </div>
 
         {importError && <div className="mb-5 flex items-center justify-between gap-4 rounded-xl border border-danger/40 bg-danger/10 px-4 py-3 text-caption text-danger" role="alert"><span>{importError}</span><button type="button" className="font-bold underline" onClick={() => setImportError(null)}>Dismiss</button></div>}
@@ -258,8 +258,8 @@ export default function Home() {
             <div className="flex min-w-0 flex-col gap-6">
               <AlertList alerts={alerts} onPick={setOpenCategory} moneyLeft={moneyLeft} />
               <div className="flex items-baseline justify-between px-1">
-                <h2 className="text-title font-black">By category</h2>
-                <span className="text-caption">{forecast.categories.length} categories</span>
+                <h2 className="text-title font-black">Where your money goes</h2>
+                <span className="text-caption">{forecast.categories.length} active categories</span>
               </div>
               <ul className="flex flex-col gap-3">
                 {forecast.categories.map((c) => (
@@ -267,8 +267,8 @@ export default function Home() {
                 ))}
               </ul>
               <p className="text-caption px-1 max-w-prose">
-                Solid = spent so far · light = forecast to month-end · tinted band = likely range · dashed tick = last month · gold tick = your budget.
-                Tap a category for the reason and a what-if slider.
+                Filled = spent so far · light = projected by month-end · band = likely range · dashed tick = last month · gold tick = your plan.
+                Open a category for the reason, a limit, and a what-if check.
               </p>
             </div>
           </div>

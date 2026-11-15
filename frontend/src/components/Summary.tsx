@@ -9,7 +9,7 @@ import type { ForecastResponse } from "@/lib/types";
 
 type Props = { f: ForecastResponse; budget: Budget; onBudget: (b: Budget) => void; moneyLeft: number };
 
-/** The hero card: the number, its range, your budget, and what&rsquo;s actually left. */
+/** The hero card: the number, its range, your plan, and what is left. */
 export function Summary({ f, budget, onBudget, moneyLeft }: Props) {
   const { spring } = useMotionSafe();
   const t = f.total;
@@ -60,7 +60,7 @@ export function Summary({ f, budget, onBudget, moneyLeft }: Props) {
       <div className="glass flex flex-col gap-3 p-4">
         <div className="flex flex-col gap-2">
           <div className="flex items-baseline justify-between gap-2">
-            <span className="text-headline font-black">Budget for the month</span>
+              <span className="text-headline font-black">Monthly spending plan</span>
             {totalBudget !== null && totalBudget !== undefined && (
               <span className={`text-caption font-bold ${overBudget ? "text-danger" : "text-good"}`}>
                 {overBudget ? "OVER BUDGET" : "ON TRACK"}
@@ -80,7 +80,7 @@ export function Summary({ f, budget, onBudget, moneyLeft }: Props) {
         </div>
 
         <label className="flex flex-col gap-1.5">
-          <span className="text-caption font-medium">Set your monthly budget</span>
+            <span className="text-caption font-medium">Set your monthly spending limit</span>
           <input
             className="field text-body"
             type="number"
@@ -97,7 +97,7 @@ export function Summary({ f, budget, onBudget, moneyLeft }: Props) {
 
         {totalBudget !== null && totalBudget !== undefined && (
           <div className="flex items-baseline gap-1.5 text-caption">
-            <span className="text-muted">Money left if the forecast holds:</span>
+            <span className="text-muted">Room left if the forecast holds:</span>
             <AnimatedNumber value={totalBudget - t.predicted} className={`text-body tabular font-bold ${moneyLeft < 0 ? "text-danger" : "text-good"}`} />
           </div>
         )}
@@ -106,7 +106,7 @@ export function Summary({ f, budget, onBudget, moneyLeft }: Props) {
       {/* Pace */}
       <div className="glass flex flex-col gap-2 p-4">
         <div className="flex items-baseline justify-between">
-          <span className="text-headline font-black">Pace</span>
+          <span className="text-headline font-black">Your pace</span>
           <span className="text-caption tabular">day {day} of {dim}</span>
         </div>
         <PaceRow label="Month gone" value={monthProgress} tone="bg-ghost" />

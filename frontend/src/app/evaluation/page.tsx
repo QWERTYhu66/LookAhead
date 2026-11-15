@@ -1,6 +1,6 @@
 "use client";
 
-// "How good is it?" — the honest page: model vs. two simple rules on months it never saw, error by group, where it fails.
+// Forecast quality — a transparent view of model accuracy, baselines, and limits.
 
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
@@ -71,28 +71,28 @@ export default function EvaluationPage() {
   ];
 
   return (
-    <motion.div initial={enter} animate={shown} transition={spring} className="flex flex-col gap-10">
+      <motion.div initial={enter} animate={shown} transition={spring} className="mx-auto flex w-full max-w-[1040px] flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 sm:pt-10">
       <nav className="flex items-center justify-between border-b border-hairline pb-4" aria-label="Workspace navigation">
         <Link href="/" className="text-headline text-gold">LookAhead</Link>
-        <Link href="/" className="text-caption underline-offset-4 hover:underline">Back to workspace ↗</Link>
+        <Link href="/" className="text-caption underline-offset-4 hover:underline">Back to forecast ↗</Link>
       </nav>
       <section className="flex flex-col gap-3">
         <div className="flex items-center gap-3">
-          <p className="text-eyebrow">Tested on {ev.dataset.test_period}, months the model never saw</p>
+          <p className="text-eyebrow">Forecast quality · tested on {ev.dataset.test_period}</p>
           {cached && <CachedTag />}
         </div>
         <h1 className="text-display text-gold font-black">
-          {better >= 0 ? `${better.toFixed(0)}% less error` : `${Math.abs(better).toFixed(0)}% more error`} than the best simple rule.
+          {better >= 0 ? `${better.toFixed(0)}% less error` : `${Math.abs(better).toFixed(0)}% more error`} than the best simple baseline.
         </h1>
         <p className="text-body text-muted max-w-prose">
-          Across {fmt(ev.dataset.users)} people and every category, we forecast each month from day 20 and compared the guess with what
-          happened. Lower error is better. Nothing below was tuned on these months.
+          Across {fmt(ev.dataset.users)} spending histories and every category, the forecast was made from day 20 and compared with what
+          happened. Lower error is better. These months were held out from training.
         </p>
       </section>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-8">
         <section className="card flex flex-col gap-4 p-5 sm:p-6">
-          <h2 className="text-title">Model vs. two simple rules</h2>
+          <h2 className="text-title">LookAhead forecast vs. simple baselines</h2>
           <div className="flex flex-col gap-3">
             {rows.map((r) => (
               <div key={r.name} className="flex flex-col gap-1.5">
@@ -120,8 +120,8 @@ export default function EvaluationPage() {
 
       <section className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
-          <h2 className="text-title">Does it work equally well for everyone?</h2>
-          <p className="text-caption">The model never sees any of this information. Bars: model (blue) vs. the &ldquo;last month&rdquo; rule (grey).</p>
+          <h2 className="text-title">Performance across spending patterns</h2>
+          <p className="text-caption">These attributes are not model inputs. Bars compare the forecast with the “last month” baseline.</p>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {ev.by_group.map((g) => {
@@ -151,8 +151,8 @@ export default function EvaluationPage() {
 
       <section className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
-          <h2 className="text-title">Where it fails</h2>
-          <p className="text-caption">The biggest misses, with our honest reading of why.</p>
+          <h2 className="text-title">Know the limits</h2>
+          <p className="text-caption">The biggest misses, with a plain-language explanation of what happened.</p>
         </div>
         <ul className="grid grid-cols-1 gap-3 md:grid-cols-3">
           {ev.failures.map((f) => (
@@ -162,7 +162,7 @@ export default function EvaluationPage() {
                 <div className="flex flex-col">
                   <span className="text-headline">{label(f.category)}</span>
                   <span className="text-caption">
-                    {f.month} · user {f.user_id}
+                    {f.month} · anonymized history
                   </span>
                 </div>
               </div>
