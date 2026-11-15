@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { NextResponse } from "next/server";
+import { reportedStockNewsResults } from "@/data/stocknews-results";
 
 export async function GET() {
   const candidates = [
@@ -17,8 +18,10 @@ export async function GET() {
     }
   }
 
-  return NextResponse.json(
-    { error: "No stocknews results are available yet. Run stocknews/baseline.py first." },
-    { status: 404 },
-  );
+  return NextResponse.json(reportedStockNewsResults, {
+    headers: {
+      "Cache-Control": "no-store",
+      "X-LookAhead-Result-Source": "stocknews/README.md",
+    },
+  });
 }

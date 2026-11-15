@@ -10,7 +10,7 @@ npm run lint
 npm run build -- --webpack
 ```
 
-The root page provides the presentation surface for the `stocknews/` ML results. It loads `GET /api/stocknews`, a local route that reads `../stocknews/results.json`, and displays the historical Dow-direction score, simple baselines, held-out metrics, feature explanation, and limitations. The current experiment is not a live crawler or ticker-specific predictor; the UI says results are unavailable until `stocknews/baseline.py` has generated the file.
+The root page provides the presentation surface for the `stocknews/` ML results. It loads `GET /api/stocknews`, a local route that reads `../stocknews/results.json` when available and otherwise returns a typed snapshot transcribed from `stocknews/README.md`. It displays the historical Dow-direction score, simple baselines, category test, feature explanation, and limitations. The current experiment is not a live crawler or ticker-specific predictor.
 
 The page intentionally does not create fake predictions or fake live data when model output is unavailable.
 
@@ -19,6 +19,7 @@ Important files:
 ```text
 src/app/page.tsx                market inputs, prediction result, evidence, baseline comparison
 src/app/api/stocknews/route.ts  reads the committed/local stocknews results artifact
+src/data/stocknews-results.ts  README-sourced results used when no JSON is committed
 src/app/globals.css             warm paper-and-ink market brief visual system
 src/lib/useScrollAnimations.ts  Lenis, GSAP reveals, range scrubbing, and interactions
 src/lib/types.ts                shared types and exact disclaimer

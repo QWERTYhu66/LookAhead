@@ -4,16 +4,9 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { DISCLAIMER } from "@/lib/types";
 import { useScrollAnimations } from "@/lib/useScrollAnimations";
+import type { ReportedStockNewsResults } from "@/data/stocknews-results";
 
-type Score = { accuracy: number; balanced_accuracy: number; down_precision: number; down_recall: number; C?: number };
-type StockNewsResults = {
-  baseline_always_up: Score;
-  baseline_same_as_yesterday: Score;
-  model_vader_logreg?: Score;
-  model_tfidf_logreg?: Score;
-  test_share_up: number;
-  n_test_days: number;
-};
+type StockNewsResults = ReportedStockNewsResults;
 
 const scorePercent = (value: number | undefined) => value === undefined ? "—" : `${(value * 100).toFixed(1)}%`;
 
@@ -68,8 +61,8 @@ export default function Home() {
           <section className="input-card">
             <div className="card-heading"><span className="step">1</span><div><h2>Run the measured study</h2><p>Load the result written by <code>stocknews/baseline.py</code>.</p></div></div>
             <div className="study-summary"><span className="study-label">Dataset</span><strong>Daily News for Stock Market Prediction</strong><span className="study-label">Target</span><strong>Dow direction: up or down</strong><span className="study-label">Evaluation</span><strong>Chronological held-out test</strong></div>
-            <button className="calculate-button" type="button" onClick={loadResults} disabled={loading}>{loading ? "Loading measured results…" : "Show measured results"}<span aria-hidden>→</span></button>
-            <p className="privacy-note">Public historical data. Research only, not financial advice.</p>
+            <button className="calculate-button" type="button" onClick={loadResults} disabled={loading}>{loading ? "Loading measured results…" : "Show reported results"}<span aria-hidden>→</span></button>
+            <p className="privacy-note">Results source: StockNews README. Research only, not financial advice.</p>
             {error && <p className="market-error" role="alert">{error}</p>}
           </section>
 
@@ -77,7 +70,7 @@ export default function Home() {
             {!results ? <div className="empty-result"><span className="empty-arrow">↘</span><h2>Run the study to see its result.</h2><p>{error ? "The frontend is connected, but stocknews/results.json has not been generated yet." : "The frontend reads stocknews/results.json directly through a small local adapter."}</p></div> : (
               <>
                 <div className="result-card market-result flat">
-                  <div className="result-topline"><span className="eyebrow">StockNews · held-out test</span><span className="status-pill">Measured result</span></div>
+                  <div className="result-topline"><span className="eyebrow">StockNews · held-out test</span><span className="status-pill">README result</span></div>
                   <div className="big-number">{scorePercent(model?.accuracy)}</div>
                   <p className="result-explanation">The best available headline model, <strong>{modelName}</strong>, correctly classified <strong>{scorePercent(model?.accuracy)}</strong> of held-out Dow-direction days. That is a historical benchmark, not a promise about the next session.</p>
                   <div className="result-stats"><div><span>Test days</span><strong>{results.n_test_days}</strong></div><div><span>Up days in test</span><strong>{scorePercent(results.test_share_up)}</strong></div><div><span>Balanced accuracy</span><strong>{scorePercent(model?.balanced_accuracy)}</strong></div></div>
@@ -95,9 +88,15 @@ export default function Home() {
                   <p className="small-copy">Raw accuracy is not the whole story. Balanced accuracy, down precision, and down recall show whether the model is simply riding the most common direction.</p>
                 </div>
 
+                <div className="comparison-card">
+                  <div className="section-title"><div><p className="eyebrow">Make-it-your-own test</p><h2>Do headline categories matter?</h2></div><span className="source-tag">Keyword study</span></div>
+                  <div className="category-grid">{Object.entries(results.category_results).map(([category, score]) => <div className="category-result" key={category}><span>{category.replaceAll("_", " ")}</span><strong>{scorePercent(score.accuracy)}</strong></div>)}<div className="category-result combined"><span>All categories combined</span><strong>{scorePercent(results.all_categories_combined.accuracy)}</strong></div></div>
+                  <p className="small-copy">The combined result is reported as p = {results.all_categories_combined.p_value_vs_always_up ?? "—"}; Ethan’s README says it is not distinguishable from luck.</p>
+                </div>
+
                 <div className="breakdown-card"><div className="section-title"><div><p className="eyebrow">What is in the artifact</p><h2>Headline features, not live evidence</h2></div><span className="source-tag">{results.n_test_days} days</span></div><div className="headline-list"><article className="headline-item"><span className="sentiment-dot positive" /><div><h3>VADER sentiment features</h3><p>Average, minimum, maximum, volatility, positive/negative share</p></div></article><article className="headline-item"><span className="sentiment-dot neutral" /><div><h3>TF-IDF headline features</h3><p>Up to 20,000 English terms learned from training headlines</p></div></article><article className="headline-item"><span className="sentiment-dot negative" /><div><h3>Known limitation</h3><p>The saved result is aggregate metrics; it does not include current headlines or a per-ticker forecast.</p></div></article></div></div>
 
-                <div className="how-it-works reveal"><div><p className="eyebrow">Data and limits</p><h2>Honest scope beats a flashy claim.</h2></div><p>The StockNews experiment uses earlier dates for fitting and later dates for testing. It studies Dow direction, not individual stocks. yfinance, FRED, Reddit, and live news are not shown as active inputs until they are actually implemented and credited.</p><div className="source-links"><a href="https://www.kaggle.com/datasets/aaron7sun/stocknews" target="_blank" rel="noreferrer">StockNews dataset ↗</a><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" target="_blank" rel="noreferrer">LogisticRegression ↗</a></div></div>
+                <div className="how-it-works reveal"><div><p className="eyebrow">Data and limits</p><h2>Honest scope beats a flashy claim.</h2></div><p>The values shown here are transcribed from the reported StockNews README test run because the raw dataset and generated JSON are not committed. The experiment uses earlier dates for fitting and later dates for testing. It studies Dow direction, not individual stocks. yfinance, FRED, Reddit, and live news are not active inputs.</p><div className="source-links"><a href="https://www.kaggle.com/datasets/aaron7sun/stocknews" target="_blank" rel="noreferrer">StockNews dataset ↗</a><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" target="_blank" rel="noreferrer">LogisticRegression ↗</a></div></div>
               </>
             )}
           </section>
