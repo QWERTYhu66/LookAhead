@@ -1,50 +1,34 @@
-# LookAhead
+# LookAhead: do news headlines predict the Dow?
 
-**A market-news research brief for safer, more informed decisions.** LookAhead is based on challenge 4.2.4, “News headlines and the stock market.” The active ML work lives in `stocknews/`; the frontend lives in `frontend/`.
+**Track:** Finance (Veritas AI International High School Hackathon 2026, brief 4.2.4 plus our own additions)
+**Team:** Aaron Hsueh, Leon Pai, Ethan Huang
+**Live demo:** https://look-ahead-red.vercel.app
+**Full write-up, results and how to run the ML:** [stocknews/README.md](stocknews/README.md)
 
 > This project is a prototype and is not financial advice.
 
-## What it does
+## In one paragraph
+We tested whether each day's top news headlines tell us anything about whether the Dow Jones went up or down, using a public dataset (Reddit WorldNews headlines, 2008 to 2016), a date-based split (train 2008-2014, test 2015 to Jul 2016) and two simple baselines. **The honest answer is "not really":** no headline model beat simply guessing "up" (50.8%; our models scored 49-53%), and the same held for 5 other markets and single stocks (20 tests via yfinance) and for 6 headline categories. We show real days where the model was confidently wrong.
 
-The active experiment uses the public StockNews dataset to test whether daily news headlines predict the Dow Jones direction. Ethan’s `stocknews/baseline.py` cleans the 25 daily headline columns, creates sentiment and TF-IDF features, trains logistic-regression models, compares them with simple always-up and previous-day baselines, and writes the measured results to `stocknews/results.json`.
-
-The frontend is now connected to a local runner at `/api/stocknews/run`. Pressing **Run ML test** executes `stocknews/baseline.py` and `stocknews/category_test.py`, then reads their fresh result artifacts and displays the historical model score, baseline comparison, category test, feature explanation, and limitations. There is no email, name, account, or bank-login flow.
-
-## Current ML pipeline
-
-Run the historical experiment from the ML directory:
-
-```bash
-cd stocknews
-python baseline.py
-```
-
-The script expects the public dataset at `stocknews/data/Combined_News_DJIA.csv` and uses chronological evaluation: earlier dates are used for training/validation and later dates are held out for testing. It writes the actual measured metrics to `stocknews/results.json`.
-
-The current script is a historical Dow-direction experiment, not a live ticker crawler. Any live news, Reddit, yfinance, or FRED integration must be implemented and credited separately before the project claims to use it.
-
-## Sources
-
-- [StockNews dataset](https://www.kaggle.com/datasets/aaron7sun/stocknews)
-- [yfinance](https://pypi.org/project/yfinance/) — planned/optional market-data source; not currently used by `stocknews/baseline.py`
-- [FRED](https://fred.stlouisfed.org/) — planned/optional macroeconomic source; not currently used by `stocknews/baseline.py`
-
-## Structure
-
+## What is in this repo
 ```text
-frontend/   Next.js market-news presentation UI and StockNews ML runner route
-stocknews/  Ethan’s historical StockNews ML experiment and measured results
+stocknews/  the ML: baselines, headline-category test, yfinance market test, results, demo data, and the model as plain numbers
+frontend/   Next.js website (Market Pulse) that presents the measured results
 ```
+The website shows **saved results** from `stocknews/` (the Python scripts do not run on the deployed site). There is no email, account or bank login, and the site is not a live trading signal.
 
-There is no active `backend/` application contract in the current project.
+## Run the ML
+See [stocknews/README.md](stocknews/README.md#how-to-run). In short: download `Combined_News_DJIA.csv` from Kaggle into `stocknews/data/`, `pip install pandas scikit-learn vaderSentiment yfinance scipy`, then run `baseline.py`, `category_test.py`, `market_test.py`, `export_demo.py`.
 
-## Run the frontend locally
-
+## Run the website locally
 ```bash
 cd frontend
 npm install
 npm run dev          # http://localhost:3000
-npm run typecheck
-npm run lint
-npm run build -- --webpack
 ```
+
+## Sources and credits
+- [Daily News for Stock Market Prediction (Kaggle, aaron7sun)](https://www.kaggle.com/datasets/aaron7sun/stocknews)
+- yfinance / Yahoo Finance price data; VADER sentiment (vaderSentiment); scikit-learn, pandas, numpy, SciPy
+- FRED was considered but is not used
+- AI tools used: Claude (Anthropic), Manus, GitHub Copilot. We understand and can explain every part of the project.
