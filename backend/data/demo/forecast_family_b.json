@@ -3,48 +3,39 @@
   "days_left": 10,
   "categories": [
     {
+      "category": "transport",
+      "spent_so_far": 61878.12,
+      "predicted": 61878.12,
+      "low": 61878.12,
+      "high": 154435.28,
+      "last_month": 8556.94,
+      "note": "Spent 61,878 by day 20; by day 20 last month you were at 0."
+    },
+    {
       "category": "groceries",
-      "spent_so_far": 199949.36,
-      "predicted": 199949.36,
-      "low": 199949.36,
-      "high": 330958.07,
-      "last_month": 105323.14,
-      "note": "Spent 199,949 by day 20; by day 20 last month you were at 99,529."
-    },
-    {
-      "category": "shopping",
-      "spent_so_far": 117124.5,
-      "predicted": 117124.5,
-      "low": 117124.5,
-      "high": 233011.86,
-      "last_month": 114901.05,
-      "note": "Spent 117,124 by day 20; by day 20 last month you were at 114,901."
-    },
-    {
-      "category": "bills_services",
-      "spent_so_far": 10061.71,
-      "predicted": 18406.68,
-      "low": 10061.71,
-      "high": 36208.17,
-      "last_month": 23335.08,
-      "note": "Spent 10,062 by day 20; by day 20 last month you were at 22,324."
+      "spent_so_far": 44558.96,
+      "predicted": 44558.96,
+      "low": 44558.96,
+      "high": 148314.14,
+      "last_month": 62224.66,
+      "note": "Spent 44,559 by day 20; by day 20 last month you were at 0."
     },
     {
       "category": "eating_out",
-      "spent_so_far": 16282.91,
-      "predicted": 16282.91,
-      "low": 16282.91,
-      "high": 40002.27,
-      "last_month": 18764.62,
-      "note": "Spent 16,283 by day 20; by day 20 last month you were at 18,765."
+      "spent_so_far": 16911.75,
+      "predicted": 16911.75,
+      "low": 16911.75,
+      "high": 63109.62,
+      "last_month": 203423.82,
+      "note": "Spent 16,912 by day 20; by day 20 last month you were at 0."
     },
     {
-      "category": "entertainment",
+      "category": "bills_services",
       "spent_so_far": 0.0,
-      "predicted": 0.0,
+      "predicted": 195.96,
       "low": 0.0,
-      "high": 941.69,
-      "last_month": 0.0,
+      "high": 21828.18,
+      "last_month": 2245.92,
       "note": "Spent 0 by day 20; by day 20 last month you were at 0."
     },
     {
@@ -52,17 +43,26 @@
       "spent_so_far": 0.0,
       "predicted": 0.0,
       "low": 0.0,
-      "high": 15476.27,
-      "last_month": 3252.31,
-      "note": "Spent 0 by day 20; by day 20 last month you were at 3,252."
+      "high": 5842.98,
+      "last_month": 0.0,
+      "note": "Spent 0 by day 20; by day 20 last month you were at 0."
+    },
+    {
+      "category": "shopping",
+      "spent_so_far": 0.0,
+      "predicted": 0.0,
+      "low": 0.0,
+      "high": 26955.98,
+      "last_month": 0.0,
+      "note": "Spent 0 by day 20; by day 20 last month you were at 0."
     }
   ],
   "total": {
-    "spent_so_far": 343418.48,
-    "predicted": 351763.45,
-    "low": 343418.48,
-    "high": 656598.33,
-    "last_month": 265576.2
+    "spent_so_far": 123348.83,
+    "predicted": 123544.79,
+    "low": 123348.83,
+    "high": 420486.18,
+    "last_month": 276451.34
   },
   "alerts": [],
   "disclaimer": "This project is a prototype and is not financial advice."
