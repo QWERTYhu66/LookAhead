@@ -1,0 +1,45 @@
+{
+  "description": "VADER sentiment features of a day's headlines -> logistic regression -> P(Dow up). Prototype, not financial advice.",
+  "trained_on": "2008-08-08 to 2014-12-31 (Reddit WorldNews top-25 headlines, Kaggle 'Daily News for Stock Market Prediction')",
+  "feature_names": [
+    "mean_compound",
+    "min_compound",
+    "max_compound",
+    "std_compound",
+    "mean_neg",
+    "mean_pos",
+    "share_negative",
+    "share_positive"
+  ],
+  "mean": [
+    -0.22057376125598988,
+    -0.8893752948479187,
+    0.6572495965238974,
+    0.42637451419698963,
+    0.1612406693115267,
+    0.059922777053998864,
+    0.5547663666050818,
+    0.20319890672574661
+  ],
+  "std": [
+    0.09384204450485417,
+    0.061258944211266944,
+    0.1688092542332883,
+    0.05335841496134429,
+    0.03616463305994507,
+    0.020044512057032574,
+    0.10742746618766509,
+    0.08188026924879546
+  ],
+  "coef": [
+    0.030308196891271028,
+    -0.06429307923708301,
+    8.642690726862754e-05,
+    0.0047145744858088125,
+    -0.005720098633742904,
+    0.08732461270053457,
+    -0.12409758185562107,
+    -0.07469485962688079
+  ],
+  "intercept": 0.16864025033978958
+}
