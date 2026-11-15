@@ -11,59 +11,62 @@ async function readJson(file: string) {
   return JSON.parse(await fs.readFile(file, "utf8")) as Record<string, unknown>;
 }
 
+async function readGeneratedResults(stocknewsRoot: string) {
+  const results = await readJson(path.join(stocknewsRoot, "results.json"));
+  const categories = await readJson(path.join(stocknewsRoot, "category_results.json"));
+  return {
+    ...results,
+    result_source: "generated: stocknews/results.json + category_results.json",
+    category_results: categories.by_category,
+    all_categories_combined: categories.all_categories_combined,
+  };
+}
+
 export async function POST() {
   const stocknewsRoot = path.resolve(process.cwd(), "../stocknews");
   const pythonCandidates = [
+    process.env.STOCKNEWS_PYTHON,
     path.join(stocknewsRoot, ".venv", "bin", "python"),
     "python3",
-  ];
-  let python = "python3";
+  ].filter((candidate): candidate is string => Boolean(candidate));
+  let runtimeError = "";
 
-  for (const candidate of pythonCandidates) {
-    if (candidate === "python3") {
-      python = candidate;
-      break;
-    }
+  for (const python of pythonCandidates) {
     try {
-      await fs.access(candidate);
-      python = candidate;
-      break;
-    } catch {
-      // Try the system interpreter if the project environment is unavailable.
+      await execFileAsync(python, ["baseline.py"], {
+        cwd: stocknewsRoot,
+        timeout: 120_000,
+        maxBuffer: 2 * 1024 * 1024,
+      });
+      await execFileAsync(python, ["category_test.py"], {
+        cwd: stocknewsRoot,
+        timeout: 120_000,
+        maxBuffer: 2 * 1024 * 1024,
+      });
+      const results = await readGeneratedResults(stocknewsRoot);
+      return NextResponse.json(
+        { ...results, result_source: "runtime: stocknews/baseline.py + category_test.py" },
+        { headers: { "Cache-Control": "no-store" } },
+      );
+    } catch (error) {
+      runtimeError = error instanceof Error ? error.message : "Unknown ML test error.";
     }
   }
 
   try {
-    await execFileAsync(python, ["baseline.py"], {
-      cwd: stocknewsRoot,
-      timeout: 120_000,
-      maxBuffer: 2 * 1024 * 1024,
-    });
-    await execFileAsync(python, ["category_test.py"], {
-      cwd: stocknewsRoot,
-      timeout: 120_000,
-      maxBuffer: 2 * 1024 * 1024,
-    });
-
-    const results = await readJson(path.join(stocknewsRoot, "results.json"));
-    const categories = await readJson(path.join(stocknewsRoot, "category_results.json"));
+    const generated = await readGeneratedResults(stocknewsRoot);
     return NextResponse.json(
-      {
-        ...results,
-        result_source: "runtime: stocknews/baseline.py + category_test.py",
-        category_results: categories.by_category,
-        all_categories_combined: categories.all_categories_combined,
-      },
-      { headers: { "Cache-Control": "no-store" } },
+      { ...generated, result_source: "saved test: Python unavailable in deployed runtime" },
+      { headers: { "Cache-Control": "no-store", "X-LookAhead-Run-Status": "saved-artifact" } },
     );
-  } catch (error) {
-    const detail = error instanceof Error ? error.message : "Unknown ML test error.";
+  } catch {
     return NextResponse.json(
       {
-        error: `The StockNews ML test could not run. Check that the dataset exists at stocknews/data/Combined_News_DJIA.csv and that the Python dependencies are installed. ${detail}`,
-        fallback: reportedStockNewsResults,
+        ...reportedStockNewsResults,
+        result_source: "documented fallback: Python and generated files unavailable",
+        run_error: runtimeError,
       },
-      { status: 500 },
+      { headers: { "Cache-Control": "no-store", "X-LookAhead-Run-Status": "fallback" } },
     );
   }
 }

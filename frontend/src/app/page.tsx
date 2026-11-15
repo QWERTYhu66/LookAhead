@@ -70,7 +70,7 @@ export default function Home() {
             {!results ? <div className="empty-result"><span className="empty-arrow">↘</span><h2>Run the study to see its result.</h2><p>{error ? "The frontend is connected, but stocknews/results.json has not been generated yet." : "The frontend reads stocknews/results.json directly through a small local adapter."}</p></div> : (
               <>
                 <div className="result-card market-result flat">
-                  <div className="result-topline"><span className="eyebrow">StockNews · held-out test</span><span className="status-pill">Runtime result</span></div>
+                  <div className="result-topline"><span className="eyebrow">StockNews · held-out test</span><span className="status-pill">{results.result_source.startsWith("runtime") ? "Fresh runtime result" : "Saved test result"}</span></div>
                   <div className="big-number">{scorePercent(model?.accuracy)}</div>
                   <p className="result-explanation">The best available headline model, <strong>{modelName}</strong>, correctly classified <strong>{scorePercent(model?.accuracy)}</strong> of held-out Dow-direction days. That is a historical benchmark, not a promise about the next session.</p>
                   <div className="result-stats"><div><span>Test days</span><strong>{results.n_test_days}</strong></div><div><span>Up days in test</span><strong>{scorePercent(results.test_share_up)}</strong></div><div><span>Balanced accuracy</span><strong>{scorePercent(model?.balanced_accuracy)}</strong></div></div>
