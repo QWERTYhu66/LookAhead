@@ -1,85 +1,65 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
+import { CategoryGlyph, Glyph } from "@/components/Glyph";
 import { fmt, pctChange } from "@/lib/format";
 import { PRESS, useMotionSafe } from "@/lib/motion";
 import { label, type CategoryForecast } from "@/lib/types";
 
-type Props = {
-  c: CategoryForecast;
-  scale: number; // the amount that fills the whole bar
-  budget?: number;
-  open: boolean;
-  onToggle: () => void;
-};
+type Props = { c: CategoryForecast; scale: number; budget?: number; onOpen: () => void };
 
 /**
  * One category. The bar reads left to right: solid = spent so far, light = forecast to month-end,
- * tinted band = likely range, dashed tick = last month, thin tick = your budget. Tap for the one-line reason.
+ * tinted band = likely range, dashed tick = last month, coloured tick = your budget. Tap to open the detail sheet.
  */
-export function CategoryCard({ c, scale, budget, open, onToggle }: Props) {
+export function CategoryCard({ c, scale, budget, onOpen }: Props) {
   const { spring } = useMotionSafe();
   const w = (v: number) => `${Math.min(100, (v / scale) * 100)}%`;
-  const over = budget !== undefined && budget > 0 && c.predicted > budget;
+  const hasBudget = budget !== undefined && budget > 0;
+  const over = hasBudget && c.predicted > budget;
   const vsLast = pctChange(c.predicted, c.last_month);
+  const up = c.predicted > c.last_month * 1.05;
 
   return (
-    <motion.li layout transition={spring} className="card rounded-2xl bg-surface">
+    <motion.li layout transition={spring}>
       <motion.button
         type="button"
-        onClick={onToggle}
+        onClick={onOpen}
         whileTap={PRESS}
         transition={spring}
-        aria-expanded={open}
-        className="flex w-full flex-col gap-2 px-4 py-3 text-left"
+        className="card flex w-full items-center gap-4 px-4 py-3.5 text-left sm:px-5"
+        aria-label={`${label(c.category)}: spent ${fmt(c.spent_so_far)}, forecast ${fmt(c.predicted)}. Open details`}
       >
-        <div className="flex items-baseline justify-between gap-3">
-          <span className="text-body font-medium">{label(c.category)}</span>
-          <span className="text-body tabular">
-            <span className="text-muted">{fmt(c.spent_so_far)} → </span>
-            <strong className={over ? "text-danger" : undefined}>{fmt(c.predicted)}</strong>
+        <CategoryGlyph category={c.category} />
+        <span className="flex min-w-0 flex-1 flex-col gap-2">
+          <span className="flex items-baseline justify-between gap-3">
+            <span className="text-headline truncate">{label(c.category)}</span>
+            <span className="text-body tabular whitespace-nowrap">
+              <span className="text-muted">{fmt(c.spent_so_far)} → </span>
+              <strong className={over ? "text-danger" : undefined}>{fmt(c.predicted)}</strong>
+            </span>
           </span>
-        </div>
 
-        <div className="relative h-2.5 w-full overflow-hidden rounded-full bg-hairline" aria-hidden>
-          <motion.div className="absolute inset-y-0 left-0 rounded-full bg-range" animate={{ width: w(c.high) }} transition={spring} />
-          <motion.div className="absolute inset-y-0 left-0 rounded-full bg-forecast" animate={{ width: w(c.predicted) }} transition={spring} />
-          <motion.div className="absolute inset-y-0 left-0 rounded-full bg-spent" animate={{ width: w(c.spent_so_far) }} transition={spring} />
-          <motion.div
-            className="absolute inset-y-0 w-0 border-l-2 border-dashed border-ghost"
-            animate={{ left: w(c.last_month) }}
-            transition={spring}
-          />
-          {budget !== undefined && budget > 0 && (
-            <motion.div className={`absolute inset-y-0 w-0.5 ${over ? "bg-danger" : "bg-good"}`} animate={{ left: w(budget) }} transition={spring} />
-          )}
-        </div>
+          <span className="relative block h-2.5 w-full overflow-hidden rounded-full bg-hairline" aria-hidden>
+            <motion.span className="absolute inset-y-0 left-0 rounded-full bg-range" animate={{ width: w(c.high) }} transition={spring} />
+            <motion.span className="absolute inset-y-0 left-0 rounded-full bg-forecast" animate={{ width: w(c.predicted) }} transition={spring} />
+            <motion.span className="absolute inset-y-0 left-0 rounded-full bg-spent" animate={{ width: w(c.spent_so_far) }} transition={spring} />
+            <motion.span className="absolute inset-y-0 w-0 border-l-2 border-dashed border-ghost" animate={{ left: w(c.last_month) }} transition={spring} />
+            {hasBudget && <motion.span className={`absolute inset-y-0 w-0.5 ${over ? "bg-danger" : "bg-good"}`} animate={{ left: w(budget) }} transition={spring} />}
+          </span>
 
-        <div className="flex justify-between text-caption tabular">
-          <span>
-            likely {fmt(c.low)}–{fmt(c.high)}
+          <span className="flex flex-wrap justify-between gap-x-3 text-caption tabular">
+            <span className="whitespace-nowrap">
+              likely {fmt(c.low)}–{fmt(c.high)}
+            </span>
+            <span className="whitespace-nowrap">
+              last month {fmt(c.last_month)}
+              {vsLast && <span className={up ? " text-warn" : ""}> ({vsLast})</span>}
+            </span>
           </span>
-          <span>
-            last month {fmt(c.last_month)}
-            {vsLast && <span className={c.predicted > c.last_month * 1.05 ? " text-warn" : ""}> ({vsLast})</span>}
-          </span>
-        </div>
+        </span>
+        <Glyph name="arrow" size={16} className="hidden shrink-0 text-muted sm:block" />
       </motion.button>
-
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            key="note"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={spring}
-            className="overflow-hidden"
-          >
-            <p className="border-t border-hairline px-4 py-3 text-body">{c.note}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.li>
   );
 }
