@@ -1,11 +1,10 @@
 import { DISCLAIMER } from "@/lib/types";
 
-/** Quiet legal copy at the bottom of every screen. */
 export function Disclaimer() {
   return (
-    <footer className="mx-auto w-full max-w-[1040px] px-4 pb-8 pt-4 sm:px-6">
-      <p className="text-caption max-w-prose">
-        {DISCLAIMER} Forecasts are estimates based on the transaction history available in this workspace.
+    <footer className="mx-auto w-full max-w-[1120px] px-5 pb-6 pt-2 sm:px-7">
+      <p className="text-xs leading-5 text-[#716f68]">
+        {DISCLAIMER} Results are estimates based on public consumer-spending benchmarks and the numbers you enter.
       </p>
     </footer>
   );

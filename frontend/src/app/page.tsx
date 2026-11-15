@@ -1,315 +1,119 @@
 "use client";
 
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { FormEvent, useMemo, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { motion } from "motion/react";
-import { AlertList } from "@/components/AlertList";
-import { CachedTag } from "@/components/CachedTag";
-import { CategoryCard } from "@/components/CategoryCard";
-import { DetailSheet } from "@/components/DetailSheet";
-import { PersonaCards } from "@/components/PersonaPicker";
-import { ForecastSkeleton } from "@/components/Skeleton";
-import { Summary } from "@/components/Summary";
-import { Glyph } from "@/components/Glyph";
-import { computeAlerts, type Budget } from "@/lib/alerts";
-import { getForecast, getForecastForTransactions, getProfiles, personaOf } from "@/lib/api";
-import { clearSession, getSession, type SessionUser } from "@/lib/auth";
-import type { DemoProfile, ForecastRequest, ForecastResponse, Persona, Transaction } from "@/lib/types";
+import { DISCLAIMER } from "@/lib/types";
 
-const PERSONA_CHOICES: { id: Persona; title: string }[] = [
-  { id: "student", title: "Student" },
-  { id: "family", title: "Family" },
-  { id: "business", title: "Business" },
+const BLS_MONTHLY_AVERAGE = 6545;
+const BLS_YEAR = "2024";
+const BLS_SHARES: [string, number][] = [
+  ["Housing", 33.4],
+  ["Transportation", 17],
+  ["Food", 12.9],
+  ["Insurance + pensions", 12.5],
+  ["Healthcare", 7.9],
+  ["Entertainment", 4.6],
 ];
+type Result = {
+  monthlyIncome: number;
+  desired: number;
+  target: number;
+  savings: number;
+  gap: number;
+  status: "comfortable" | "watch" | "stretched" | "over";
+};
 
-function parseCsvLine(line: string): string[] {
-  const values: string[] = [];
-  let value = "";
-  let quoted = false;
-  for (let i = 0; i < line.length; i += 1) {
-    const char = line[i];
-    if (char === '"' && line[i + 1] === '"') { value += '"'; i += 1; }
-    else if (char === '"') quoted = !quoted;
-    else if (char === "," && !quoted) { values.push(value.trim()); value = ""; }
-    else value += char;
-  }
-  values.push(value.trim());
-  return values;
-}
-
-function parseTransactionsCsv(text: string): ForecastRequest {
-  const lines = text.split(/\r?\n/).filter((line) => line.trim());
-  if (lines.length < 2) throw new Error("The CSV needs a header row and at least one transaction.");
-  const headers = parseCsvLine(lines[0]).map((header) => header.toLowerCase().replace(/^\uFEFF/, "").trim());
-  const dateIndex = headers.findIndex((header) => ["date", "transaction_date", "posted_date"].includes(header));
-  const amountIndex = headers.findIndex((header) => ["amount", "value", "debit", "spent"].includes(header));
-  const categoryIndex = headers.findIndex((header) => ["category", "type", "merchant_category"].includes(header));
-  const descriptionIndex = headers.findIndex((header) => ["description", "merchant", "name"].includes(header));
-  if (dateIndex < 0 || amountIndex < 0 || categoryIndex < 0) throw new Error("Include date, amount, and category columns.");
-  const transactions: Transaction[] = lines.slice(1).map((line, row) => {
-    const cells = parseCsvLine(line);
-    const date = new Date(cells[dateIndex]);
-    const amount = Number(cells[amountIndex].replace(/[$,]/g, "").replace(/[()]/g, ""));
-    if (Number.isNaN(date.getTime()) || !Number.isFinite(amount)) throw new Error(`Row ${row + 2} has an invalid date or amount.`);
-    return { date: date.toISOString().slice(0, 10), amount: Math.abs(amount), category: normalizeCategory(cells[categoryIndex]), description: descriptionIndex >= 0 ? cells[descriptionIndex] : undefined };
-  });
-  const asOf = transactions.reduce((latest, transaction) => transaction.date > latest ? transaction.date : latest, transactions[0].date);
-  return { transactions, as_of: asOf };
-}
-
-function normalizeCategory(raw: string): string {
-  const value = raw.toLowerCase();
-  if (/grocer|supermarket|market/.test(value)) return "groceries";
-  if (/restaurant|dining|coffee|food|eat/.test(value)) return "eating_out";
-  if (/transport|transit|uber|lyft|gas|fuel|parking/.test(value)) return "transport";
-  if (/travel|hotel|airline|flight/.test(value)) return "travel";
-  if (/shop|retail|clothing|online/.test(value)) return "shopping";
-  if (/movie|music|game|entertainment|sport/.test(value)) return "entertainment";
-  if (/health|medical|pharmacy|doctor/.test(value)) return "health";
-  if (/bill|utility|rent|phone|internet|service|subscription/.test(value)) return "bills_services";
-  return "other";
-}
+const money = (value: number) =>
+  new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(Math.max(0, value));
 
 export default function Home() {
-  const router = useRouter();
-  const [sessionUser] = useState<SessionUser | null>(() => getSession()?.user ?? null);
-  const hydrated = useSyncExternalStore(() => () => {}, () => true, () => false);
+  const [salary, setSalary] = useState("5000");
+  const [frequency, setFrequency] = useState<"monthly" | "yearly">("monthly");
+  const [spending, setSpending] = useState("3500");
+  const [result, setResult] = useState<Result | null>(null);
 
-  useEffect(() => {
-    if (hydrated && !sessionUser) router.replace("/login");
-  }, [hydrated, router, sessionUser]);
+  const formattedIncome = useMemo(() => {
+    const value = Number(salary) || 0;
+    return money(frequency === "yearly" ? value / 12 : value);
+  }, [frequency, salary]);
 
-  const [persona, setPersona] = useState<Persona | null>(() => {
-    const user = getSession()?.user;
-    if (!user) return null;
-    return window.localStorage.getItem(`lookahead.imported.${user.id}`) ? "student" : null;
-  });
-  const [profiles, setProfiles] = useState<DemoProfile[]>([]);
-  const [loaded, setLoaded] = useState<{ persona: Persona; data: ForecastResponse; cached: boolean } | null>(null);
-  const [imported, setImported] = useState<{ data: ForecastResponse; label: string } | null>(() => {
-    const user = getSession()?.user;
-    if (!user) return null;
-    try {
-      const saved = window.localStorage.getItem(`lookahead.imported.${user.id}`);
-      return saved ? (JSON.parse(saved) as { data: ForecastResponse; label: string }) : null;
-    } catch {
-      return null;
-    }
-  });
-  const [importError, setImportError] = useState<string | null>(null);
-  const [importing, setImporting] = useState(false);
-  const [budget, setBudget] = useState<Budget>(() => {
-    const user = getSession()?.user;
-    if (!user) return { by_category: {} };
-    try {
-      const saved = window.localStorage.getItem(`lookahead.budget.${user.id}`);
-      return saved ? (JSON.parse(saved) as Budget) : { by_category: {} };
-    } catch {
-      return { by_category: {} };
-    }
-  });
-  const [openCategory, setOpenCategory] = useState<string | null>(null);
-  const [logoutOpen, setLogoutOpen] = useState(false);
+  async function calculate(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const income = Number(salary);
+    const monthlyIncome = frequency === "yearly" ? income / 12 : income;
+    const desired = Number(spending);
+    if (!Number.isFinite(monthlyIncome) || !Number.isFinite(desired) || monthlyIncome <= 0 || desired < 0) return;
 
-  useEffect(() => {
-    if (!sessionUser) return;
-    window.localStorage.setItem(`lookahead.budget.${sessionUser.id}`, JSON.stringify(budget));
-  }, [budget, sessionUser]);
-
-  useEffect(() => {
-    getProfiles().then(({ data }) => setProfiles(data));
-  }, []);
-
-  useEffect(() => {
-    if (!persona) return;
-    const profile = profiles.find((p) => personaOf(p) === persona) ?? { id: `${persona}_a`, label: persona, as_of: "2015-11-20" };
-    let alive = true;
-    getForecast(profile).then(({ data, cached }) => {
-      if (alive) setLoaded({ persona, data, cached });
+    const target = monthlyIncome * 0.8;
+    const ratio = desired / monthlyIncome;
+    setResult({
+      monthlyIncome,
+      desired,
+      target,
+      savings: Math.max(0, monthlyIncome - desired),
+      gap: target - desired,
+      status: ratio > 1 ? "over" : ratio > 0.95 ? "stretched" : ratio > 0.8 ? "watch" : "comfortable",
     });
-    return () => {
-      alive = false;
-    };
-  }, [persona, profiles]);
 
-  const handleImport = async (file: File) => {
-    setImporting(true);
-    setImportError(null);
-    try {
-      const result = await getForecastForTransactions(parseTransactionsCsv(await file.text()));
-      const next = { data: result.data, label: file.name };
-      setImported(next);
-      if (sessionUser) window.localStorage.setItem(`lookahead.imported.${sessionUser.id}`, JSON.stringify(next));
-      setPersona("student");
-    } catch (error) {
-      setImportError(error instanceof Error ? error.message : "We could not read that CSV.");
-    } finally {
-      setImporting(false);
-    }
-  };
-
-  const choosePersona = (next: Persona) => {
-    setImported(null);
-    if (sessionUser) window.localStorage.removeItem(`lookahead.imported.${sessionUser.id}`);
-    setImportError(null);
-    setPersona(next);
-  };
-
-  const forecast = imported?.data ?? (loaded && loaded.persona === persona ? loaded.data : null);
-  const cached = imported ? false : (loaded?.cached ?? false);
-
-  const alerts = useMemo(() => (forecast ? computeAlerts(forecast.categories, forecast.total, budget) : []), [forecast, budget]);
-  const scale = useMemo(
-    () =>
-      Math.max(
-        1,
-        ...(forecast?.categories.map((c) => Math.max(c.high, c.last_month, budget.by_category[c.category] ?? 0)) ?? []),
-      ) * 1.04,
-    [forecast, budget],
-  );
-  const openCatName = openCategory ?? "";
-  const openC = forecast?.categories.find((c) => c.category === openCatName) ?? null;
-
-  const moneyLeft = forecast
-    ? (budget.total ?? forecast.total.predicted) - forecast.total.predicted
-    : 0;
-
-  const setCategoryBudget = (category: string, v: number | undefined) => {
-    const by = { ...budget.by_category };
-    if (v === undefined) delete by[category];
-    else by[category] = v;
-    setBudget({ ...budget, by_category: by });
-  };
-
-  const handleLogout = () => {
-    clearSession();
-    router.push("/login");
-    router.refresh();
-  };
-
-  if (!hydrated) return <ForecastSkeleton />;
-  if (!persona) return <PersonaCards onPick={choosePersona} onImport={handleImport} />;
+  }
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <header className="material sticky top-0 z-30 border-b border-hairline">
-        <nav className="mx-auto flex max-w-[1040px] items-center justify-between px-4 py-3 sm:px-6">
-          <button type="button" aria-label="Back to your workspace" className="flex items-center gap-2 cursor-pointer" onClick={() => choosePersona("student")}>
-            <span className="tint flex h-9 w-9 items-center justify-center rounded-lg" style={{ ["--tint" as string]: "var(--accent)" }}>
-              <Glyph name="arrow" size={16} />
-            </span>
-            <span className="text-title font-black tracking-tighter text-gold">LookAhead</span>
-          </button>
-          <div role="radiogroup" aria-label="Planning lens" className="inline-flex rounded-full bg-surface-2 p-1 border border-hairline">
-            {PERSONA_CHOICES.map((p) => {
-              const active = persona === p.id;
-              return (
-                <motion.button
-                  key={p.id}
-                  type="button"
-                  role="radio"
-                  aria-checked={active}
-                  onClick={() => choosePersona(p.id)}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ type: "spring", bounce: 0, duration: 0.2 }}
-                  className={`relative rounded-full px-3 py-1.5 text-caption font-bold transition-colors ${active ? "text-black bg-accent" : "text-muted"}`}
-                >
-                  {p.title}
-                </motion.button>
-              );
-            })}
-          </div>
-          <div className="flex items-center gap-3">
-            <label className="hidden cursor-pointer rounded-full border border-hairline px-3 py-1.5 text-caption font-bold text-muted transition-colors hover:border-accent hover:text-accent sm:inline-flex">
-              {importing ? "Importing…" : "Import CSV"}
-              <input className="sr-only" type="file" accept=".csv,text/csv" disabled={importing} onChange={(event) => { const file = event.target.files?.[0]; if (file) void handleImport(file); event.currentTarget.value = ""; }} />
-            </label>
-            <Link href="/evaluation" className="hidden rounded-full border border-hairline px-3 py-1.5 text-caption font-bold text-muted transition-colors hover:border-accent hover:text-accent sm:inline-flex">
-              Forecast quality
-            </Link>
-            <span className="hidden text-caption text-muted md:inline">{sessionUser?.name}</span>
-            <motion.button
-              type="button"
-              onClick={() => setLogoutOpen(true)}
-              whileTap={{ scale: 0.95 }}
-              className="rounded-full bg-surface-2 px-3 py-1.5 text-caption font-bold text-muted border border-hairline hover:bg-accent hover:text-black transition-colors"
-            >
-              Sign out
-            </motion.button>
-          </div>
-        </nav>
+    <div className="calculator-page">
+      <header className="site-header">
+        <Link className="brand" href="/" aria-label="LookAhead home"><span className="brand-mark">LA</span><span>LookAhead</span></Link>
+        <span className="header-note">A calmer way to plan a month</span>
       </header>
 
-      <main className="mx-auto w-full max-w-[1040px] flex-1 px-4 pb-16 pt-8 sm:px-6 sm:pt-10">
-        <div className="flex flex-wrap items-center gap-3 mb-2">
-          {cached && <CachedTag />}
-          <span className="text-eyebrow">{imported ? `${imported.label} · imported history` : `${sessionUser ? `${sessionUser.name}'s workspace` : "Your workspace"} · monthly outlook`} · {forecast?.as_of ?? "2015-11-20"}</span>
+      <main className="calculator-main">
+        <section className="intro">
+          <p className="eyebrow">Monthly spending calculator</p>
+          <h1>How much can you spend and still feel okay?</h1>
+          <p className="intro-copy">Put in your take-home income and the amount you&apos;re thinking of spending. We&apos;ll show a practical target, what you&apos;d have left, and how it compares with current U.S. spending patterns.</p>
+        </section>
+
+        <div className="calculator-grid">
+          <form className="input-card" onSubmit={calculate}>
+            <div className="card-heading"><span className="step">1</span><div><h2>Your income</h2><p>Use take-home pay, after taxes.</p></div></div>
+            <div className="frequency-toggle" role="group" aria-label="Salary frequency">
+              {(["monthly", "yearly"] as const).map((option) => <button key={option} type="button" className={frequency === option ? "selected" : ""} onClick={() => setFrequency(option)}>{option}</button>)}
+            </div>
+            <label className="input-label" htmlFor="salary">{frequency === "monthly" ? "Monthly take-home pay" : "Yearly take-home pay"}<div className="money-input"><span>$</span><input id="salary" type="number" min="0" step="100" value={salary} onChange={(event) => setSalary(event.target.value)} /></div></label>
+            <p className="field-hint">That works out to about <strong>{formattedIncome}</strong> each month.</p>
+
+            <div className="card-heading spending-heading"><span className="step">2</span><div><h2>Your planned spending</h2><p>Everything you expect to spend this month.</p></div></div>
+            <label className="input-label" htmlFor="spending">Monthly spending<div className="money-input"><span>$</span><input id="spending" type="number" min="0" step="50" value={spending} onChange={(event) => setSpending(event.target.value)} /></div></label>
+            <button className="calculate-button" type="submit">Show my number <span aria-hidden>→</span></button>
+            <p className="privacy-note">No account. No email. Nothing is saved.</p>
+          </form>
+
+          <section className="result-column" aria-live="polite">
+            {!result ? <div className="empty-result"><span className="empty-arrow">↘</span><h2>Start with two numbers.</h2><p>Your result will land here, with a simple explanation instead of a mysterious score.</p></div> : (
+              <>
+                <div className={`result-card ${result.status}`}>
+                  <div className="result-topline"><span className="eyebrow">Your practical monthly target</span><span className={`status-pill ${result.status}`}>{result.status === "over" ? "Over income" : result.status}</span></div>
+                  <div className="big-number">{money(result.target)}</div>
+                  <p className="result-explanation">A sensible starting point is to keep spending at or below <strong>80% of take-home pay</strong>, leaving the rest for savings, debt payments, and surprises.</p>
+                  <div className="result-stats"><div><span>You entered</span><strong>{money(result.desired)}</strong></div><div><span>Left after spending</span><strong>{money(result.savings)}</strong></div><div><span>Room to target</span><strong>{result.gap >= 0 ? money(result.gap) : `−${money(-result.gap)}`}</strong></div></div>
+                </div>
+
+                <div className="comparison-card">
+                  <div className="section-title"><div><p className="eyebrow">A useful comparison</p><h2>How does that stack up?</h2></div><span className="source-tag">BLS {BLS_YEAR}</span></div>
+                  <div className="comparison-line"><div><span>Your plan</span><strong>{money(result.desired)} / month</strong></div><div className="bar-track"><span className="bar user-bar" style={{ width: `${Math.min(100, result.desired / Math.max(BLS_MONTHLY_AVERAGE, result.desired) * 100)}%` }} /></div></div>
+                  <div className="comparison-line"><div><span>U.S. consumer-unit average</span><strong>{money(BLS_MONTHLY_AVERAGE)} / month</strong></div><div className="bar-track"><span className="bar average-bar" style={{ width: `${Math.min(100, BLS_MONTHLY_AVERAGE / Math.max(BLS_MONTHLY_AVERAGE, result.desired) * 100)}%` }} /></div></div>
+                  <p className="small-copy">The average consumer unit spent {money(BLS_MONTHLY_AVERAGE)} a month in 2024. That household benchmark is context—not a goal—and includes about 2.4 people.</p>
+                </div>
+
+                <div className="breakdown-card"><div className="section-title"><div><p className="eyebrow">Typical mix</p><h2>Where the average dollar goes</h2></div></div><div className="breakdown-list">{BLS_SHARES.map(([name, share]) => <div className="breakdown-row" key={name}><div><span>{name}</span><strong>{share}%</strong></div><div className="bar-track"><span className="bar category-bar" style={{ width: `${share * 2.5}%` }} /></div><em>{money(BLS_MONTHLY_AVERAGE * Number(share) / 100)}</em></div>)}</div><p className="small-copy">These are BLS averages, not personalized recommendations. Your housing, health, family, and location can make your right number very different.</p></div>
+
+                <div className="backend-card"><div><p className="eyebrow">Backend ready</p><h2>Waiting for the 2026 data layer.</h2><p>The calculator is intentionally using public benchmarks for now. Leon can plug his 2026 consumer dataset into this section later without changing the simple inputs or the math you see above.</p></div><span className="connection-dot" aria-label="waiting for 2026 data" /></div>
+              </>
+            )}
+          </section>
         </div>
 
-        {importError && <div className="mb-5 flex items-center justify-between gap-4 rounded-xl border border-danger/40 bg-danger/10 px-4 py-3 text-caption text-danger" role="alert"><span>{importError}</span><button type="button" className="font-bold underline" onClick={() => setImportError(null)}>Dismiss</button></div>}
-
-        {!forecast ? (
-          <ForecastSkeleton />
-        ) : (
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[380px_minmax(0,1fr)] lg:gap-10">
-            <div className="flex flex-col gap-5 lg:sticky lg:top-24">
-              <Summary f={forecast} budget={budget} onBudget={setBudget} moneyLeft={moneyLeft} />
-            </div>
-
-            <div className="flex min-w-0 flex-col gap-6">
-              <AlertList alerts={alerts} onPick={setOpenCategory} moneyLeft={moneyLeft} />
-              <div className="flex items-baseline justify-between px-1">
-                <h2 className="text-title font-black">Where your money goes</h2>
-                <span className="text-caption">{forecast.categories.length} active categories</span>
-              </div>
-              <ul className="flex flex-col gap-3">
-                {forecast.categories.map((c) => (
-                  <CategoryCard key={c.category} c={c} scale={scale} budget={budget.by_category[c.category]} onOpen={() => setOpenCategory(c.category)} />
-                ))}
-              </ul>
-              <p className="text-caption px-1 max-w-prose">
-                Filled = spent so far · light = projected by month-end · band = likely range · dashed tick = last month · gold tick = your plan.
-                Open a category for the reason, a limit, and a what-if check.
-              </p>
-            </div>
-          </div>
-        )}
-
-        <DetailSheet
-          c={openC}
-          asOf={forecast?.as_of ?? "2015-11-20"}
-          budget={openCategory ? budget.by_category[openCategory] : undefined}
-          onBudget={(v) => openCategory && setCategoryBudget(openCategory, v)}
-          onClose={() => setOpenCategory(null)}
-        />
+        <section className="how-it-works"><div><p className="eyebrow">How we got here</p><h2>Plain math, current sources.</h2></div><p>We use the CFPB&apos;s educational 50/30/20 framework as a starting point: 50% for needs, 30% for wants, and 20% for savings goals. We also show BLS consumer spending from 2024 and Census income data from 2025 so you can see the context behind the numbers.</p><div className="source-links"><a href="https://www.bls.gov/opub/reports/consumer-expenditures/2024/home.htm">BLS consumer spending ↗</a><a href="https://www.consumerfinance.gov/consumer-tools/educator-tools/youth-financial-education/teach/activities/analyzing-budgets/">CFPB budgeting framework ↗</a><a href="https://www.census.gov/library/publications/2026/demo/p60-289.html">Census income report ↗</a></div></section>
       </main>
-
-      <div className="fixed inset-x-0 bottom-0 z-40 bg-surface border-t border-hairline p-4" aria-hidden={!logoutOpen ? "true" : "false"}>
-        {logoutOpen && (
-          <div className="mx-auto max-w-sm material rounded-2xl p-5 shadow-sheet">
-            <h3 className="text-headline mb-2">Sign out of LookAhead?</h3>
-            <p className="text-caption mb-4">Your session will be cleared from this device.</p>
-            <div className="flex gap-3">
-              <button
-                type="button"
-                onClick={() => setLogoutOpen(false)}
-                className="flex-1 rounded-xl border border-hairline bg-surface-2 px-4 py-2.5 text-caption font-bold text-muted"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                onClick={handleLogout}
-                className="flex-1 rounded-xl bg-accent px-4 py-2.5 text-black font-bold text-headline shadow-lg"
-              >
-                Sign out
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
-
+      <footer className="calculator-footer"><span>{DISCLAIMER}</span><span>Benchmarks checked November 2026</span></footer>
     </div>
   );
 }

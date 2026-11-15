@@ -3,21 +3,18 @@ import "./globals.css";
 import { Disclaimer } from "@/components/Disclaimer";
 
 export const metadata: Metadata = {
-  title: "LookAhead",
-  description: "A personalized month-end spending forecast with budget alerts.",
+  title: "LookAhead — spending calculator",
+  description: "A plain-language spending calculator using current public consumer benchmarks.",
   icons: { icon: "/icon.svg" },
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5f5f7" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
+  themeColor: "#f5f2eb",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en">
       <body className="flex min-h-full flex-col">
         <main className="flex-1">{children}</main>
         <Disclaimer />

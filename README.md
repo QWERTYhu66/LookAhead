@@ -1,30 +1,35 @@
 # LookAhead
 
-**A personalized month-end spending forecast with budget alerts — for a student with their first debit card, a family, or a small business.**
-
-Veritas AI International High School Hackathon 2026 · AI + Finance track
-
-**Team "Claude's Plan":** Aaron Hsueh (frontend) · Leon Pai (backend) · Ethan Huang (deploy, write-up, video)
+**A plain-language monthly spending calculator.** Enter take-home income and the amount you are thinking of spending. LookAhead gives you a practical spending target, shows what would be left, and compares your plan with current U.S. consumer-spending benchmarks.
 
 > This project is a prototype and is not financial advice.
 
 ## What it does
 
-You say who you are, pick a profile, and LookAhead tells you what you'll have spent by month-end, per category, with a likely range — and warns you when you're on track to overshoot your budget. The forecast is personal: the model only uses that person's own transaction history.
+LookAhead opens directly to a calculator. There is no email, name, account, bank login, or CSV requirement. Choose monthly or yearly take-home pay, enter planned monthly spending, and get a result based on a transparent 80% spending starting point from the CFPB's educational 50/30/20 framework. The page also shows BLS consumer-unit spending as context, not as a personal target.
+
+The primary recommendation is intentionally explainable arithmetic. Leon will add the 2026 consumer-data backend layer later; until then, the UI does not fabricate a request from demo data or present the old historical model as current data.
+
+## Current sources
+
+The calculator uses the latest official releases available at build time: BLS Consumer Expenditure Survey 2024 (average consumer-unit spending of $78,535/year, or about $6,545/month), Census Income in the United States: 2025, CFPB's 50/30/20 educational framework, and the Federal Reserve's 2025 household savings report. Source links and assumptions are recorded in `.work/consumer-benchmarks-2026.md` and `.claude/docs/CREDITS.md`.
 
 ## Structure
 
+```text
+frontend/   Next.js calculator UI
+backend/    FastAPI historical forecast engine
 ```
-frontend/   the web app (Next.js)
-backend/    data, model and API (Python)
+
+## Run locally
+
+```bash
+cd frontend
+npm install
+npm run dev          # http://localhost:3000
+npm run typecheck
+npm run lint
+npm run build -- --webpack
 ```
 
-## How it works
-
-1. **Data:** real, anonymized bank-card transactions from a public dataset (see `backend/data/README.md`), sorted into 9 everyday categories.
-2. **Model:** a gradient-boosted tree model looks at 8 numbers about you — your last three months in a category, their average, what you've spent so far this month, and where we are in the month — and predicts how much more you'll spend before month-end.
-3. **Honesty:** we test on three months the model never saw and compare it with two simple rules ("same as last month" and "same pace as so far"). Results, error by user group and real failure cases are shown in the app.
-
-## Sources
-
-Datasets, libraries and AI tools used (with links) will be listed here before submission.
+The frontend can work without the backend; the calculator result remains available and the backend card explains that the 2026 data layer is not connected yet.
