@@ -3,8 +3,8 @@ import "./globals.css";
 import { Disclaimer } from "@/components/Disclaimer";
 
 export const metadata: Metadata = {
-  title: "LookAhead Market Pulse — News + Market Forecast",
-  description: "A transparent market-news brief combining public headlines, market context, and a modelled forecast.",
+  title: "LookAhead Market Pulse — News vs. Market Direction",
+  description: "A transparent market-news study comparing public headlines with historical market direction.",
   icons: { icon: "/icon.svg" },
 };
 
