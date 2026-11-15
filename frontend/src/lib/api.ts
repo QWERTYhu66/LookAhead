@@ -56,6 +56,15 @@ export async function getForecast(profile: DemoProfile): Promise<Result<Forecast
   }
 }
 
+export async function getForecastForTransactions(request: ForecastRequest): Promise<Result<ForecastResponse>> {
+  const data = await get<ForecastResponse>("/api/forecast", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(request),
+  });
+  return { data, cached: false };
+}
+
 export async function getEvaluation(): Promise<Result<Evaluation>> {
   try {
     return { data: await get<Evaluation>("/api/evaluation"), cached: false };

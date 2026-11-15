@@ -13,15 +13,63 @@ import { ForecastSkeleton } from "@/components/Skeleton";
 import { Summary } from "@/components/Summary";
 import { Glyph } from "@/components/Glyph";
 import { computeAlerts, type Budget } from "@/lib/alerts";
-import { getForecast, getProfiles, personaOf } from "@/lib/api";
+import { getForecast, getForecastForTransactions, getProfiles, personaOf } from "@/lib/api";
 import { clearSession, getSession, type SessionUser } from "@/lib/auth";
-import type { DemoProfile, ForecastResponse, Persona } from "@/lib/types";
+import type { DemoProfile, ForecastRequest, ForecastResponse, Persona, Transaction } from "@/lib/types";
 
 const PERSONA_CHOICES: { id: Persona; title: string }[] = [
   { id: "student", title: "Student" },
   { id: "family", title: "Family" },
   { id: "business", title: "Business" },
 ];
+
+function parseCsvLine(line: string): string[] {
+  const values: string[] = [];
+  let value = "";
+  let quoted = false;
+  for (let i = 0; i < line.length; i += 1) {
+    const char = line[i];
+    if (char === '"' && line[i + 1] === '"') { value += '"'; i += 1; }
+    else if (char === '"') quoted = !quoted;
+    else if (char === "," && !quoted) { values.push(value.trim()); value = ""; }
+    else value += char;
+  }
+  values.push(value.trim());
+  return values;
+}
+
+function parseTransactionsCsv(text: string): ForecastRequest {
+  const lines = text.split(/\r?\n/).filter((line) => line.trim());
+  if (lines.length < 2) throw new Error("The CSV needs a header row and at least one transaction.");
+  const headers = parseCsvLine(lines[0]).map((header) => header.toLowerCase().replace(/^\uFEFF/, "").trim());
+  const dateIndex = headers.findIndex((header) => ["date", "transaction_date", "posted_date"].includes(header));
+  const amountIndex = headers.findIndex((header) => ["amount", "value", "debit", "spent"].includes(header));
+  const categoryIndex = headers.findIndex((header) => ["category", "type", "merchant_category"].includes(header));
+  const descriptionIndex = headers.findIndex((header) => ["description", "merchant", "name"].includes(header));
+  if (dateIndex < 0 || amountIndex < 0 || categoryIndex < 0) throw new Error("Include date, amount, and category columns.");
+  const transactions: Transaction[] = lines.slice(1).map((line, row) => {
+    const cells = parseCsvLine(line);
+    const date = new Date(cells[dateIndex]);
+    const amount = Number(cells[amountIndex].replace(/[$,]/g, "").replace(/[()]/g, ""));
+    if (Number.isNaN(date.getTime()) || !Number.isFinite(amount)) throw new Error(`Row ${row + 2} has an invalid date or amount.`);
+    return { date: date.toISOString().slice(0, 10), amount: Math.abs(amount), category: normalizeCategory(cells[categoryIndex]), description: descriptionIndex >= 0 ? cells[descriptionIndex] : undefined };
+  });
+  const asOf = transactions.reduce((latest, transaction) => transaction.date > latest ? transaction.date : latest, transactions[0].date);
+  return { transactions, as_of: asOf };
+}
+
+function normalizeCategory(raw: string): string {
+  const value = raw.toLowerCase();
+  if (/grocery|supermarket|market/.test(value)) return "groceries";
+  if (/restaurant|dining|coffee|food|eat/.test(value)) return "eating_out";
+  if (/transport|transit|uber|lyft|gas|fuel|parking/.test(value)) return "transport";
+  if (/travel|hotel|airline|flight/.test(value)) return "travel";
+  if (/shop|retail|clothing|online/.test(value)) return "shopping";
+  if (/movie|music|game|entertainment|sport/.test(value)) return "entertainment";
+  if (/health|medical|pharmacy|doctor/.test(value)) return "health";
+  if (/bill|utility|rent|phone|internet|service|subscription/.test(value)) return "bills_services";
+  return "other";
+}
 
 export default function Home() {
   const router = useRouter();
@@ -34,6 +82,9 @@ export default function Home() {
   const [persona, setPersona] = useState<Persona | null>(null);
   const [profiles, setProfiles] = useState<DemoProfile[]>([]);
   const [loaded, setLoaded] = useState<{ persona: Persona; data: ForecastResponse; cached: boolean } | null>(null);
+  const [imported, setImported] = useState<{ data: ForecastResponse; label: string } | null>(null);
+  const [importError, setImportError] = useState<string | null>(null);
+  const [importing, setImporting] = useState(false);
   const [budget, setBudget] = useState<Budget>(() => {
     const user = getSession()?.user;
     if (!user) return { by_category: {} };
@@ -68,8 +119,28 @@ export default function Home() {
     };
   }, [persona, profiles]);
 
-  const forecast = loaded && loaded.persona === persona ? loaded.data : null;
-  const cached = loaded?.cached ?? false;
+  const handleImport = async (file: File) => {
+    setImporting(true);
+    setImportError(null);
+    try {
+      const result = await getForecastForTransactions(parseTransactionsCsv(await file.text()));
+      setImported({ data: result.data, label: file.name });
+      setPersona("student");
+    } catch (error) {
+      setImportError(error instanceof Error ? error.message : "We could not read that CSV.");
+    } finally {
+      setImporting(false);
+    }
+  };
+
+  const choosePersona = (next: Persona) => {
+    setImported(null);
+    setImportError(null);
+    setPersona(next);
+  };
+
+  const forecast = imported?.data ?? (loaded && loaded.persona === persona ? loaded.data : null);
+  const cached = imported ? false : (loaded?.cached ?? false);
 
   const alerts = useMemo(() => (forecast ? computeAlerts(forecast.categories, forecast.total, budget) : []), [forecast, budget]);
   const scale = useMemo(
@@ -100,7 +171,7 @@ export default function Home() {
     router.refresh();
   };
 
-  if (!persona) return <PersonaCards onPick={setPersona} />;
+  if (!persona) return <PersonaCards onPick={choosePersona} onImport={handleImport} />;
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -132,6 +203,10 @@ export default function Home() {
             })}
           </div>
           <div className="flex items-center gap-3">
+            <label className="hidden cursor-pointer rounded-full border border-hairline px-3 py-1.5 text-caption font-bold text-muted transition-colors hover:border-accent hover:text-accent sm:inline-flex">
+              {importing ? "Importing…" : "Import CSV"}
+              <input className="sr-only" type="file" accept=".csv,text/csv" disabled={importing} onChange={(event) => { const file = event.target.files?.[0]; if (file) void handleImport(file); event.currentTarget.value = ""; }} />
+            </label>
             <Link href="/evaluation" className="hidden rounded-full border border-hairline px-3 py-1.5 text-caption font-bold text-muted transition-colors hover:border-accent hover:text-accent sm:inline-flex">
               How good is it?
             </Link>
@@ -151,8 +226,10 @@ export default function Home() {
       <main className="mx-auto w-full max-w-[1040px] flex-1 px-4 pb-16 pt-8 sm:px-6 sm:pt-10">
         <div className="flex flex-wrap items-center gap-3 mb-2">
           {cached && <CachedTag />}
-          <span className="text-eyebrow">{sessionUser ? `${sessionUser.name}'s workspace` : "Your workspace"} · month-end forecast · {forecast?.as_of ?? "2015-11-20"}</span>
+          <span className="text-eyebrow">{imported ? `${imported.label} · your forecast` : `${sessionUser ? `${sessionUser.name}'s workspace` : "Your workspace"} · month-end forecast`} · {forecast?.as_of ?? "2015-11-20"}</span>
         </div>
+
+        {importError && <div className="mb-5 flex items-center justify-between gap-4 rounded-xl border border-danger/40 bg-danger/10 px-4 py-3 text-caption text-danger" role="alert"><span>{importError}</span><button type="button" className="font-bold underline" onClick={() => setImportError(null)}>Dismiss</button></div>}
 
         {!forecast ? (
           <ForecastSkeleton />
@@ -215,12 +292,6 @@ export default function Home() {
         )}
       </div>
 
-      <footer className="mx-auto w-full max-w-[1040px] px-4 pb-10 pt-6 sm:px-6 border-t border-hairline mt-auto">
-        <p className="text-caption max-w-prose">
-          &ldquo;This project is a prototype and is not financial advice.&rdquo; Amounts are in the dataset&apos;s unspecified units. Built by team
-          &ldquo;Claude&rsquo;s Plan&rdquo; for the Veritas AI High School Hackathon 2026.
-        </p>
-      </footer>
     </div>
   );
 }

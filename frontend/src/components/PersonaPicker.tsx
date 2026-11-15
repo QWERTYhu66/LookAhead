@@ -6,7 +6,7 @@ import { PRESS, PRESS_SOFT, useMotionSafe } from "@/lib/motion";
 import { PERSONAS, type Persona } from "@/lib/types";
 
 /** First screen: who are you? Three cards, each one answer away from a forecast. */
-export function PersonaCards({ onPick }: { onPick: (p: Persona) => void }) {
+export function PersonaCards({ onPick, onImport }: { onPick: (p: Persona) => void; onImport: (file: File) => void }) {
   const { spring, enter, shown } = useMotionSafe();
   return (
     <section className="mx-auto flex max-w-xl flex-col gap-8 pt-6 sm:pt-12">
@@ -41,6 +41,16 @@ export function PersonaCards({ onPick }: { onPick: (p: Persona) => void }) {
           </motion.li>
         ))}
       </ul>
+      <div className="glass flex flex-col gap-3 p-5">
+        <div>
+          <p className="text-headline">Use your own spending</p>
+          <p className="text-caption mt-1">Upload a CSV with <strong>date</strong>, <strong>amount</strong>, and <strong>category</strong> columns. We&apos;ll forecast the rest of this month from your history.</p>
+        </div>
+        <label className="login-button cursor-pointer">
+          Import transactions <span aria-hidden>↗</span>
+          <input className="sr-only" type="file" accept=".csv,text/csv" onChange={(event) => { const file = event.target.files?.[0]; if (file) onImport(file); event.currentTarget.value = ""; }} />
+        </label>
+      </div>
     </section>
   );
 }

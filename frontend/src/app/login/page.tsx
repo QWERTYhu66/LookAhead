@@ -35,7 +35,7 @@ export default function LoginPage() {
         <p className="text-eyebrow">Private money workspace</p>
         <h1 className="text-display text-gold">Make the month make sense.</h1>
         <p className="text-body text-muted">
-          Save your budgets and return to the same clear read on your spending. No bank connection is required for this prototype.
+          Save your budgets and return to the same clear read on your spending. Import a CSV from your bank to forecast the rest of the month.
         </p>
         <form onSubmit={submit} className="login-form">
           <label className="form-label">Your name <span>optional</span>
@@ -49,7 +49,7 @@ export default function LoginPage() {
             Open my workspace <span aria-hidden>↗</span>
           </motion.button>
         </form>
-        <p className="text-caption">Your demo workspace stays on this device. Forecasts are powered by Leon&apos;s backend when it is online.</p>
+        <p className="text-caption">Your workspace is saved on this device. Forecasts are powered by Leon&apos;s forecasting service.</p>
       </motion.section>
       <div className="login-orbit orbit-one" aria-hidden />
       <div className="login-orbit orbit-two" aria-hidden />
