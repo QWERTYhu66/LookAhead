@@ -1,9 +1,0 @@
-fastapi
-uvicorn[standard]
-pandas
-scikit-learn
-pydantic
-pyarrow
-joblib
-pytest
-httpx
