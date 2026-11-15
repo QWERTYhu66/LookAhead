@@ -1,0 +1,95 @@
+{
+  "dataset": {
+    "name": "transactions-gender (dllllb)",
+    "users": 14956,
+    "train_period": "2014-12 \u2192 2015-08",
+    "test_period": "2015-09 \u2192 2015-11",
+    "source_url": "https://huggingface.co/datasets/dllllb/transactions-gender"
+  },
+  "mae": {
+    "model": 232081,
+    "last_month": 272936,
+    "same_pace": 408524
+  },
+  "median_error": {
+    "model": 21885,
+    "last_month": 24705,
+    "same_pace": 35332
+  },
+  "range_coverage": 0.802,
+  "by_group": [
+    {
+      "group_name": "gender label (dataset code 0/1, meaning undocumented)",
+      "groups": [
+        {
+          "label": "group 0",
+          "n_users": 4521,
+          "model": 147874,
+          "last_month": 189502
+        },
+        {
+          "label": "group 1",
+          "n_users": 3656,
+          "model": 270039,
+          "last_month": 294676
+        },
+        {
+          "label": "unlabelled",
+          "n_users": 6331,
+          "model": 261144,
+          "last_month": 314205
+        }
+      ]
+    },
+    {
+      "group_name": "spend level (student-like, family-like, business-like)",
+      "groups": [
+        {
+          "label": "low spenders",
+          "n_users": 405,
+          "model": 24940,
+          "last_month": 3980
+        },
+        {
+          "label": "mid",
+          "n_users": 493,
+          "model": 27824,
+          "last_month": 18564
+        },
+        {
+          "label": "high spenders",
+          "n_users": 13610,
+          "model": 236296,
+          "last_month": 278263
+        }
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "user_id": "11332993",
+      "category": "other",
+      "month": "2015-11",
+      "predicted": 227640092,
+      "actual": 602925043,
+      "why": "One-off large purchase late in the month that no recent history could predict."
+    },
+    {
+      "user_id": "54871257",
+      "category": "other",
+      "month": "2015-11",
+      "predicted": 51309689,
+      "actual": 149448218,
+      "why": "One-off large purchase late in the month that no recent history could predict."
+    },
+    {
+      "user_id": "76310395",
+      "category": "other",
+      "month": "2015-10",
+      "predicted": 106471124,
+      "actual": 198514148,
+      "why": "One-off large purchase late in the month that no recent history could predict."
+    }
+  ],
+  "disclaimer": "This project is a prototype and is not financial advice."
+}

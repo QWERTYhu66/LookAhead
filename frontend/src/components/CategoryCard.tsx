@@ -27,7 +27,7 @@ export function CategoryCard({ c, scale, budget, onOpen }: Props) {
         onClick={onOpen}
         whileTap={PRESS}
         transition={spring}
-        className="card flex w-full items-center gap-4 px-4 py-3.5 text-left sm:px-5"
+        className="card strong flex w-full items-center gap-4 px-4 py-3.5 text-left sm:px-5"
         aria-label={`${label(c.category)}: spent ${fmt(c.spent_so_far)}, forecast ${fmt(c.predicted)}. Open details`}
       >
         <CategoryGlyph category={c.category} />

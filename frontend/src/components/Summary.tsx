@@ -32,7 +32,7 @@ export function Summary({ f, budget, onBudget, alerts }: Props) {
     <section className="card flex flex-col gap-5 p-5 sm:p-6">
       <div className="flex flex-col gap-1">
         <p className="text-eyebrow">Likely spend by {monthEnd(f.as_of)}</p>
-        <AnimatedNumber value={t.predicted} className="text-display" />
+        <AnimatedNumber value={t.predicted} className="text-display text-gradient" />
         <p className="text-body text-muted tabular">
           between {fmt(t.low)} and {fmt(t.high)}
           {vsLast && (
@@ -60,7 +60,7 @@ export function Summary({ f, budget, onBudget, alerts }: Props) {
       </div>
 
       {/* Pace: how far through the month vs how much of last month's total is gone */}
-      <div className="flex flex-col gap-2 rounded-2xl bg-surface-2 p-4">
+      <div className="glass flex flex-col gap-2 p-4">
         <div className="flex items-baseline justify-between">
           <span className="text-headline">Pace</span>
           <span className="text-caption tabular">

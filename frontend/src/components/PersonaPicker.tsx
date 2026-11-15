@@ -9,28 +9,30 @@ import { PERSONAS, type Persona } from "@/lib/types";
 export function PersonaCards({ onPick }: { onPick: (p: Persona) => void }) {
   const { spring, enter, shown } = useMotionSafe();
   return (
-    <section className="mx-auto flex max-w-xl flex-col gap-8 pt-6 sm:pt-12">
-      <motion.div initial={enter} animate={shown} transition={spring} className="flex flex-col gap-3">
+    <section className="mx-auto flex max-w-[640px] flex-col items-center gap-8 pt-10 sm:pt-16">
+      <motion.div initial={enter} animate={shown} transition={spring} className="flex flex-col gap-3 text-center">
         <p className="text-eyebrow">LookAhead</p>
-        <h1 className="text-hero">What will this month cost you?</h1>
+        <h1 className="text-hero text-gradient tracking-tight">
+          What will this month cost you?
+        </h1>
         <p className="text-body text-muted max-w-prose">
-          A forecast of where your spending lands by month-end, per category, from your own history. Pick who you are to see it on a
-          matching profile.
+          A forecast of where your spending lands by month-end, per category, from your own history.
+          Pick who you are to see it on a matching profile.
         </p>
       </motion.div>
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-col gap-3 w-full">
         {PERSONAS.map((p, i) => (
           <motion.li key={p.id} initial={enter} animate={shown} transition={{ ...spring, delay: 0.06 + i * 0.05 }}>
             <motion.button
               type="button"
               onClick={() => onPick(p.id)}
               whileTap={PRESS}
-              whileHover={{ y: -1 }}
+              whileHover={{ y: -2 }}
               transition={spring}
-              className="card flex w-full items-center gap-4 px-5 py-4 text-left"
+              className="card strong flex w-full items-center gap-4 px-6 py-5 text-left"
             >
-              <span className="tint flex h-11 w-11 shrink-0 items-center justify-center rounded-full" style={{ ["--tint" as string]: "var(--accent)" }}>
-                <Glyph name={p.id} size={22} />
+              <span className="tint flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl" style={{ ["--tint" as string]: "var(--accent)" }}>
+                <Glyph name={p.id} size={24} />
               </span>
               <span className="flex min-w-0 flex-1 flex-col">
                 <span className="text-headline">{p.title}</span>

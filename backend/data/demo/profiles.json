@@ -1,0 +1,20 @@
+[
+  {
+    "id": "student_a",
+    "label": "Student A \u2014 Nov 20",
+    "as_of": "2015-11-20",
+    "persona": "student"
+  },
+  {
+    "id": "family_b",
+    "label": "Family B \u2014 Nov 20",
+    "as_of": "2015-11-20",
+    "persona": "family"
+  },
+  {
+    "id": "business_c",
+    "label": "Business C \u2014 Nov 20",
+    "as_of": "2015-11-20",
+    "persona": "business"
+  }
+]

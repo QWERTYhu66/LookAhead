@@ -22,7 +22,7 @@ function Bar({ value, max, tone = "bg-forecast", height = "h-2.5" }: { value: nu
 
 function Tile({ title, value, sub }: { title: string; value: string; sub?: string }) {
   return (
-    <div className="card flex flex-col gap-0.5 px-4 py-3.5">
+    <div className="card strong flex flex-col gap-0.5 px-4 py-3.5">
       <span className="text-caption">{title}</span>
       <span className="text-title tabular">{value}</span>
       {sub && <span className="text-caption">{sub}</span>}
@@ -68,7 +68,7 @@ export default function EvaluationPage() {
           <p className="text-eyebrow">Tested on {ev.dataset.test_period}, months the model never saw</p>
           {cached && <CachedTag />}
         </div>
-        <h1 className="text-display">
+        <h1 className="text-display text-gradient">
           {better >= 0 ? `${better.toFixed(0)}% less error` : `${Math.abs(better).toFixed(0)}% more error`} than the best simple rule.
         </h1>
         <p className="text-body text-muted max-w-prose">
@@ -78,7 +78,7 @@ export default function EvaluationPage() {
       </section>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-8">
-        <section className="card flex flex-col gap-4 p-5 sm:p-6">
+        <section className="card strong flex flex-col gap-4 p-5 sm:p-6">
           <h2 className="text-title">Model vs. two simple rules</h2>
           <div className="flex flex-col gap-3">
             {rows.map((r) => (
@@ -114,7 +114,7 @@ export default function EvaluationPage() {
           {ev.by_group.map((g) => {
             const max = Math.max(...g.groups.map((x) => Math.max(x.model, x.last_month)));
             return (
-              <div key={g.group_name} className="card flex flex-col gap-4 p-5">
+                <div key={g.group_name} className="card strong flex flex-col gap-4 p-5">
                 <span className="text-headline">By {g.group_name}</span>
                 {g.groups.map((row) => (
                   <div key={row.label} className="flex flex-col gap-1.5">
@@ -143,7 +143,7 @@ export default function EvaluationPage() {
         </div>
         <ul className="grid grid-cols-1 gap-3 md:grid-cols-3">
           {ev.failures.map((f) => (
-            <li key={`${f.user_id}-${f.category}-${f.month}`} className="card flex flex-col gap-3 p-5">
+            <li key={`${f.user_id}-${f.category}-${f.month}`} className="card strong flex flex-col gap-3 p-5">
               <div className="flex items-center gap-3">
                 <CategoryGlyph category={f.category} size={32} />
                 <div className="flex flex-col">

@@ -28,7 +28,7 @@ export function Header() {
   return (
     <header className="material sticky top-0 z-20">
       <nav className="mx-auto flex w-full max-w-[1040px] items-center justify-between px-4 py-2.5 sm:px-6">
-        <Link href="/" className="text-headline tracking-tight">
+        <Link href="/" className="text-headline tracking-tight text-gradient">
           LookAhead
         </Link>
         <div role="tablist" className="flex rounded-full bg-hairline p-1">

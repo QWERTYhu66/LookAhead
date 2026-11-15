@@ -1,0 +1,3997 @@
+[
+  {
+    "date": "2014-09-01",
+    "amount": 4491.83,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-01",
+    "amount": 3346.41,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-09-02",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-02",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-03",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-05",
+    "amount": 134754.95,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-05",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-06",
+    "amount": 444691.32,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-06",
+    "amount": 4446.91,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-06",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-07",
+    "amount": 56147.89,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-07",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-08",
+    "amount": 224591.58,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-09",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-10",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-12",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-12",
+    "amount": 5210.52,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-09-12",
+    "amount": 15526.69,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-09-12",
+    "amount": 6805.12,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-09-12",
+    "amount": 3189.2,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-09-13",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-13",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-13",
+    "amount": 4963.47,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-09-14",
+    "amount": 11229.58,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-14",
+    "amount": 8983.66,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-14",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-14",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-14",
+    "amount": 78607.05,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-15",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-17",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-18",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-19",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-19",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-20",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-20",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-21",
+    "amount": 2445.8,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-21",
+    "amount": 244580.23,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-25",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-26",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-26",
+    "amount": 62885.64,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-26",
+    "amount": 628.86,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-26",
+    "amount": 44.92,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-26",
+    "amount": 4491.83,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-26",
+    "amount": 89836.63,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-27",
+    "amount": 16732.07,
+    "category": "shopping"
+  },
+  {
+    "date": "2014-09-27",
+    "amount": 49070.79,
+    "category": "shopping"
+  },
+  {
+    "date": "2014-09-27",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-28",
+    "amount": 4469.37,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-29",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-29",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-09-29",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2014-09-30",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-02",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-02",
+    "amount": 11229.58,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-03",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-05",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-06",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-06",
+    "amount": 89836.63,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-06",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-06",
+    "amount": 673.77,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-06",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-06",
+    "amount": 22593.91,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-10-09",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-10",
+    "amount": 10353.67,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-10-10",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-10",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-11",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-12",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-12",
+    "amount": 89836.63,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-13",
+    "amount": 24608.05,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-13",
+    "amount": 1717.68,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-13",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-13",
+    "amount": 10461.92,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-10-14",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-15",
+    "amount": 67355.01,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-15",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-16",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-16",
+    "amount": 224591.58,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-17",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-18",
+    "amount": 1081.18,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-18",
+    "amount": 877.48,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-18",
+    "amount": 1143.17,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-18",
+    "amount": 1329.36,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-18",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-18",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-18",
+    "amount": 4941.01,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-10-19",
+    "amount": 2245.92,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-19",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-20",
+    "amount": 4570.44,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-10-21",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-22",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-23",
+    "amount": 26389.96,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-23",
+    "amount": 2399.99,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-23",
+    "amount": 2647.93,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-23",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-24",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-25",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-26",
+    "amount": 714.2,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-26",
+    "amount": 1321.05,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-26",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-26",
+    "amount": 7793.33,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-10-26",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-27",
+    "amount": 89836.63,
+    "category": "other"
+  },
+  {
+    "date": "2014-10-28",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-29",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-31",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-10-31",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-01",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-02",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-02",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-02",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-02",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-03",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-04",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-04",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-05",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-06",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-06",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-06",
+    "amount": 673.77,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-06",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-07",
+    "amount": 35912.19,
+    "category": "shopping"
+  },
+  {
+    "date": "2014-11-07",
+    "amount": 3368.87,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-07",
+    "amount": 15721.41,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-07",
+    "amount": 11229.58,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-07",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-08",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-08",
+    "amount": 8983.66,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-08",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-08",
+    "amount": 11229.58,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-09",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-09",
+    "amount": 8983.66,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-10",
+    "amount": 861.76,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-10",
+    "amount": 852.33,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-10",
+    "amount": 7633.42,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-10",
+    "amount": 269509.89,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-10",
+    "amount": 2695.1,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-10",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-11",
+    "amount": 10290.56,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-11-11",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-11",
+    "amount": 6535.61,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-11-11",
+    "amount": 5502.49,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-11-12",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-13",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-13",
+    "amount": 20213.24,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-13",
+    "amount": 15721.41,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-14",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-14",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-15",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-15",
+    "amount": 5120.69,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-11-16",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-16",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-17",
+    "amount": 3481.17,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-11-17",
+    "amount": 561478.94,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-17",
+    "amount": 4491.83,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-17",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-18",
+    "amount": 57931.15,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-18",
+    "amount": 10066.19,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-11-18",
+    "amount": 18079.62,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-18",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-20",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-21",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-21",
+    "amount": 336887.37,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-21",
+    "amount": 89836.63,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-21",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-22",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-23",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-24",
+    "amount": 33688.74,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-24",
+    "amount": 34587.1,
+    "category": "shopping"
+  },
+  {
+    "date": "2014-11-24",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-24",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-25",
+    "amount": 9239.7,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-11-25",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-27",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-27",
+    "amount": 61942.36,
+    "category": "other"
+  },
+  {
+    "date": "2014-11-27",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-28",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-11-29",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-01",
+    "amount": 2279.6,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-01",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-01",
+    "amount": 56147.89,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-02",
+    "amount": 898366.31,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-02",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-04",
+    "amount": 10249.69,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-04",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-05",
+    "amount": 202132.42,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-05",
+    "amount": 2021.32,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-05",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-06",
+    "amount": 449183.15,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-06",
+    "amount": 5614.79,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-06",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-13",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-14",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-18",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-19",
+    "amount": 5702.38,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-19",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-19",
+    "amount": 2672.64,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-19",
+    "amount": 2403.13,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-20",
+    "amount": 9044.3,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-20",
+    "amount": 639.86,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-20",
+    "amount": 3036.48,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-20",
+    "amount": 3368.87,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-20",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-21",
+    "amount": 224.59,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-21",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-21",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-21",
+    "amount": 4401.99,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-21",
+    "amount": 2762.48,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-21",
+    "amount": 5457.58,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-22",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-22",
+    "amount": 6580.53,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-22",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-22",
+    "amount": 12083.03,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-24",
+    "amount": 5871.27,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-25",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-25",
+    "amount": 224591.58,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-25",
+    "amount": 61268.58,
+    "category": "health"
+  },
+  {
+    "date": "2014-12-26",
+    "amount": 8759.07,
+    "category": "shopping"
+  },
+  {
+    "date": "2014-12-26",
+    "amount": 4682.29,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-26",
+    "amount": 224591.58,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-26",
+    "amount": 89836.63,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-26",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-27",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-27",
+    "amount": 89836.63,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-27",
+    "amount": 112295.79,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-27",
+    "amount": 1010662.1,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-27",
+    "amount": 6737.75,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-27",
+    "amount": 11229.58,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-28",
+    "amount": 3009.53,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-28",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2014-12-29",
+    "amount": 29196.91,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-29",
+    "amount": 235821.16,
+    "category": "other"
+  },
+  {
+    "date": "2014-12-29",
+    "amount": 6243.65,
+    "category": "groceries"
+  },
+  {
+    "date": "2014-12-29",
+    "amount": 3368.87,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-01-01",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-01-01",
+    "amount": 14845.5,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-01-02",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-03",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-01-03",
+    "amount": 56147.89,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-03",
+    "amount": 17967.33,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-03",
+    "amount": 7456.44,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-01-04",
+    "amount": 123525.37,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-05",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-08",
+    "amount": 5000.08,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-01-08",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-01-08",
+    "amount": 33688.74,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-09",
+    "amount": 2223.46,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-09",
+    "amount": 222345.66,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-09",
+    "amount": 33688.74,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-09",
+    "amount": 9140.88,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-01-10",
+    "amount": 14984.3,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-01-10",
+    "amount": 202132.42,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-12",
+    "amount": 673774.73,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-12",
+    "amount": 8983.66,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-12",
+    "amount": 20213.24,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-13",
+    "amount": 10567.93,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-01-14",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-01-16",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-16",
+    "amount": 9051.04,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-01-17",
+    "amount": 16595.75,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-17",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-17",
+    "amount": 11229.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-18",
+    "amount": 12689.42,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-01-18",
+    "amount": 965.74,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-01-19",
+    "amount": 13026.31,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-01-19",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-19",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-01-22",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-01-23",
+    "amount": 2245.92,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-23",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-01-23",
+    "amount": 89836.63,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-23",
+    "amount": 13360.05,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-01-24",
+    "amount": 8961.2,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-24",
+    "amount": 449183.15,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-24",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-25",
+    "amount": 6011.87,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-01-25",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-26",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-26",
+    "amount": 17003.38,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-01-27",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-29",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-01-29",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-01-29",
+    "amount": 11791.06,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-01-29",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-29",
+    "amount": 247050.73,
+    "category": "other"
+  },
+  {
+    "date": "2015-01-30",
+    "amount": 8085.3,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-02-03",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-02-04",
+    "amount": 2537.88,
+    "category": "eating_out"
+  },
+  {
+    "date": "2015-02-04",
+    "amount": 6288.56,
+    "category": "eating_out"
+  },
+  {
+    "date": "2015-02-04",
+    "amount": 9241.72,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-02-04",
+    "amount": 68949.61,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-02-05",
+    "amount": 2494.99,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-05",
+    "amount": 5126.3,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-02-05",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-02-05",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-02-06",
+    "amount": 5637.7,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-02-07",
+    "amount": 6737.75,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-02-07",
+    "amount": 3829.29,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-02-07",
+    "amount": 11229.58,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-02-08",
+    "amount": 7263.07,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-02-08",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-08",
+    "amount": 89836.63,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-02-08",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-02-09",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-10",
+    "amount": 6618.71,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-02-10",
+    "amount": 134754.95,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-10",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-02-11",
+    "amount": 666.14,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-11",
+    "amount": 6909.56,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-12",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-02-13",
+    "amount": 4424.45,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-02-13",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-14",
+    "amount": 3746.19,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-02-15",
+    "amount": 5891.04,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-02-15",
+    "amount": 2438.62,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-02-16",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-16",
+    "amount": 2290.83,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-02-17",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-18",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-02-19",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-20",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-21",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-02-21",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-21",
+    "amount": 20213.24,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-22",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-02-23",
+    "amount": 11229.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-23",
+    "amount": 6894.96,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-02-24",
+    "amount": 997.86,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-24",
+    "amount": 11229.58,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-02-24",
+    "amount": 8497.42,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-02-27",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-02-28",
+    "amount": 78607.05,
+    "category": "other"
+  },
+  {
+    "date": "2015-02-28",
+    "amount": 6423.32,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-01",
+    "amount": 33262.01,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-01",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-01",
+    "amount": 4042.65,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-02",
+    "amount": 14567.46,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-02",
+    "amount": 3368.87,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-02",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-04",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-05",
+    "amount": 2154.73,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-03-06",
+    "amount": 11813.52,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-06",
+    "amount": 4469.37,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-09",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-09",
+    "amount": 56215.27,
+    "category": "health"
+  },
+  {
+    "date": "2015-03-09",
+    "amount": 4318.9,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-09",
+    "amount": 13475.49,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-12",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-12",
+    "amount": 17922.41,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-12",
+    "amount": 20213.24,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-13",
+    "amount": 3144.28,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-13",
+    "amount": 6692.83,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-13",
+    "amount": 1459.85,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-13",
+    "amount": 1347.55,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-13",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-14",
+    "amount": 8983.66,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-14",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-15",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-15",
+    "amount": 2892.74,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-16",
+    "amount": 7815.79,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-16",
+    "amount": 16597.32,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-16",
+    "amount": 14010.25,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-17",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-17",
+    "amount": 3054.45,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-17",
+    "amount": 3750.68,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-19",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-19",
+    "amount": 3234.12,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-19",
+    "amount": 16464.81,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-20",
+    "amount": 33688.74,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-21",
+    "amount": 33688.74,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-22",
+    "amount": 11836.87,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-23",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-23",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-23",
+    "amount": 22459.16,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-24",
+    "amount": 18307.36,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-24",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-26",
+    "amount": 673.77,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-27",
+    "amount": 3368.87,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-27",
+    "amount": 11229.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-27",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-28",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-29",
+    "amount": 673774.73,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-29",
+    "amount": 62885.64,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-29",
+    "amount": 69623.39,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-29",
+    "amount": 5839.38,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-29",
+    "amount": 6088.0,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-03-29",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-03-31",
+    "amount": 673.77,
+    "category": "other"
+  },
+  {
+    "date": "2015-03-31",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-01",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-04-02",
+    "amount": 4491.83,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-04-03",
+    "amount": 224591.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-03",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-03",
+    "amount": 3106.1,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-04",
+    "amount": 20213.24,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-04",
+    "amount": 12729.85,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-06",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-04-06",
+    "amount": 2223.46,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-06",
+    "amount": 222345.66,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-06",
+    "amount": 29196.91,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-08",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-09",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-04-10",
+    "amount": 269509.89,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-10",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-04-10",
+    "amount": 2407.62,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-11",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-11",
+    "amount": 224.59,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-11",
+    "amount": 224591.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-11",
+    "amount": 5524.95,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-11",
+    "amount": 4469.37,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-12",
+    "amount": 10836.54,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-13",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-04-13",
+    "amount": 20213.24,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-13",
+    "amount": 4491.83,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-04-15",
+    "amount": 5614.79,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-04-16",
+    "amount": 2245.92,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-16",
+    "amount": 10810.04,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-17",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-04-17",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-18",
+    "amount": 112.3,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-18",
+    "amount": 11229.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-18",
+    "amount": 202132.42,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-18",
+    "amount": 3736.08,
+    "category": "eating_out"
+  },
+  {
+    "date": "2015-04-18",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-04-19",
+    "amount": 1662.43,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-19",
+    "amount": 20213.24,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-19",
+    "amount": 1448.62,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-19",
+    "amount": 2492.97,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-19",
+    "amount": 651798.45,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-19",
+    "amount": 247463.98,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-19",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-19",
+    "amount": 181335.24,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-20",
+    "amount": 6632.19,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-21",
+    "amount": 89836.63,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-21",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-23",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-04-23",
+    "amount": 8048.24,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-24",
+    "amount": 6176.27,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-25",
+    "amount": 31185.21,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-25",
+    "amount": 112295.79,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-25",
+    "amount": 78607.05,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-25",
+    "amount": 8062.84,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-25",
+    "amount": 2897.23,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-04-25",
+    "amount": 183739.94,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-25",
+    "amount": 20123.41,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-26",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-26",
+    "amount": 4570.44,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-26",
+    "amount": 5693.4,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-26",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-04-26",
+    "amount": 89836.63,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-27",
+    "amount": 112295.79,
+    "category": "other"
+  },
+  {
+    "date": "2015-04-29",
+    "amount": 11229.58,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-04-29",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-01",
+    "amount": 16462.56,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-01",
+    "amount": 11229.58,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-02",
+    "amount": 67377.47,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-05-02",
+    "amount": 113144.74,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-02",
+    "amount": 7029.72,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-03",
+    "amount": 110499.06,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-05-03",
+    "amount": 11229.58,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-04",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-05",
+    "amount": 224591.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-05",
+    "amount": 15721.41,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-06",
+    "amount": 718693.05,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-06",
+    "amount": 5116.2,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-06",
+    "amount": 6412.76,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-06",
+    "amount": 4491.83,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-07",
+    "amount": 1246.48,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-07",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-07",
+    "amount": 74789.0,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-09",
+    "amount": 78607.05,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-09",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-10",
+    "amount": 4491.83,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-11",
+    "amount": 269509.89,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-12",
+    "amount": 269168.51,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-12",
+    "amount": 224591.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-12",
+    "amount": 7456.44,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-12",
+    "amount": 222345.66,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-12",
+    "amount": 2223.46,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-12",
+    "amount": 7843.64,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-12",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-13",
+    "amount": 3368.87,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-14",
+    "amount": 20213.24,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-14",
+    "amount": 8983.66,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-16",
+    "amount": 6580.53,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-16",
+    "amount": 8848.91,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-16",
+    "amount": 8512.02,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-16",
+    "amount": 5361.0,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-16",
+    "amount": 22459.16,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-16",
+    "amount": 59714.41,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-17",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-17",
+    "amount": 3099.36,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-17",
+    "amount": 561478.94,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-18",
+    "amount": 44603.89,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-20",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-21",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-22",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-23",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-23",
+    "amount": 6291.71,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-25",
+    "amount": 78607.05,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-25",
+    "amount": 14194.19,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-26",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-27",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-27",
+    "amount": 449.18,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-27",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-28",
+    "amount": 4094.98,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-28",
+    "amount": 8178.05,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-28",
+    "amount": 1626.27,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-28",
+    "amount": 2176.29,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-28",
+    "amount": 1134.86,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-28",
+    "amount": 901.06,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-28",
+    "amount": 3287.8,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-28",
+    "amount": 404264.84,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-29",
+    "amount": 11049.91,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-30",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-30",
+    "amount": 4567.52,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-05-31",
+    "amount": 449183.15,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-31",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-05-31",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-05-31",
+    "amount": 10968.83,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-06-01",
+    "amount": 1217.51,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-01",
+    "amount": 2840.86,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-01",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-06-01",
+    "amount": 22459.16,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-06-02",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-06-04",
+    "amount": 449183.15,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-05",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-05",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-05",
+    "amount": 5932.59,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-06-06",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-06-06",
+    "amount": 111172.83,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-06",
+    "amount": 1111.73,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-06",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-06",
+    "amount": 13632.71,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-06-06",
+    "amount": 22459.16,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-06-07",
+    "amount": 10286.29,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-06-08",
+    "amount": 12936.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-08",
+    "amount": 8736.61,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-09",
+    "amount": 16519.61,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-06-12",
+    "amount": 177876.53,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-12",
+    "amount": 1778.77,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-12",
+    "amount": 11229.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-12",
+    "amount": 24345.73,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-12",
+    "amount": 10645.64,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-12",
+    "amount": 10174.0,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-12",
+    "amount": 179673.26,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-12",
+    "amount": 2245.92,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-12",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-12",
+    "amount": 17967.33,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-06-13",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-06-17",
+    "amount": 10965.01,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-17",
+    "amount": 17599.45,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-17",
+    "amount": 1030.65,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-17",
+    "amount": 17807.87,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-18",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-06-18",
+    "amount": 336887.37,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-20",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-20",
+    "amount": 3189.2,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-06-21",
+    "amount": 202132.42,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-21",
+    "amount": 2200997.46,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-23",
+    "amount": 3078.25,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-23",
+    "amount": 10960.07,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-06-23",
+    "amount": 9372.21,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-06-24",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-06-25",
+    "amount": 36159.24,
+    "category": "health"
+  },
+  {
+    "date": "2015-06-25",
+    "amount": 269509.89,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-25",
+    "amount": 8254.64,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-06-26",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-27",
+    "amount": 6558.07,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-06-27",
+    "amount": 8750.09,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-06-28",
+    "amount": 112295.79,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-28",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-29",
+    "amount": 18977.76,
+    "category": "other"
+  },
+  {
+    "date": "2015-06-30",
+    "amount": 224591.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-01",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-02",
+    "amount": 89836.63,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-02",
+    "amount": 898.37,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-02",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-03",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-03",
+    "amount": 7725.95,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-03",
+    "amount": 9926.95,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-03",
+    "amount": 112295.79,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-03",
+    "amount": 9284.84,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-04",
+    "amount": 2245.92,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-04",
+    "amount": 7526.74,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-04",
+    "amount": 196371.65,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-07-04",
+    "amount": 3654.1,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-05",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-05",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-06",
+    "amount": 2852.31,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-07",
+    "amount": 56147.89,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-09",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-09",
+    "amount": 179673.26,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-10",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-10",
+    "amount": 8691.69,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-10",
+    "amount": 4244.78,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-11",
+    "amount": 673.77,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-11",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-11",
+    "amount": 7770.87,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-11",
+    "amount": 78607.05,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-12",
+    "amount": 561478.94,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-12",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-12",
+    "amount": 112295.79,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-12",
+    "amount": 101066.21,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-13",
+    "amount": 8347.4,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-13",
+    "amount": 6737.75,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-13",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-14",
+    "amount": 7707.98,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-15",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-17",
+    "amount": 2169.11,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-17",
+    "amount": 6490.7,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-17",
+    "amount": 673774.73,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-17",
+    "amount": 55833.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-17",
+    "amount": 5136.41,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-19",
+    "amount": 6737.75,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-19",
+    "amount": 224591.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-19",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-19",
+    "amount": 4491.83,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-19",
+    "amount": 11229.58,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-19",
+    "amount": 13911.2,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-21",
+    "amount": 2439.96,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-21",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-21",
+    "amount": 11229.58,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-22",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-23",
+    "amount": 8303.15,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-25",
+    "amount": 8983.66,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-25",
+    "amount": 5342.14,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-26",
+    "amount": 56147.89,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-26",
+    "amount": 7119.55,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-27",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-27",
+    "amount": 9702.36,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-27",
+    "amount": 10843.06,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-29",
+    "amount": 9343.01,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-30",
+    "amount": 6008.72,
+    "category": "health"
+  },
+  {
+    "date": "2015-07-30",
+    "amount": 13679.65,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-30",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-07-31",
+    "amount": 179673.26,
+    "category": "other"
+  },
+  {
+    "date": "2015-07-31",
+    "amount": 11791.06,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-07-31",
+    "amount": 4601.43,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-08-03",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-08-03",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-07",
+    "amount": 4042.65,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-08-07",
+    "amount": 2021.32,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-08-07",
+    "amount": 7725.95,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-08-07",
+    "amount": 7097.09,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-08-08",
+    "amount": 13430.58,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-08-08",
+    "amount": 606397.26,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-08",
+    "amount": 18191.92,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-08",
+    "amount": 606397.26,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-08",
+    "amount": 5834.89,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-08-09",
+    "amount": 170689.6,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-09",
+    "amount": 1706.9,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-09",
+    "amount": 45199.05,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-09",
+    "amount": 4360.45,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-08-10",
+    "amount": 2245.92,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-10",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-10",
+    "amount": 3458.71,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-08-10",
+    "amount": 10582.53,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-08-11",
+    "amount": 4476.78,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-08-12",
+    "amount": 31056.52,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-12",
+    "amount": 5834.89,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-08-13",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-08-14",
+    "amount": 78939.45,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-14",
+    "amount": 33688.74,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-15",
+    "amount": 6400.86,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-08-15",
+    "amount": 7860.71,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-08-30",
+    "amount": 4941.01,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-30",
+    "amount": 494101.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-30",
+    "amount": 112295.79,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-30",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-08-31",
+    "amount": 4491.83,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-09-01",
+    "amount": 89836.63,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-01",
+    "amount": 7595.69,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-02",
+    "amount": 4491.83,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-09-02",
+    "amount": 17967.33,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-03",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-03",
+    "amount": 7142.01,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-03",
+    "amount": 5704.63,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-03",
+    "amount": 334012.59,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-03",
+    "amount": 2873.87,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-04",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-04",
+    "amount": 9458.9,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-05",
+    "amount": 10780.4,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-07",
+    "amount": 269509.89,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-07",
+    "amount": 37708.93,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-07",
+    "amount": 2906.22,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-09-07",
+    "amount": 7884.96,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-08",
+    "amount": 59000.21,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-09",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-09-11",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-11",
+    "amount": 224.59,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-11",
+    "amount": 2897.23,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-11",
+    "amount": 9522.68,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-11",
+    "amount": 7299.23,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-11",
+    "amount": 33688.74,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-12",
+    "amount": 33958.25,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-12",
+    "amount": 17967.33,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-12",
+    "amount": 4491.83,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-09-13",
+    "amount": 11737.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-14",
+    "amount": 9695.62,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-14",
+    "amount": 7164.47,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-15",
+    "amount": 9332.68,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-15",
+    "amount": 35418.09,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-15",
+    "amount": 10331.21,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-17",
+    "amount": 8579.4,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-17",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-17",
+    "amount": 673.77,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-18",
+    "amount": 12127.95,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-18",
+    "amount": 404264.84,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-19",
+    "amount": 548.0,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-19",
+    "amount": 16058.3,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-19",
+    "amount": 36496.13,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-19",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-09-21",
+    "amount": 22459.16,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-21",
+    "amount": 12788.92,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-22",
+    "amount": 33688.74,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-23",
+    "amount": 7618.15,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-24",
+    "amount": 14721.98,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-09-25",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-09-25",
+    "amount": 78607.05,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-25",
+    "amount": 112295.79,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-25",
+    "amount": 89836.63,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-25",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-25",
+    "amount": 8107.76,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-25",
+    "amount": 6737.75,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-09-25",
+    "amount": 6870.26,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-26",
+    "amount": 2245.92,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-27",
+    "amount": 3111.94,
+    "category": "other"
+  },
+  {
+    "date": "2015-09-27",
+    "amount": 148185.52,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-09-28",
+    "amount": 4589.98,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-01",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-10-04",
+    "amount": 9450.81,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-04",
+    "amount": 16834.71,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-10-06",
+    "amount": 112.3,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-06",
+    "amount": 11229.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-09",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-09",
+    "amount": 673.77,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-10",
+    "amount": 224591.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-11",
+    "amount": 12397.46,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-10-11",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-10-12",
+    "amount": 102166.71,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-12",
+    "amount": 10937.61,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-10-13",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-10-13",
+    "amount": 5715.86,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-10-14",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-10-14",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-10-15",
+    "amount": 3368.87,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-10-16",
+    "amount": 10129.08,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-10-16",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-16",
+    "amount": 14126.81,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-10-17",
+    "amount": 17136.34,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-17",
+    "amount": 9994.33,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-10-17",
+    "amount": 6737.75,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-10-19",
+    "amount": 1122.96,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-10-20",
+    "amount": 44918.32,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-23",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-10-24",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-10-24",
+    "amount": 3368.87,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-10-24",
+    "amount": 5569.87,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-10-24",
+    "amount": 2335.75,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-10-25",
+    "amount": 2245.92,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-25",
+    "amount": 8500.79,
+    "category": "shopping"
+  },
+  {
+    "date": "2015-10-25",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-10-26",
+    "amount": 78607.05,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-26",
+    "amount": 179673.26,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-26",
+    "amount": 8195.35,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-10-28",
+    "amount": 247050.73,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-30",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-10-31",
+    "amount": 786070.52,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-31",
+    "amount": 23582.12,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-31",
+    "amount": 67377.47,
+    "category": "other"
+  },
+  {
+    "date": "2015-10-31",
+    "amount": 8377.27,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-10-31",
+    "amount": 10578.26,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-11-01",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-11-01",
+    "amount": 1673.21,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-11-01",
+    "amount": 1697.24,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-11-01",
+    "amount": 4275.1,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-11-01",
+    "amount": 4049.39,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-11-02",
+    "amount": 31442.82,
+    "category": "other"
+  },
+  {
+    "date": "2015-11-04",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-11-05",
+    "amount": 8687.88,
+    "category": "other"
+  },
+  {
+    "date": "2015-11-06",
+    "amount": 5075.77,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-11-06",
+    "amount": 11229.58,
+    "category": "other"
+  },
+  {
+    "date": "2015-11-07",
+    "amount": 4491.83,
+    "category": "other"
+  },
+  {
+    "date": "2015-11-08",
+    "amount": 2223.46,
+    "category": "other"
+  },
+  {
+    "date": "2015-11-08",
+    "amount": 222345.66,
+    "category": "other"
+  },
+  {
+    "date": "2015-11-09",
+    "amount": 14239.11,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-11-10",
+    "amount": 2245.92,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-11-12",
+    "amount": 5143.15,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-11-12",
+    "amount": 13194.31,
+    "category": "other"
+  },
+  {
+    "date": "2015-11-13",
+    "amount": 1122.96,
+    "category": "other"
+  },
+  {
+    "date": "2015-11-13",
+    "amount": 11499.09,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-11-13",
+    "amount": 9102.7,
+    "category": "other"
+  },
+  {
+    "date": "2015-11-15",
+    "amount": 5390.2,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-11-15",
+    "amount": 25603.44,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-11-15",
+    "amount": 6710.8,
+    "category": "health"
+  },
+  {
+    "date": "2015-11-16",
+    "amount": 110049.87,
+    "category": "other"
+  },
+  {
+    "date": "2015-11-16",
+    "amount": 6737.75,
+    "category": "bills_services"
+  },
+  {
+    "date": "2015-11-18",
+    "amount": 2470.51,
+    "category": "groceries"
+  },
+  {
+    "date": "2015-11-19",
+    "amount": 29196.91,
+    "category": "other"
+  }
+]
